@@ -1,0 +1,141 @@
+<div class="row row-padding-top fm-slideshow-plus-inner">
+	<div class="{% if status_additional_banners %}col-lg-8 col-xl-9{% else %}col-lg-12{% endif %}{% if position_banners == 0 %} order-1{% endif %}">
+		<div id="fm-slideshow-plus-{{ module }}" class="fm-slideshow-plus h-100">
+			{% set key = 0 %}
+			{% for item_slide in oct_slideshows_plus %}
+			{% set key = key + 1 %}
+			<div class="fm-slideshow-plus-item fm-slideshow-plus-item_{{ key }}">
+				<div class="fm-slideshow-plus-item-title">{{ item_slide.title }}</div>
+				<div class="fm-slideshow-plus-item-info d-flex justify-content-between">
+					<div class="fm-slideshow-plus-item-text">
+						<p>{{ item_slide.description }}</p>
+						<a href="{{ item_slide.link }}" class="fm-slideshow-plus-item-btn fm-btn">{{ item_slide.button }}</a>
+					</div>
+					<div class="fm-slideshow-plus-item-img h-100">
+						<img src="{{ item_slide.image }}" alt="{{ item_slide.title }}">
+					</div>
+				</div>
+				<style>
+					{% if item_slide.background_color %}
+					#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} {background-color: {{ item_slide.background_color }};}
+					{% endif %}
+					{% if item_slide.title_color %}
+					#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} .fm-slideshow-plus-item-title {color: {{ item_slide.title_color }};}
+					{% endif %}
+					{% if item_slide.text_color %}
+					#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} .fm-slideshow-plus-item-text {color: {{ item_slide.text_color }};}
+					{% endif %}
+					{% if item_slide.button_color and item_slide.button_background %}
+					#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} .fm-slideshow-plus-item-btn {color: {{ item_slide.button_color }};background-color: {{ item_slide.button_background }};}
+					{% endif %}
+					{% if item_slide.button_color_hover and item_slide.button_background_hover %}
+					#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} .fm-slideshow-plus-item-btn:hover {color: {{ item_slide.button_color_hover }};background-color: {{ item_slide.button_background_hover }};}
+					{% endif %}
+				</style>
+			</div>
+			{% endfor %}
+		</div>
+		<script>
+			$( document ).ready(function() {
+
+				$('#fm-slideshow-plus-{{ module }}').slick({
+					autoplay: true,
+					dots: true,
+					arrows: false,
+					infinite: true,
+					autoplaySpeed: 5000,
+					slidesToShow: 1
+				});
+			});
+		</script>
+	</div>
+	{% if status_additional_banners %}
+	<div class="col-lg-4 col-xl-3">
+		<div class="fm-promotional-product h-100">
+			<div class="fm-promotional-product-header">
+				{{ text_promotional_product }}
+			</div>
+			<div id="fm-promotional-product">
+				{% for product in products %}
+				<div class="fm-promotional-product-item">
+					<div class="fm-promotional-product-item-img">
+						<a href="{{ product.href }}"><img class="img-fluid" src="{{ product.thumb }}" alt="{{ product.name }}" /></a>
+					</div>
+					<div class="fm-promotional-product-item-info">
+						{% if product.rating is not same as(false) %}
+						<div class="fm-module-rating d-flex align-items-center justify-content-center">
+							<div class="fm-module-rating-stars d-flex align-items-center">
+								{% for i in 1..5 %}
+								{% if product.rating < i %}
+								<span class="fm-module-rating-star"></span>
+								{% else %}
+								<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+								{% endif %}
+								{% endfor %}
+							</div>
+							<div class="fm-module-reviews">
+								<i class="fas fa-comment"></i>
+								<span>{{ product.reviews }}</span>
+							</div>
+						</div>
+						{% endif %}
+						<div class="promotional-product-item-title">
+							<a href="{{ product.href }}">{{ product.name }}</a>
+						</div>
+						{% if product.price %}
+						<div class="fm-module-price">
+							{% if not product.special %}
+							<div class="fm-module-price-bottom">
+								<span class="fm-module-price-new">{{ product.price }}</span>
+							</div>
+							{% else %}
+							<div class="fm-module-price-top d-flex align-items-center justify-content-center">
+								<span class="fm-module-price-old">{{ product.price }}</span>
+							</div>
+							<div class="fm-module-price-bottom">
+								<span class="fm-module-price-new">{{ product.special }}</span>
+							</div>
+							{% endif %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<script>
+				$(document).ready(function() {
+
+				  $('#fm-promotional-product').slick({
+					autoplay: true,
+					dots: true,
+					arrows: false,
+					infinite: true,
+					autoplaySpeed: 5000,
+					slidesToShow: 1,
+					responsive: [
+					    {
+					      breakpoint: 1600,
+					      settings: {
+					        slidesToShow: 1
+					      }
+					    },
+					    {
+					      breakpoint: 992,
+					      settings: {
+					        slidesToShow: 2
+					      }
+					    },
+					    {
+					      breakpoint: 768,
+					      settings: {
+					        slidesToShow: 1
+					      }
+					    }
+					]
+				  });
+				});
+			</script>
+		</div>
+	</div>
+	{% endif %}
+</div>

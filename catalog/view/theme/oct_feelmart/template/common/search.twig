@@ -1,0 +1,75 @@
+<div id="search" class="fm-search">
+    <input id="input_search" type="text" name="search" value="{{ search }}" placeholder="{{ search_input_header_text }}" class="w-100 h-100 menu-input">
+    <button type="button" id="fm-search-button" class="btn-search menu-btn-search h-100"><i class="fa fa-search"></i></button>
+	<div id="fm_livesearch_close" onclick="clearLiveSearch();" class="d-flex d-lg-none align-items-center justify-content-center"><img src="catalog/view/theme/oct_feelmart/img/livesearch-close-icon.svg" alt="" /></div>
+	<div id="fm_livesearch"></div>
+</div>
+
+
+<script>
+function clearLiveSearch() {
+	$('#fm_livesearch_close, #fm_sidebar_overlay').removeClass('visible');
+	$('#fm_livesearch').removeClass('expanded');
+	$('.menu-row').removeClass('active');
+	$('#fm_livesearch').html('');
+	$('#input_search').val('');
+
+}
+{% if oct_live_search_status %}
+$(document).ready(function() {
+	let timer, delay = {{ delay_setting }};
+
+	$('#input_search').keyup(function(event) {
+
+	    switch(event.keyCode) {
+			case 37:
+			case 39:
+			case 38:
+			case 40:
+				return;
+			case 27:
+				clearLiveSearch();
+				return;
+		}
+
+	    clearTimeout(timer);
+
+	    timer = setTimeout(function() {
+	        let value = $('#search input[name=\'search\']').val();
+
+			if (value.length >= {{ count_symbol }}) {
+				let key = encodeURIComponent(value);
+				octsearch.search(key, 'desktop');
+			} else if (value.length === 0) {
+				clearLiveSearch();
+			}
+
+	    }, delay );
+	});
+});
+
+let octsearch = {
+	'search': function(key, type) {
+		$.ajax({
+			url: 'index.php?route=octemplates/module/oct_live_search',
+			type: 'post',
+			data: 'key=' + key,
+			dataType: 'html',
+			cache: false,
+			success: function(data) {
+				$('#fm_livesearch').html(data).addClass('expanded');
+
+				if(data = data.match(/livesearch/g)) {
+					$('#fm_livesearch_close, #fm_sidebar_overlay').addClass('visible');
+					$('.menu-row').addClass('active');
+
+				} else {
+					$('#fm_livesearch_close, #fm_sidebar_overlay').removeClass('visible');
+					$('.menu-row').removeClass('active');
+				}
+			}
+		});
+	}
+}
+{% endif %}
+</script>

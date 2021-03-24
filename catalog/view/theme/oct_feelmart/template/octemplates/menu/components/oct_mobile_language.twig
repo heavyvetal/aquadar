@@ -1,0 +1,25 @@
+{% if languages|length > 1 %}
+<div id="mobile-language" class="language fm_mobile_menu_info-item">
+	<div class="fm_mobile_menu_info-title">{{ text_language }}</div>
+	<form action="{{ action }}" class="h-100" method="post" enctype="multipart/form-data" id="form-language-sidebar">
+		<div class="btn-group h-100">
+			<div class="dropdown-menu">
+				{% for language in languages %}
+		        		<button class="btn btn-block language-select{% if language.code == code %} active-item{% endif %}" type="button" name="{{ language.code }}"><img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</button>
+		        {% endfor %}
+				</div>
+		</div>
+		<input type="hidden" name="code" value="">
+		<input type="hidden" name="redirect" value="{{ redirect }}">
+	</form>
+</div>
+<script>
+$(function () {
+	$('#mobile-language .language-select').on('click', function (e) {
+		e.preventDefault();
+		$('#form-language-sidebar input[name=\'code\']').val($(this).attr('name'));
+		$('#form-language-sidebar').submit();
+	});
+});
+</script>
+{% endif %}

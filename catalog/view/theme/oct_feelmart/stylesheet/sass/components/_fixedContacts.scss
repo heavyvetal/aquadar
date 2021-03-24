@@ -1,0 +1,224 @@
+@keyframes pulsation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes rotation {
+  0%,
+  100%,
+  50% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(30deg);
+  }
+
+  75% {
+    transform: rotate(-30deg);
+  }
+}
+
+.padding-bottom {
+	#fm_fixed_contact_button {
+		bottom: 75px;
+		@media (min-width: $break-xxs) {
+		  bottom: 90px;
+	    }
+    }
+}
+
+.padding-top {
+	#fm_fixed_contact_button {
+		bottom: 15px;
+		@media (min-width: $break-xxs) {
+		  bottom: 30px;
+	    }
+    }
+}
+
+#fm_fixed_contact_button {
+  position: fixed;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: $primaryColor;
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 10;
+  @media (min-width: $break-xxs) {
+	right: 30px;
+    width: 70px;
+	height: 70px;
+  }
+  @media (min-width: $break-lg) {
+    bottom: 30px !important;
+  }
+
+  &.clicked {
+    z-index: 1041;
+  }
+}
+
+#fm_fixed_contact_substrate {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  z-index: 0;
+  display: none;
+
+  &.active {
+    z-index: 1020;
+    display: block;
+  }
+}
+
+.fm-fixed-contact-pulsation {
+  width: 80px;
+  height: 80px;
+  background-color: $primaryColor;
+  border-radius: 50px;
+  position: absolute;
+  left: -15px;
+  top: -15px;
+  z-index: -1;
+  transform: scale(0);
+  animation: pulsation 2s infinite;
+  @media (min-width: $break-xxs) {
+    width: 100px;
+	height: 100px;
+  }
+}
+
+.fm-fixed-contact-icon {
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  position: absolute;
+  top: calc(50% - 22px);
+  right: calc(50% - 22px);
+  overflow: hidden;
+  font-size: 28px;
+
+  .fa-comment-dots {
+    animation: rotation 1.5s linear infinite;
+  }
+}
+
+.fm-fixed-contact-dropdown {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  padding: 20px;
+  border-radius: 1px;
+  background: #fff;
+  display: block;
+  opacity: 0;
+  z-index: -1;
+  margin-bottom: 20px;
+  transition: margin-bottom 0.3s ease, opacity 0.3s ease;
+  box-shadow: 5px 12px 30px rgba(0, 0, 0, 0.35);
+  visibility: hidden;
+  min-width: 250px;
+
+  &.expanded {
+    margin-bottom: 0;
+    opacity: 0.98;
+    z-index: 1;
+    visibility: visible;
+  }
+}
+
+.fm-fixed-contact-dropdown-close {
+  background: none;
+  border: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #333333;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $primaryColor;
+  }
+}
+
+.fm-fixed-contact-item {
+  color: #333;
+
+  &:hover {
+    color: $primaryColor;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 18px;
+  }
+
+  &-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 10px;
+    color: #fff;
+
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+.fm-fixed-contact-messenger {
+  background: #0084ff;
+}
+
+.fm-fixed-contact-viber {
+  background: #7c529d;
+}
+
+.fm-fixed-contact-telegram {
+  background: #2ca5e0;
+}
+
+.fm-fixed-contact-skype {
+  background: #31c4ed;
+}
+
+.fm-fixed-contact-whatsapp {
+  background: #25D366;
+}
+
+.fm-fixed-contact-email {
+  background: #50a8ff;
+}
+
+.fm-fixed-contact-call {
+  background: $primaryColor;
+}
+
+.fm-fixed-contact-viber-mobile {
+  @media (min-width: $break-lg) {
+    display: none !important;
+  }
+}
+
+.fm-fixed-contact-viber-desktop {
+  @media (max-width: $break-md-max) {
+    display: none !important;
+  }
+}

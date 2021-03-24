@@ -1,0 +1,58 @@
+{{ header }}
+<div id="product-manufacturer" class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+	    <div class="col-12">
+	        <h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+	    </div>
+    </div>
+	<div class="content-top-box">{{ content_top }}</div>
+	<div class="fm-content-manufacturer">
+		<div class="row no-gutters">
+			{{ column_left }}
+			{% if column_left and column_right %}
+			{% set class = 'col-lg-6 is-cols' %}
+			{% elseif column_left or column_right %}
+			{% set class = 'col-lg-9' %}
+			{% else %}
+			{% set class = 'col-lg-12 no-col' %}
+			{% endif %}
+			<div id="content" class="{{ class }}">
+				{% if categories %}
+				<div class="fm-content h-100">
+					<div class="fm-content-title">
+						<span>{{ text_index }}</span>{% for category in categories %}&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="scrollToElement('#fm-to-go-{{ category.name }}');">{{ category.name }}</a>{% endfor %}
+					</div>
+					{% for category in categories %}
+					<div id="fm-to-go-{{ category.name|replace({' ': ''}) }}" class="fm-manufacturer-title">{{ category.name }}</div>
+					{% if category.manufacturer %}
+					{% for manufacturers in category.manufacturer|batch(5) %}
+					<div class="fm-manufacturer-item">
+						<div class="row">
+							{% for manufacturer in manufacturers %}
+							<a href="{{ manufacturer.href }}" class="fm-manufacturer-card d-flex flex-column align-items-center">
+							{% if manufacturer.image is defined and manufacturer.image %}
+								<img src="{{ manufacturer.image }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ manufacturer.image }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="oct-lazy"{% endif %} alt="{{ manufacturer.name }}">
+							{% endif %}
+							<span class="fm-manufacturer-card-title">{{ manufacturer.name }}</span>
+							</a>
+							{% endfor %}
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+					{% endfor %}
+				</div>
+				{% else %}
+				<div class="p-4">
+					<p>{{ text_empty }}</p>
+					<a href="{{ continue }}" class="fm-btn fm-btn-blue mt-3 d-inline-block">{{ button_continue }}</a>
+				</div>
+				{% endif %}
+			</div>
+			{{ column_right }}
+		</div>
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

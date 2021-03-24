@@ -1,0 +1,27 @@
+{% if comments %}
+{% for comment in comments %}
+<div class="fm-review">
+	<div class="row align-items-stretch">
+		<div class="col-lg-3 fm-review-info-left text-center">
+			<div class="fm-review-icon">
+				<img src="catalog/view/theme/oct_feelmart/img/user-icon.svg" alt="user-icon" />
+			</div>
+			<div class="fm-review-name">{{ comment.author }}</div>
+			<div class="fm-review-date">{{ comment.date_added }}</div>
+		</div>
+		<div class="col-lg-9 fm-review-info-right">
+			<div class="fm-review-text">{{ comment.text }}</div>
+			{% if comment.admin_text %}
+			<div class="fm-review-admin">
+				<div class="fm-review-admin-title">{{ text_admin_title }}</div>
+				<div class="fm-review-admin-text">{{ comment.admin_text }}</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endfor %}
+{{ pagination }}
+{% else  %}
+<div class="p-4">{{ entry_empty_comments }}</div>
+{% endif %}

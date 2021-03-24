@@ -1,0 +1,127 @@
+// Blog-categories-column
+
+.fm-blog-categories-module-list a {
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.3px;
+  padding: 15px;
+}
+
+.fm-blog-categories-module-list {
+  li:not(:last-child) a {
+    border-bottom: $cardBorder;
+  }
+
+  a {
+    display: block;
+    color: #666;
+    background-color: #FBFBFB;
+    transition: color $mainTransition, background-color $mainTransition;
+
+    &:hover {
+      color: $primaryColor;
+      background-color: #FFF;
+      text-decoration: underline;
+    }
+    
+    &.fm-blog-categories-module-subcategories-link {
+		padding-left: 25px;
+		position: relative;
+	
+		&:before {
+			content: '-';
+		    position: absolute;
+		    left: 15px;
+		    top: 29%;
+		}
+	}
+  }
+}
+
+.blog-input-group {
+  padding: 20px 15px;
+  background-color: #FFF;
+  position: relative;
+}
+
+.fm-blog-search-input {
+  color: #C7C7C7 !important;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  background-color: #F9F9F9;
+  border: 1px solid #EEE;
+  padding: 10px 0 10px 15px;
+  border-radius: 25px;
+
+  &::placeholder {
+    color: #C7C7C7;
+    font-size: 14px;
+  }
+
+  &:focus {
+    box-shadow: none;
+    border: 1px solid #EEE;
+    background: #F9F9F9;
+  }
+}
+
+.fm-blog-search-btn {
+  color: #DEDEDE;
+  font-size: 20px;
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  top: 26px;
+  right: 20px;
+}
+
+// Blog-categories-content
+
+.fm-blog-categories-content {
+  padding: 0;
+
+  .fm-news-item {
+    border-bottom: none;
+    position: relative;
+    transition: box-shadow $mainTransition;
+    @media (max-width: $break-sm-max) {
+      flex-direction: column;
+    }
+
+    &:hover {
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    &::after {
+      content: '';
+      width: auto;
+      height: 1px;
+      background-color: #F7F7F7;
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      right: 30px;
+      transition: left $mainTransition, right $mainTransition;
+    }
+
+    &:hover::after {
+      left: 0;
+      right: 0;
+    }
+
+    .fm-news-item-info {
+      @media (min-width: $break-lg) {
+        max-width: 68%;
+      }
+    }
+  }
+
+  .fm-news-item-photo {
+    margin-right: 0;
+    margin-left: 30px;
+    @media (max-width: $break-sm-max) {
+      order: -1;
+      margin: 0 0 30px;
+    }
+  }
+}

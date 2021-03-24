@@ -1,0 +1,115 @@
+{% if (standart_menu is defined and standart_menu is not empty) or (items is defined and items is not empty) %}
+<div class="fm_mobile_menu_second">
+	<div class="fm_mobile_menu_back fm_mobile_menu_first_back fm_mobile_menu-list-item d-flex align-items-center">
+		<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ oct_menu }}</span>
+	</div>
+	<ul class="fm_mobile_menu-list">
+		{% if standart_menu is defined and standart_menu is not empty %}
+			{{ standart_menu }}
+		{% endif %}
+		{% if items is defined and items is not empty %}
+			{% for item in items %}
+				{% if item.children %}
+					{% if item.item_type == 2 and (oct_megamenu_mobile_categories is defined and oct_megamenu_mobile_categories) %}
+						<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+							<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span>{{ item.title }}</span></a>
+							{% if item.children %}
+							<button class="fm_mobile_menu_second_button"><i class="fas fa-angle-right"></i></button>
+							<div class="fm_mobile_menu_third">
+								<div class="fm_mobile_menu_back fm_mobile_menu_second_back fm_mobile_menu-list-item d-flex align-items-center">
+									<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ item.title }}</span>
+								</div>
+								<ul class="fm_mobile_menu-list">
+									{% for child in item.children %}
+									<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+										<a href="{{ child.href }}"><span>{{ child.name }}</span></a>
+										{% if child.children %}
+										<button class="fm_mobile_menu_third_button"><i class="fas fa-angle-right"></i></button>
+										<div class="fm_mobile_menu_fourth">
+											<div class="fm_mobile_menu_back fm_mobile_menu_third_back fm_mobile_menu-list-item d-flex align-items-center">
+												<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ child.name }}</span>
+											</div>
+											<ul class="fm_mobile_menu-list">
+												{% for ch in child.children %}
+												<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+													<a href="{{ ch.href }}"><span>{{ ch.name }}</span></a>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+										{% endif %}
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							{% endif %}
+						</li>
+					{% endif %}
+					{% if item.item_type == 3 and (oct_megamenu_brands is defined and oct_megamenu_brands) %}
+						<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+							<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span>{{ item.title }}</span></a>
+							{% if item.children %}
+							<button class="fm_mobile_menu_second_button"><i class="fas fa-angle-right"></i></button>
+							<div class="fm_mobile_menu_third">
+								<div class="fm_mobile_menu_back fm_mobile_menu_second_back fm_mobile_menu-list-item d-flex align-items-center">
+									<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ item.title }}</span>
+								</div>
+								<ul class="fm_mobile_menu-list">
+									{% for child in item.children %}
+									<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+										<a href="{{ child.href }}"><span>{{ child.name }}</span></a>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							{% endif %}
+						</li>
+					{% endif %}
+					{% if item.item_type == 5 and (oct_megamenu_informations is defined and oct_megamenu_informations) %}
+						<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+							<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span>{{ item.title }}</span></a>
+							{% if item.children %}
+							<button class="fm_mobile_menu_second_button"><i class="fas fa-angle-right"></i></button>
+							<div class="fm_mobile_menu_third">
+								<div class="fm_mobile_menu_back fm_mobile_menu_second_back fm_mobile_menu-list-item d-flex align-items-center">
+									<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ item.title }}</span>
+								</div>
+								<ul class="fm_mobile_menu-list">
+									{% for child in item.children %}
+									<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+										<a href="{{ child.href }}"><span>{{ child.name }}</span></a>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							{% endif %}
+						</li>
+					{% endif %}
+					{% if item.item_type == 8 and (oct_megamenu_blog is defined and oct_megamenu_blog) %}
+						<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+							<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span>{{ item.title }}</span></a>
+							{% if item.children %}
+							<button class="fm_mobile_menu_second_button"><i class="fas fa-angle-right"></i></button>
+							<div class="fm_mobile_menu_third">
+								<div class="fm_mobile_menu_back fm_mobile_menu_second_back fm_mobile_menu-list-item d-flex align-items-center">
+									<span class="fm_mobile_menu_back-icon"></span> <span class="fm_mobile_menu_back-text">{{ item.title }}</span>
+								</div>
+								<ul class="fm_mobile_menu-list">
+									{% for child in item.children %}
+									<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between">
+										<a href="{{ child.href }}"><span>{{ child.name }}</span></a>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							{% endif %}
+						</li>
+					{% endif %}
+				{% else %}
+					<li class="fm_mobile_menu-list-item d-flex align-items-center justify-content-between"><a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span>{{ item.title }}</span></a></li>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</ul>
+</div>
+{% endif %}

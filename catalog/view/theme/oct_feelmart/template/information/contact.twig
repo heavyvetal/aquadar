@@ -1,0 +1,85 @@
+{{ header }}
+<div id="information-contact" class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+		</div>
+	</div>
+	<div class="content-top-box">{{ content_top }}</div>
+	<div id="content" class="row no-gutters">
+		{{ column_left }}
+		{% if column_left and column_right %}
+	    {% set class = 'col-lg-6' %}
+	    {% elseif column_left or column_right %}
+	    {% set class = 'col-lg-9' %}
+	    {% else %}
+	    {% set class = 'col-lg-12' %}
+	    {% endif %}
+	    <div class="{{ class }}">
+		    <div class="fm-content">
+			    <div class="fm-content-contact d-flex">
+			    	<div class="fm-contact-form-box">
+			    		<form action="{{ action }}" method="post" enctype="multipart/form-data">
+				          <div class="form-group">
+				            <label for="input-name"><span class="required">*</span>{{ entry_name }}</label>
+				            {% if (error_name) or (error_email) or (error_enquiry) or (error_oct_terms) %}
+				            <script>
+				            		fmNotify('danger', '{% if error_name %}{{ error_name }}{% endif %}{% if error_email %}<br />{{ error_email }}{% endif %}{% if error_enquiry %}<br />{{ error_enquiry }}{% endif %}{% if error_oct_terms %}<br />{{ error_oct_terms }}{% endif %}');
+				            </script>
+				            {% endif %}
+				            <input type="text" name="name" value="{{ name }}" id="input-name" class="form-control{% if error_name %} error_style{% endif %}" placeholder="{{ entry_name }}" />
+				          </div>
+				          <div class="form-group">
+				            <label for="input-email"><span class="required">*</span>{{ entry_email }}</label>
+				            <input type="email" name="email" value="{{ email }}" id="input-email" class="form-control{% if error_email %} error_style{% endif %}" placeholder="{{ entry_email }}" />
+				          </div>
+				          <div class="form-group">
+				            <label for="input-enquiry"><span class="required">*</span>{{ entry_enquiry }}</label>
+				            <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control{% if error_enquiry %} error_style{% endif %}" placeholder="{{ entry_enquiry }}">{{ enquiry }}</textarea>
+				          </div>
+				          {{ captcha }}
+						  {% if text_terms %}
+						  <div class="form-checkbox-group">
+							<div class="checkbox">
+								<label>
+									<input id="scales" type="checkbox" class="fm-form-checkbox-input{% if error_oct_terms %} error_style{% endif %}" name="scales"{% if scales_in is defined and scales_in %} checked{% endif %}>
+									<span class="check-box"></span>
+									{{ text_terms }}
+								</label>
+							</div>
+						  </div>
+						  {% endif %}
+				          <div class="btn-group">
+					        <input class="fm-btn fm-btn-blue" type="submit" value="{{ button_submit }}" />
+				          </div>
+					    </form>
+						<script>
+						$("#input-name, #input-email, #input-enquiry, #scales").on("change paste keyup", function() {
+							$(this).removeClass('error_style');
+						});
+						</script>
+			    	</div>
+			    	{% if contact_html is defined %}
+			    	<div class="fm-content-border">&nbsp;</div>
+			    	<div class="fm-content-contact-offer">
+			    		{{ contact_html }}
+					</div>
+					{% endif %}
+			    </div>
+			    {% if contact_map is defined %}
+			    <div class="row row-padding-top">
+					<div class="col-12">
+						<div class="fm-map-content">
+							{{ contact_map }}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+		    </div>
+	    </div>
+	    {{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

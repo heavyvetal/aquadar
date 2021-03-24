@@ -1,0 +1,126 @@
+{% if (standart_menu is defined and standart_menu is not empty) or (items is defined and items is not empty) %}
+<div id="oct-menu-box" class="col-lg-3">
+	<div class="fm-menu d-flex align-items-center">
+        <div class="fm-menu-burg">
+          <span class="fm-menu-burg-top"></span>
+          <span class="fm-menu-burg-middle"></span>
+          <span class="fm-menu-burg-bottom"></span>
+        </div>
+        <span id="fm-menu-header" class="fm-menu-header">{{ text_category }}</span>
+    </div>
+	<nav id="oct-menu-dropdown-menu">
+		<ul id="oct-menu-ul" class="oct-menu-ul oct-menu-parent-ul list-unstyled">
+			{% if standart_menu is defined and standart_menu is not empty %}
+			{{ standart_menu }}
+			{% endif %}
+			{% if items is defined and items is not empty %}
+				{% for item in items %}
+					{% if item.children %}
+						{% if item.item_type == 2 %}
+							{% if item.display_type == 1 %}
+								<li class="oct-menu-li">
+									<div class="d-flex align-items-center justify-content-between">
+										<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }} class="oct-menu-a{% if item.image %} d-flex align-items-center{% endif %}">{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span class="oct-menu-item-name">{{ item.title }}</span></a>{% if item.children %}<span class="oct-menu-toggle"><i class="fas fa-chevron-right"></i></span>{% endif %}
+									</div>
+									<div class="oct-menu-child-ul oct-mm-box">
+									{% set divide_value = item.description ? 4 : 6 %}
+									{% for children in item.children|batch(divide_value) %}
+										{% for children_inner in children %}
+										<div class="oct-mm-item d-flex flex-column{% if children_inner.children %} with-subcats{% endif %}{% if children_inner.thumb %} with-img{% endif %}">
+						                    <a class="oct-mm-item-title d-flex flex-column{% if not children_inner.thumb %} without-img{% endif %}" href="{{ children_inner.href }}">
+						                    	{% if children_inner.thumb %}
+												<img src="{{ children_inner.thumb }}" alt="{{ children_inner.name }}" title="{{ children_inner.name }}" />
+												{% endif %}
+												<span>{{ children_inner.name }}</span>
+						                    </a>
+						                    {% if children_inner.children %}
+						                    <ul class="oct-mm-item-list list-unstyled">
+											{% set countstop = 1 %}
+											{% for child in children_inner.children %}
+												{% set countstop = countstop + 1 %}
+												<li><a href="{{ child.href }}">{{ child.name }}</a></li>
+												{% if countstop > item.limit_item %}
+												<li class="oct-mm-item-see-all"><a href="{{ children_inner.href }}">{{ text_all_category }}</a></li>
+												{% endif %}
+											{% endfor %}
+						                    </ul>
+						                    {% endif %}
+						                </div>
+										{% endfor %}
+									{% endfor %}
+									</div>
+								</li>
+							{% else %}
+								<li class="oct-menu-li">
+									<div class="d-flex align-items-center justify-content-between">
+										<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }} class="oct-menu-a{% if item.image %} d-flex align-items-center{% endif %}">{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span class="oct-menu-item-name">{{ item.title }}</span></a>{% if item.children %}<span class="oct-menu-toggle"><i class="fas fa-chevron-right"></i></span>{% endif %}
+									</div>
+									<div class="oct-menu-child-ul">
+										<ul class="oct-menu-ul list-unstyled">
+											{% for children in item.children %}
+												{% if children.children %}
+												<li class="oct-menu-li">
+													<div class="d-flex align-items-center justify-content-between">
+														<a href="{{ children.href }}"><span class="oct-menu-item-name">{{ children.name }}</span></a>{% if children.children %}<span class="oct-childmenu-toggle"><i class="fas fa-chevron-right"></i></span>{% endif %}
+													</div>
+													<div class="oct-menu-child-ul oct-menu-third-child-ul">
+														<ul class="oct-menu-ul list-unstyled">
+															{% for child in children.children %}
+															<li class="oct-menu-li">
+																<a href="{{ child.href }}"><span class="oct-menu-item-name">{{ child.name }}</span></a>
+															</li>
+															{% endfor %}
+														</ul>
+													</div>
+												</li>
+												{% else %}
+												<li class="oct-menu-li"><a href="{{ children.href }}"><span class="oct-menu-item-name">{{ children.name }}</span></a></li>
+												{% endif %}
+											{% endfor %}
+										</ul>
+									</div>
+								</li>
+							{% endif %}
+						{% endif %}
+						{% if item.item_type == 3 %}
+							<li class="oct-menu-li">
+								<div class="d-flex align-items-center justify-content-between">
+									<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }} class="oct-menu-a{% if item.image %} d-flex align-items-center{% endif %}">{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span class="oct-menu-item-name">{{ item.title }}</span></a>{% if item.children %}<span class="oct-menu-toggle"><i class="fas fa-chevron-right"></i></span>{% endif %}
+								</div>
+								<div class="oct-menu-child-ul oct-mm-box">
+									{% for children in item.children %}
+									<div class="oct-mm-item d-flex flex-column with-img">
+					                    <a class="oct-mm-item-title d-flex flex-column" href="{{ children.href }}">
+					                    	{% if children.thumb %}
+											<img src="{{ children.thumb }}" alt="{{ children.name }}" title="{{ children.name }}" />
+											{% endif %}
+											<span>{{ children.name }}</span>
+					                    </a>
+					                </div>
+									{% endfor %}
+								</div>
+							</li>
+						{% endif %}
+						{% if item.item_type == 8 %}
+							<li class="oct-menu-li">
+								<div class="d-flex align-items-center justify-content-between">
+									<a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }} class="oct-menu-a{% if item.image %} d-flex align-items-center{% endif %}">{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}<span class="oct-menu-item-name">{{ item.title }}</span></a>{% if item.children %}<span class="oct-menu-toggle"><i class="fas fa-chevron-right"></i></span>{% endif %}
+								</div>
+								<div class="oct-menu-child-ul">
+									<ul class="oct-menu-ul list-unstyled">
+										{% for children in item.children %}
+										<li class="oct-menu-li"><a href="{{ children.href }}"><span class="oct-menu-item-name">{{ children.name }}</span></a></li>
+										{% endfor %}
+									</ul>
+								</div>
+							</li>
+						{% endif %}
+					{% else %}
+						<li class="oct-menu-li"><a href="{{ item.href }}" {{ item.open_link_type ? 'target="_blank"' : '' }}{% if item.image %} class="d-flex align-items-center"{% endif %}>{% if item.image %}<img class="oct-menu-cat-icon" src="{{ item.image }}" alt="{{ item.title }}" />{% endif %}{{ item.title }}</a></li>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</ul>
+	</nav>
+</div>
+{% endif %}

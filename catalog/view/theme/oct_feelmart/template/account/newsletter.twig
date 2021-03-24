@@ -1,0 +1,68 @@
+{{ header }}
+<div id="account-newsletter" class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+		</div>
+	</div>
+	<div class="content-top-box">{{ content_top }}</div>
+	<div id="content" class="row no-gutters">
+		{{ column_left }}
+	    {% if column_left and column_right %}
+	    {% set class = 'col-lg-6' %}
+	    {% elseif column_left or column_right %}
+	    {% set class = 'col-lg-9' %}
+	    {% else %}
+	    {% set class = 'col-lg-12' %}
+	    {% endif %}
+	    <div class="{{ class }}">
+			<div class="fm-content fm-account-content h-100">
+				<form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+					<fieldset>
+						<legend class="fm-content-title fm-content-acc-title">{{ entry_newsletter }}</legend>
+						<div class="fm-form-checkbox-group d-flex">
+							{% if newsletter %}
+							<div class="radio">
+								<label class="option">
+									<input type="radio" class="input-radio" name="newsletter" id="CheckYes" class="form-check-input" value="1" checked="checked" />
+									<span class="radio-box"></span>
+									{{ text_yes }}
+								</label>
+							</div>
+							<div class="radio">
+								<label class="option">
+									<input type="radio" class="input-radio" name="newsletter" id="CheckNo" class="form-check-input" value="0" />
+									<span class="radio-box"></span>
+									{{ text_no }}
+								</label>
+							</div>
+							{% else %}
+							<div class="radio">
+								<label class="option">
+									<input type="radio" class="input-radio" name="newsletter" id="CheckYes" class="form-check-input" value="1" />
+									<span class="radio-box"></span>
+									{{ text_yes }}
+								</label>
+							</div>
+							<div class="radio">
+								<label class="option">
+									<input type="radio" class="input-radio" name="newsletter" id="CheckNo" class="form-check-input" value="0" checked="checked" />
+									<span class="radio-box"></span>
+									{{ text_no }}
+								</label>
+							</div>
+							{% endif %}
+						</div>
+					</fieldset>
+					<div class="btn-group mt-4">
+						<input type="submit" value="{{ button_continue }}" class="fm-btn fm-btn-blue" />
+					</div>
+				</form>
+			</div>
+		</div>
+		{{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

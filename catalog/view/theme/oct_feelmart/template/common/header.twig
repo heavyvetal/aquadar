@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+{% if keywords %}
+<meta name="keywords" content="{{ keywords }}" />
+{% endif %}
+{% if oct_feelmart_data.preload is defined and oct_feelmart_data.preload %}
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem5YaGs126MiZpBA-UNirkOVuhpKKSTj5PW.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem5YaGs126MiZpBA-UN7rgOVuhpKKSTj5PW.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem8YaGs126MiZpBA-UFUZ0bf8pkAp6a.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="catalog/view/theme/oct_feelmart/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+{% endif %}
+{% for style in styles %}
+<link href="{{ style.href }}" rel="stylesheet" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}"></script>
+{% endfor %}
+{% for link in links %}
+<link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+</head>
+<body class="padding-{{ sidebar_position }}">
+<div id="fm_sidebar_overlay"></div>
+<div id="fm_sidebar">
+    <div class="fm_sidebar-title d-flex alig-items-center justify-content-between">
+      <span class="fm_sidebar-title-text">{{ oct_menu }}</span>
+      <span class="fm_sidebar-title-close"></span>
+    </div>
+    <div id="fm_sidebar_content" class="fm_sidebar-content"></div>
+</div>
+{{ oct_sidebar_mobile }}
+<nav id="top" class="top d-none d-lg-block">
+	<div class="container d-flex justify-content-between">
+	  	{% if header_informations is defined and header_informations is not empty %}
+		<ul class="info-list list-unstyled d-flex">
+			{% for header_link in header_informations %}
+			<li class="info-item"><a href="{{ header_link.href }}" class="info-link">{{ header_link.title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		<div id="top-links" class="nav d-flex">
+			{{ language }}
+			{{ currency }}
+			<div class="dropdown" id="fm-account-dropdown">
+				{% if logged %}
+				<a href="{{ account }}" title="{{ text_account }}" class="btn btn-user btn-link dropdown-toggle btn-block h-100 d-flex align-items-center" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ text_account }} <i class="fas fa-chevron-down" ></i></a>
+				<ul class="dropdown-menu nav-dropdown-menu user-dropdown-menu">
+		            <li class="dropdown-item my-dropdown-item"><a href="{{ account }}">{{ text_account }}</a></li>
+		            <li class="dropdown-item my-dropdown-item"><a href="{{ order }}">{{ text_order }}</a></li>
+		            <li class="dropdown-item my-dropdown-item"><a href="{{ transaction }}">{{ text_transaction }}</a></li>
+		            <li class="dropdown-item my-dropdown-item"><a href="{{ download }}">{{ text_download }}</a></li>
+		            <li class="dropdown-item my-dropdown-item"><a href="{{ logout }}">{{ text_logout }}</a></li>
+				</ul>
+				{% else %}
+				<a href="javascript:;" onclick="octPopupLogin();" title="{{ text_account }}" class="btn btn-user btn-link btn-block h-100 d-flex align-items-center" role="button" aria-haspopup="true">{{ text_account }}</a>
+				{% endif %}
+	        </div>
+		</div>
+	</div>
+</nav>
+<header>
+  <div class="container">
+    <div class="row align-items-center">
+		{% if logo %}
+    	<div id="logo" class="col-6 col-md-2 col-lg-3 col-xl-3">
+			{% if oct_home is defined and oct_home %}
+			<div class="fm-logo"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" /></div>
+			{% else %}
+			<div class="fm-logo">
+			<a href="{{ home }}">
+				<img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" />
+			</a>
+			</div>
+			{% endif %}
+		</div>
+		{% else %}
+		<h1><a href="{{ home }}">{{ name }}</a></h1>
+		{% endif %}
+		{% if oct_feelmart_data.contact_address[oct_lang_id] is defined and oct_feelmart_data.contact_address[oct_lang_id] %}
+		<div class="d-none d-md-flex col-md-7 col-lg-6 col-xl-5 fm-header-address">
+	        <div class="header-dropdown-box">
+				<a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button"><i class="fas fa-map-marker-alt"></i> <span>{{ oct_feelmart_data.contact_address[oct_lang_id] }}</span> <i class="fas fa-chevron-down"></i></a>
+				<div class="header-dropdown text-center">
+					<div class="header-dropdown-inner fm-header-address-dropdown-inner">
+						<div class="header-dropdown-title">{{ oct_our_address }}:</div>
+					    <div class="header-dropdown-address">{{ oct_feelmart_data.contact_address[oct_lang_id] }}</div>
+					    {% if contact_map is defined and contact_map %}
+					    <div class="header-dropdown-map">
+					    	<div id="oct-contact-map" class="not_in"></div>
+					    </div>
+					    <script>
+					    	$('.header-dropdown-toggle').on('mouseenter mouseleave', function() {
+						    	octShowMap('{{ contact_map }}');
+							});
+					    </script>
+					    {% endif %}
+				    </div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		{% if oct_contact_opens is defined and oct_contact_opens is not empty %}
+		<div class="fm-header-shedule d-none col-xl-2 d-xl-flex justify-content-center">
+          <div class="header-dropdown-box">
+            <a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button">
+              <i class="far fa-clock"></i>
+              <span>{{ oct_working_hours }}</span>
+              <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="header-dropdown header-dropdown-shedule text-center">
+              <div class="header-dropdown-inner">
+                <div class="header-dropdown-title header-dropdown-title-bold">{{ oct_working_hours_shop }}</div>
+                <ul class="list-unstyled">
+                	{% for oct_contact_open in oct_contact_opens %}
+					<li>{{ oct_contact_open }}</li>
+					{% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+		{% endif %}
+		{% if oct_contact_telephones is defined and oct_contact_telephones is not empty %}
+		<div class="col-6 col-md-3 col-xl-2 d-flex fm-header-phones">
+          <div class="fm-phone-box d-flex align-items-center">
+            <div class="fm-phone-img">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="fm-phone-content text-right">
+            {% if oct_contact_telephones|length > 1 %}
+              <div class="header-dropdown-box btn-link dropdown-toggle d-flex align-items-center">
+                {{ oct_contact_telephones[0] }}
+                <i class="fas fa-chevron-down"></i>
+	            <div class="header-dropdown text-center">
+	                <div class="header-dropdown-inner">
+	                  <div class="header-dropdown-title header-dropdown-title-bold">{{ oct_our_telephones }}</div>
+	                  <ul class="list-unstyled">
+	                    {% for oct_contact_telephone in oct_contact_telephones %}
+						<li><a href="tel:{{ oct_contact_telephone|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" class="phoneclick">{{ oct_contact_telephone }}</a></li>
+						{% endfor %}
+	                  </ul>
+	                </div>
+	            </div>
+              </div>
+              {% else %}
+				<a class="btn btn-link dropdown-toggle d-flex align-items-center" href="tel:{{ oct_contact_telephones[0]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" role="button" id="us-phones-dropdown"><span>{{ oct_contact_telephones[0] }}</span></a>
+				{% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+    </div>
+  </div>
+</header>
+<div class="menu-row sticky-top">
+	<div class="container">
+		<div class="row">
+			{{ menu }}
+	        <div class="col-lg-9 fm-menu-buttons-list-col d-flex justify-content-between">
+		        {{ search }}
+		        <div class="fm-menu-buttons-list d-flex">
+		        	{% if (oct_feelmart_data.header_product_views is defined and oct_feelmart_data.header_product_views) and (product_views_count is defined and product_views_count) %}
+		            <button title="{{ fixed_bar_views }}" type="button" class="fm-menu-buttons-item fm-menu-buttons-viewed" onclick="fmSidebar('{{ oct_product_views }}', 'viewed');">
+			            <span class="fm-menu-buttons-icon">
+			                <img src="catalog/view/theme/oct_feelmart/img/viewed-icon.svg" alt="viewed-icon">
+			                <span class="fm-menu-buttons-index fm-menu-viewed-index">{{ product_views_count }}</span>
+			            </span>
+		            </button>
+		            {% endif %}
+		            <button title="{{ fixed_bar_compare }}" onclick="location.href='{{ compare_link }}';" type="button" class="fm-menu-buttons-item fm-menu-buttons-compare">
+			            <span class="fm-menu-buttons-icon">
+			                <img src="catalog/view/theme/oct_feelmart/img/compare-icon.svg" alt="compare-icon">
+			                <span class="fm-menu-buttons-index fm-menu-compare-index">{{ compare_total }}</span>
+			            </span>
+		            </button>
+		            <button title="{{ fixed_bar_wishlist }}" onclick="location.href='{{ wishlist_link }}';" type="button" class="fm-menu-buttons-item fm-menu-buttons-wishlist">
+			            <span class="fm-menu-buttons-icon">
+			                <img src="catalog/view/theme/oct_feelmart/img/heart-icon.svg" alt="heart-icon">
+			                <span class="fm-menu-buttons-index fm-menu-wishlist-index">{{ wishlist_total }}</span>
+			            </span>
+		            </button>
+		            {{ cart }}
+		        </div>
+	        </div>
+		</div>
+	</div>
+</div>

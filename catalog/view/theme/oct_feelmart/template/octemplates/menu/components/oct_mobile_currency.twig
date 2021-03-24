@@ -1,0 +1,29 @@
+{% if currencies|length > 1 %}
+<div id="currency-sidebar" class="curency fm_mobile_menu_info-item">
+	<div class="fm_mobile_menu_info-title">{{ text_currency }}</div>
+	<form action="{{ action }}" class="h-100" method="post" enctype="multipart/form-data" id="form-currency-sidebar">
+		<div class="btn-group h-100">
+			<div class="dropdown-menu">
+				{% for currency in currencies %}
+			        {% if currency.symbol_left %}
+			        	<button class="currency-select btn btn-block{% if currency.code == code %} active-item{% endif %}" type="button" name="{{ currency.code }}">{{ currency.symbol_left }} {{ currency.title }}</button>
+			        {% else %}
+			        	<button class="currency-select btn btn-block{% if currency.code == code %} active-item{% endif %}" type="button" name="{{ currency.code }}">{{ currency.symbol_right }} {{ currency.title }}</button>
+			        {% endif %}
+		        {% endfor %}
+			</div>
+		</div>
+		<input type="hidden" name="code" value="">
+		<input type="hidden" name="redirect" value="{{ redirect }}">
+	</form>
+</div>
+<script>
+$(function () {
+	$('#currency-sidebar .currency-select').on('click', function (e) {
+		e.preventDefault();
+		$('#form-currency-sidebar input[name=\'code\']').val($(this).attr('name'));
+		$('#form-currency-sidebar').submit();
+	});
+});
+</script>
+{% endif %}

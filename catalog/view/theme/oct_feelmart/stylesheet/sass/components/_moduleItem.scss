@@ -1,0 +1,184 @@
+.fm-module-item {
+  background-color: #FFF;
+  padding: 45px 15px 30px;
+  @media (min-width: $break-xs) {
+    padding: 45px 19px 30px;
+  }
+  text-align: center;
+  border-bottom: $cardBorder;
+  position: relative;
+  z-index: 2;
+  @media (min-width: $break-md) {
+    padding: 45px 30px 30px;
+  }
+
+  @media (min-width: $break-xl) {
+    &:hover {
+      z-index: 3;
+
+      > * {
+        z-index: 5;
+      }
+
+      .fm-module-stickers {
+        z-index: 6;
+      }
+
+      img {
+        opacity: 0.9;
+      }
+
+      .fm-module-overlay {
+        z-index: 4;
+        top: -20px;
+        right: -15px;
+        bottom: -66px;
+        left: -15px;
+        opacity: 1;
+      }
+
+      .fm-module-buttons-list,
+      .fm-module-overlay-btn {
+        opacity: 1;
+      }
+
+      .fm-module-title>a,
+      .fm-module-title>a:visited {
+        color: $primaryColor;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &:not(:nth-child(4n+4)) {
+    border-right: $cardBorder;
+  }
+
+  .fm-module-img {
+    margin-bottom: 30px;
+    z-index: 5;
+
+    img {
+      transition: opacity $mainTransition;
+    }
+  }
+
+  .fm-module-title {
+    margin: 25px 0 20px 0;
+    z-index: 5;
+
+    a {
+      color: #30363D;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      transition: color $mainTransition;
+      word-break: break-word;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .price-tax {
+    color: #828488;
+  }
+}
+
+// Default sticker discount
+
+.fm-module-sticker-discount {
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 18px;
+  color: #FFF;
+  border-radius: 1px;
+  text-align: center;
+  background-color: #EB5757;
+  border-radius: 15px;
+  padding: 2px 12px;
+}
+
+// Default module stickers
+
+.fm-module-stickers {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 6;
+
+  .fm-module-stickers-sticker {
+    padding: 2px 6px;
+    font-size: 10px;
+    margin-bottom: 5px;
+    border-radius: 1px;
+    @media (min-width: $break-md) {
+	   padding: 2px 10px; 
+	   font-size: 13px;
+	   margin-bottom: 10px;
+    }
+  }
+
+  .fm-module-stickers-sticker_latest {
+    background-color: #2B6AB6;
+  }
+
+  .fm-module-stickers-sticker_bestseller {
+    background-color: #EB5757;
+    text-align: center;
+  }
+}
+
+// Default module buttons list
+
+.fm-module-buttons-list {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  opacity: 1;
+  z-index: 6;
+  @media (min-width: $break-xl) {
+    top: 0; 
+	transition: opacity $mainTransition;
+  }
+  @media (min-width: $break-xl) {
+    right: 0;
+    opacity: 0;
+  }
+  @media (max-width: $break-md-max) {
+    flex-direction: column;
+  }
+
+  li {
+    margin-left: 10px;
+  }
+
+  i.fa-sliders-h {
+    transform: rotate(90deg);
+  }
+
+  button {
+    font-size: 18px;
+    color: #E3E5E6;
+    padding: 0;
+    background: transparent;
+    @media (min-width: $break-lg) {
+	    transition: color $mainTransition;
+    }
+
+    &:hover {
+      color: $primaryColor;
+    }
+    
+    &:focus {
+	    box-shadow: none;
+    }
+
+    &.fm-module-buttons-quickview {
+      @media (max-width: $break-md-max) {
+        display: none;
+      }
+    }
+  }
+}

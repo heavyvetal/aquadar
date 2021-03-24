@@ -1,0 +1,124 @@
+.alert-block {
+	margin: 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	@media (max-width: $break-xs-max) {
+		right: 15px !important;
+		top: 15px !important;
+		left: 15px !important;
+	}
+}
+
+.fm-alert {
+	@media (min-width: $break-xs) {
+		max-width: 370px;
+	}
+	background: #FFF;
+	float: right;
+	border: none;
+	border-radius: 1px;
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.3);
+	@media (min-width: $break-lg) {
+		box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.55);
+	}
+	padding: 0;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	
+	&-success {
+		background: #0CC95B;
+	}
+	
+	&-danger {
+		background: #F33D32;
+	}
+	
+	&-warning {
+		background: #F3C932;
+	}
+	
+	&-primary {
+		background: #50A8FF;
+	}
+	
+	&-close {
+	    position: absolute;
+	    right: 10px;
+	    top: 10px;
+	    background: transparent;
+	    padding: 0;
+	}
+	
+	&-icon {
+		
+		i {
+			width: 60px;
+			font-size: 20px;
+			color: #ffffff;
+			text-align: center;
+		}
+	}
+	
+	&-text {
+		color: $darkTextColor;
+		font-size: 13px;
+		line-height: 17px;
+		padding: 20px 46px 20px 20px;
+		background: #FFF;
+		border-radius: 0 10px 10px 0;
+		flex-grow: 1;
+		@media (min-width: $break-xs) {
+			min-width: 310px;
+		}
+		
+		a {
+			color: $primaryColor;
+			text-decoration: underline;
+			
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		
+		&-item:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.animated {
+	animation-duration: .5s;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
+}

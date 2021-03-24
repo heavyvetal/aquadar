@@ -1,0 +1,56 @@
+@charset 'UTF-8';
+
+// 1. Variables
+@import 'abstracts/variables';
+
+// 2. Vendors
+@import 'vendors/bootstrap/bootstrap';
+@import 'vendors/fontawesome/scss/fontawesome';
+@import 'vendors/fontawesome/scss/regular';
+@import 'vendors/fontawesome/scss/brands';
+@import 'vendors/fontawesome/scss/solid';
+
+// 3. Base styles
+@import 'base/fonts';
+@import 'base/reset';
+@import 'base/global';
+
+// 4. Page layout
+@import 'layout/header';
+@import 'layout/menu';
+@import 'layout/footer';
+@import 'layout/forms';
+@import 'layout/notify';
+@import 'layout/popups';
+
+// 5. Modules
+@import 'components/advantages';
+@import 'components/bannerPlus';
+@import 'components/carousel';
+@import 'components/categoryWall';
+@import 'components/moduleItem';
+@import 'components/news';
+@import 'components/reviews';
+@import 'components/slideshow';
+@import 'components/fixedContacts';
+@import 'components/htmlModule';
+
+// 6. Pages
+@import 'pages/account';
+@import 'pages/blog-categories';
+@import 'pages/blog-post';
+@import 'pages/cart';
+@import 'pages/category';
+@import 'pages/compare';
+@import 'pages/contact-us';
+@import 'pages/information';
+@import 'pages/manufacturer-list';
+@import 'pages/product';
+@import 'pages/search';
+@import 'pages/store-reviews';
+@import 'pages/all-categories';
+
+// 7. Modules
+@import 'modules/ocfilter';
+@import 'modules/simple';
+@import 'modules/ocstore';

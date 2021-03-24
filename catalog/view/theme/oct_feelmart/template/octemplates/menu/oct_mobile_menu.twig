@@ -1,0 +1,115 @@
+<div class="fm_mobile_menu_first">
+	{% if catalog_menu is defined and catalog_menu %}
+	<div id="fm_mobile_menu_toggle_button" class="fm_mobile_menu-list-item d-flex align-items-center">
+		<span>{{ oct_menu_catalog }}</span>
+	</div>
+	{% endif %}
+	{% if (mobile_informations is defined and mobile_informations) or (oct_contact_opens is defined and oct_contact_opens) or ((contact_address is defined and contact_address) or (contact_map is defined and contact_map)) or (language is defined and language) or (currency is defined and currency) %}
+	<div class="fm_mobile_menu_info">
+		{% if mobile_informations is defined and mobile_informations %}
+		<div class="fm_mobile_menu_info-item">
+			<div class="fm_mobile_menu_info-title">{{ oct_menu_information }}</div>
+			<ul class="fm_mobile_menu_info-list list-unstyled">
+				{% for mobile_information in mobile_informations %}
+				<li class="fm_mobile_menu_info-list-item"><a href="{{ mobile_information.href }}">{{ mobile_information.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if oct_contact_opens is defined and oct_contact_opens %}
+		<div class="fm_mobile_menu_info-item">
+			<div class="fm_mobile_menu_info-title">{{ oct_menu_time }}</div>
+			<ul class="fm_mobile_menu_info-list list-unstyled">
+				{% for oct_contact_open in oct_contact_opens %}
+				<li class="fm_mobile_menu_info-list-item">{{ oct_contact_open }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if (contact_address is defined and contact_address) or (contact_map is defined and contact_map) or (oct_contact_telephones is defined and oct_contact_telephones) %}
+		<div class="fm_mobile_menu_info-item">
+			<div class="fm_mobile_menu_info-title">{{ oct_menu_contacts }}</div>
+			{% if oct_contact_telephones is defined and oct_contact_telephones %}
+			<ul class="fm_mobile_menu_info-list list-unstyled">
+				{% for telephone in oct_contact_telephones %}
+				<li class="fm_mobile_menu_info-list-item"><i class="fas fa-phone-volume"></i> <a href="tel:{{ telephone }}">{{ telephone }}</a></li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% if (oct_feelmart_data.mobile_menu.email is defined and oct_feelmart_data.mobile_menu.email is not empty) or (oct_feelmart_data.mobile_menu.whatsapp is defined and oct_feelmart_data.mobile_menu.whatsapp is not empty) or (oct_feelmart_data.mobile_menu.telegram is defined and oct_feelmart_data.mobile_menu.telegram is not empty) or (oct_feelmart_data.mobile_menu.skype is defined and oct_feelmart_data.mobile_menu.skype is not empty) or (oct_feelmart_data.mobile_menu.viber is defined and oct_feelmart_data.mobile_menu.viber is not empty) or (oct_feelmart_data.mobile_menu.messenger is defined and oct_feelmart_data.mobile_menu.messenger is not empty) %}
+				<div class="fm_mobile_menu_info-list">
+					{% if (oct_feelmart_data.mobile_menu.email is defined and oct_feelmart_data.mobile_menu.email) and (oct_feelmart_data.contact_email is defined and oct_feelmart_data.contact_email is not empty) %}
+					<a rel="nofollow" href="mailto:{{ oct_feelmart_data.contact_email }}" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-email d-flex align-items-center justify-content-center"><i class="far fa-envelope"></i></span><span>{{ oct_feelmart_data.contact_email }}</span></a>
+					{% endif %}
+					{% if (oct_feelmart_data.mobile_menu.telegram is defined and oct_feelmart_data.mobile_menu.telegram) and (oct_feelmart_data.contact_telegram is defined and oct_feelmart_data.contact_telegram is not empty) %}
+					<a rel="nofollow" href="https://t.me/{{ oct_feelmart_data.contact_telegram }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-telegram d-flex align-items-center justify-content-center"><i class="fab fa-telegram"></i></span><span>Telegram</span></a>
+					{% endif %}
+					{% if (oct_feelmart_data.mobile_menu.viber is defined and oct_feelmart_data.mobile_menu.viber) and (oct_feelmart_data.contact_viber is defined and oct_feelmart_data.contact_viber is not empty) %}
+					<a rel="nofollow" href="viber://add?number={{ oct_feelmart_data.contact_viber }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center fm-fixed-contact-viber-mobile"><span class="fm-fixed-contact-item-icon fm-fixed-contact-viber d-flex align-items-center justify-content-center"><i class="fab fa-viber"></i></span><span>Viber</span></a>
+					{% endif %}
+					{% if (oct_feelmart_data.mobile_menu.whatsapp is defined and oct_feelmart_data.mobile_menu.whatsapp) and (oct_feelmart_data.contact_whatsapp is defined and oct_feelmart_data.contact_whatsapp is not empty) %}
+					<a rel="nofollow" href="https://api.whatsapp.com/send?phone={{ oct_feelmart_data.contact_whatsapp }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-whatsapp d-flex align-items-center justify-content-center"><i class="fab fa-whatsapp"></i></span><span>WhatsApp</span></a>
+					{% endif %}
+					{% if (oct_feelmart_data.mobile_menu.skype is defined and oct_feelmart_data.mobile_menu.skype) and (oct_feelmart_data.contact_skype is defined and oct_feelmart_data.contact_skype is not empty) %}
+					<a rel="nofollow" href="skype:{{ oct_feelmart_data.contact_skype }}?chat" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-skype d-flex align-items-center justify-content-center"><i class="fab fa-skype"></i></span><span>Skype</span></a>
+					{% endif %}
+					{% if (oct_feelmart_data.mobile_menu.messenger is defined and oct_feelmart_data.mobile_menu.messenger) and (oct_feelmart_data.contact_messenger is defined and oct_feelmart_data.contact_messenger is not empty) %}
+					<a rel="nofollow" href="https://m.me/{{ oct_feelmart_data.contact_messenger }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-messenger d-flex align-items-center justify-content-center"><i class="fab fa-facebook-messenger"></i></span><span>Messenger</span></a>
+					{% endif %}
+				</div>
+			{% endif %}
+			{% if socials is defined and socials is not empty %}
+            <ul class="fm_mobile_menu_info-list fm-main-footer-social-list list-unstyled d-flex flex-wrap justify-content-start">
+            	{% for social in socials %}
+                <li class="fm-mobile-social-item fm-main-footer-social-item"><a href="{{ (social.link == "#" or social.link is empty) ? 'javascript:;' : social.link }}" class="fm-main-footer-social-link fm-mobile-social-link fm-mobile-social-link-{{ social.icone|replace({'fa ': "", "fab " : "", "far " : "", "fas " : ""}) }}" target="_blank"><i class="{{ social.icone }}"></i></a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+			{% if contact_address is defined and contact_address %}
+			<ul class="fm_mobile_menu_info-list list-unstyled">
+				<li class="fm_mobile_menu_info-list-item">
+					<i class="fas fa-map-marker-alt"></i>
+					{% if contact_map is defined and contact_map %}
+						<a href="javascript:;" onclick="showSidebarMap();">{{ contact_address }}</a>
+					{% else %}
+						{{ contact_address }}
+					{% endif %}
+				</li>
+			</ul>
+			{% endif %}
+			{% if contact_map is defined and contact_map %}
+			<div class="fm_mobile_menu_info-map not_in"></div>
+			{% endif %}
+			<script>
+			function showSidebarMap() {
+
+				var octMap = $('.fm_mobile_menu_info-map');
+
+				if (octMap.hasClass('not_in')) {
+					octMap.html('{{ contact_map }}');
+					octMap.removeClass('not_in');
+				}
+
+			}
+			</script>
+		</div>
+		{% endif %}
+		{% if (language is defined and language) or (currency is defined and currency) %}
+		<div id="fm_sidebar_switcher">
+			{% if language is defined and language %}
+			<div id="oct_mobile_language"></div>
+			{% endif %}
+			{% if currency is defined and currency %}
+			<div id="oct_mobile_currency"></div>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+</div>
+{% if catalog_menu is defined and catalog_menu %}
+	{{ catalog_menu }}
+{% endif %}

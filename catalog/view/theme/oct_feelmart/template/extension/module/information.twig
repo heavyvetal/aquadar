@@ -1,0 +1,11 @@
+{% if informations %}
+<div class="fm-blog-categories-module-menu">
+  <ul class="fm-blog-categories-module-list list-unstyled">
+    {% for information in informations %}
+    <li class="fm-blog-categories-module-item"><a href="{{ information.href }}" class="fm-blog-categories-module-link">{{ information.title }}</a></li>
+    {% endfor %}
+    <li class="fm-blog-categories-module-item"><a href="{{ contact }}" class="fm-blog-categories-module-link">{{ text_contact }}</a></li>
+    <li class="fm-blog-categories-module-item"><a href="{{ sitemap }}" class="fm-blog-categories-module-link">{{ text_sitemap }}</a></li>
+  </ul>
+</div>
+{% endif %}

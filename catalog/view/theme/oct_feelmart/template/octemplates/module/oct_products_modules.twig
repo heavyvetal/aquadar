@@ -1,0 +1,148 @@
+{% if products %}
+	{% if position == 'column_left' or position == 'column_right' %}
+	<div class="fm-module-column-box">
+		<div class="fm-column-title">{% if link is defined and link %}<a href="{{ link }}">{% endif %}{{ heading_title }}{% if link is defined and link %}</a>{% endif %}</div>
+		<div id="fm-column-{{ module_name }}_{{ module }}" class="fm-module-column-box-content">
+			{% for product in products %}
+			<div class="fm-item h-100">
+				<div class="fm-module-item d-flex flex-column h-100{% if not product.can_buy %} fm-no-stock{% endif %}">
+					<ul class="fm-module-buttons-list list-unstyled d-flex">
+						<li class="fm-module-buttons-item fm-module-buttons-compare">
+							<button type="button" class="fm-module-buttons-link" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fas fa-sliders-h"></i></button>
+						</li>
+						<li class="fm-module-buttons-item fm-module-buttons-wishlist">
+							<button type="button" class="fm-module-buttons-link" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="far fa-heart"></i></button>
+						</li>
+					</ul>
+					<div class="fm-module-img">
+						<a href="{{ product.href }}">
+							<img src="{{ product.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ product.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="img-fluid oct-lazy"{% else %} class="img-fluid"{% endif %} alt="{{ product.name }}" title="{{ product.name }}" />
+						</a>
+					</div>
+					{% if product.rating is not same as(false) %}
+					<div class="fm-module-rating d-flex align-items-center justify-content-center">
+						<div class="fm-module-rating-stars d-flex align-items-center">
+							{% for i in 1..5 %}
+							{% if product.rating < i %}
+							<span class="fm-module-rating-star"></span>
+							{% else %}
+							<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+							{% endif %}
+							{% endfor %}
+						</div>
+						<div class="fm-module-reviews">
+							<i class="fas fa-comment"></i>
+							<span>{{ product.reviews }}</span>
+						</div>
+					</div>
+					{% endif %}
+					<div class="fm-module-title">
+						<a href="{{ product.href }}">{{ product.name }}</a>
+					</div>
+					{% if product.price %}
+					<div class="fm-module-price mt-auto">
+						{% if not product.special %}
+						<div class="fm-module-price-bottom">
+							<span class="fm-module-price-new">{{ product.price }}</span>
+						</div>
+						{% else %}
+						<div class="fm-module-price-top d-flex align-items-center justify-content-center">
+							<span class="fm-module-price-old">{{ product.price }}</span>
+						</div>
+						<div class="fm-module-price-bottom">
+							<span class="fm-module-price-new">{{ product.special }}</span>
+						</div>
+						{% endif %}
+						{% if product.tax %}
+						<div class="price-tax">{{ text_tax }} {{ product.tax }}</div>
+						{% endif %}
+					</div>
+					{% endif %}
+					<div class="fm-module-overlay">
+		                  <div class="fm-module-overlay-btn-box">
+						  	<button type="button" onclick="cart.add('{{ product.product_id }}');" class="fm-module-overlay-btn fm-btn"><img src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="{{ button_cart }}"><span>{{ button_cart }}</span></button>
+		                  </div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<button type="button" id="fm-{{ module_name }}_{{ module }}-button-prev" class="fm-column-module-btn fm-column-module-btn-prev"><span>‹</span></button>
+		<button type="button" id="fm-{{ module_name }}_{{ module }}-button-next" class="fm-column-module-btn fm-column-module-btn-next"><span>›</span></button>
+		<script>
+			octShowColumnProducts("fm-{{ module_name }}_{{ module }}-button-prev", "fm-{{ module_name }}_{{ module }}-button-next", "fm-column-{{ module_name }}_{{ module }}");
+		</script>
+	</div>
+	{% else %}
+	<div class="fm-{{ module_name }}_box" {% if module_name == 'related-products' %}id="fm-related-products-row"{% endif %}>
+		<div class="row row-padding-top">
+			<div class="col-12 fm-main-title">{% if link is defined and link %}<a href="{{ link }}">{% endif %}{{ heading_title }}{% if link is defined and link %}</a>{% endif %}</div>
+		</div>
+		<div id="fm-{{ module_name }}_{{ module }}" class="row no-gutters">
+			{% for product in products %}
+			<div class="col-6 col-md-4 col-lg-4 col-xl-3 fm-item">
+				<div class="fm-module-item d-flex flex-column h-100{% if not product.can_buy %} fm-no-stock{% endif %}">
+					<ul class="fm-module-buttons-list list-unstyled d-flex">
+						<li class="fm-module-buttons-item fm-module-buttons-compare">
+							<button type="button" class="fm-module-buttons-link" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fas fa-sliders-h"></i></button>
+						</li>
+						<li class="fm-module-buttons-item fm-module-buttons-wishlist">
+							<button type="button" class="fm-module-buttons-link" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="far fa-heart"></i></button>
+						</li>
+					</ul>
+					<div class="fm-module-img">
+						<a href="{{ product.href }}">
+							<img src="{{ product.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ product.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="img-fluid oct-lazy"{% else %} class="img-fluid"{% endif %} alt="{{ product.name }}" title="{{ product.name }}" />
+						</a>
+					</div>
+					{% if product.rating is not same as(false) %}
+					<div class="fm-module-rating d-flex align-items-center justify-content-center">
+						<div class="fm-module-rating-stars d-flex align-items-center">
+							{% for i in 1..5 %}
+							{% if product.rating < i %}
+							<span class="fm-module-rating-star"></span>
+							{% else %}
+							<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+							{% endif %}
+							{% endfor %}
+						</div>
+						<div class="fm-module-reviews">
+							<i class="fas fa-comment"></i>
+							<span>{{ product.reviews }}</span>
+						</div>
+					</div>
+					{% endif %}
+					<div class="fm-module-title">
+						<a href="{{ product.href }}">{{ product.name }}</a>
+					</div>
+					{% if product.price %}
+					<div class="fm-module-price mt-auto">
+						{% if not product.special %}
+						<div class="fm-module-price-bottom">
+							<span class="fm-module-price-new">{{ product.price }}</span>
+						</div>
+						{% else %}
+						<div class="fm-module-price-top d-flex align-items-center justify-content-center">
+							<span class="fm-module-price-old">{{ product.price }}</span>
+						</div>
+						<div class="fm-module-price-bottom">
+							<span class="fm-module-price-new">{{ product.special }}</span>
+						</div>
+						{% endif %}
+						{% if product.tax %}
+						<div class="price-tax">{{ text_tax }} {{ product.tax }}</div>
+						{% endif %}
+					</div>
+					{% endif %}
+					<div class="fm-module-overlay">
+		                  <div class="fm-module-overlay-btn-box">
+						  	<button type="button" onclick="cart.add('{{ product.product_id }}');" class="fm-module-overlay-btn fm-btn"><img src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="{{ button_cart }}"><span>{{ button_cart }}</span></button>
+		                  </div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+{% endif %}

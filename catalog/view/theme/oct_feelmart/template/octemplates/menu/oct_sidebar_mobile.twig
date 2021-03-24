@@ -1,0 +1,14 @@
+<nav id="fm_mobile_nav" class="d-lg-none fixed-{{ sidebar_position }}">
+    <button type="button" id="fm_mobile_menu_button" onclick="fmSidebar('{{ oct_menu }}', 'menu');" class="fm_mobile_nav-item fm_mobile_sidebar_toggle"></button>
+    <button type="button" id="fm_mobile_user_button" onclick="fmSidebar('{% if isLogged %}{{ oct_account }}{% else %}{{ oct_login }}{% endif %}', '{% if isLogged %}account{% else %}login{% endif %}');" class="fm_mobile_nav-item fm_mobile_sidebar_toggle"></button>
+    {% if product_views_count %}
+    <button type="button" id="fm_mobile_viewed_button" onclick="fmSidebar('{{ oct_product_views }}', 'viewed');" class="fm_mobile_nav-item fm_mobile_sidebar_toggle"><span class="fm-menu-buttons-index fm-menu-viewed-index">{{ product_views_count }}</span></button>
+    {% endif %}
+    <button onclick="location.href='{{ compare_link }}';" type="button" id="fm_mobile_compare_button" class="fm_mobile_nav-item"><span class="fm-menu-buttons-index fm-menu-compare-index">{{ compare_total }}</span></button>
+    <button onclick="location.href='{{ wishlist_link }}';" type="button" id="fm_mobile_wishlist_button" class="fm_mobile_nav-item"><span class="fm-menu-buttons-index fm-menu-wishlist-index">{{ wishlist_total }}</span></button>
+    {% if oct_popup_cart_status is defined and oct_popup_cart_status %}
+    <button type="button" id="fm_mobile_cart_button" onclick="fmSidebar('{{ oct_cart }}', 'cart');" class="fm_mobile_nav-item fm_mobile_sidebar_toggle"><span class="fm-menu-buttons-index fm-menu-cart-index">{{ total_products }}</span></button>
+    {% else %}
+    <button onclick="location.href='{{ cart_link }}';" type="button" id="fm_mobile_cart_button" class="fm_mobile_nav-item"><span class="fm-menu-buttons-index fm-menu-cart-index">{{ total_products }}</span></button>
+	{% endif %}
+</nav>

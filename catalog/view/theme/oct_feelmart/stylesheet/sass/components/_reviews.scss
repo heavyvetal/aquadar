@@ -1,0 +1,85 @@
+.fm-reviews-item {
+  background-color: #FFF;
+  padding: 15px;
+  border-bottom: $cardBorder;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+
+  &:not(:nth-child(4n+4)) {
+    border-right: $cardBorder;
+  }
+
+  &-top {
+    z-index: 5;
+  }
+
+  .fm-reviews-item-photo {
+    display: block;
+
+    img {
+      transition: opacity $mainTransition;
+      max-width: 160px;
+    }
+  }
+
+  &:hover {
+    z-index: 3;
+
+    img {
+      opacity: 0.9;
+    }
+
+    .fm-module-overlay {
+      z-index: 4;
+      top: -20px;
+      right: -15px;
+      bottom: -20px;
+      left: -15px;
+      opacity: 1;
+    }
+
+    .fm-reviews-item-title {
+      color: $primaryColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.fm-reviews-item-title {
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  margin: 15px 32px;
+  z-index: 5;
+  color: #484848;
+  text-decoration: underline;
+  transition: color $mainTransition;
+  display: block;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.fm-reviews-item-author {
+  color: $darkTextColor;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 600;
+  margin: 15px 0;
+  z-index: 5;
+}
+
+.fm-reviews-item-text {
+  text-align: left;
+  margin-bottom: 20px;
+  z-index: 5;
+}
+
+.fm-reviews-item-date {
+  margin-top: auto;
+  margin-right: auto;
+  z-index: 5;
+}

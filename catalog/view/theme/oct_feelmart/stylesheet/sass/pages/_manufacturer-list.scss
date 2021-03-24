@@ -1,0 +1,93 @@
+.fm-content-manufacturer {
+  .fm-content-title span {
+    @media (max-width: $break-xxs) {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    @media (max-width: $break-sm-max) {
+      display: block;
+      margin-bottom: 20px;
+    }
+    @media (min-width: $break-md) {
+      margin-right: 20px;
+    }
+  }
+
+  .fm-content-title a {
+    color: $primaryColor;
+    text-decoration: underline;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .fm-content-title a:not(:last-child) {
+    margin-right: 20px;
+    @media (min-width: $break-md) {
+      margin-right: 10px;
+    }
+  }
+
+  .fm-manufacturer-title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 65px;
+    margin-bottom: 40px;
+  }
+}
+
+.fm-manufacturer-item {
+  border-bottom: $cardBorder;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .fm-manufacturer-card {
+    width: calc(50% - 30px);
+    @media (min-width: $break-sm) {
+      width: calc(33.3333% - 30px);
+    }
+    @media (min-width: $break-md) {
+      width: calc(25% - 30px);
+    }
+    @media (min-width: $break-lg) {
+      width: calc(20% - 30px);
+    }
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px 30px 15px;
+    padding: 20px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
+    transition: box-shadow $mainTransition;
+
+    img {
+      width: 90px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    span {
+      color: $darkTextColor;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+      text-decoration: underline;
+      transition: color $mainTransition;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover span {
+      color: $primaryColor;
+    }
+  }
+}

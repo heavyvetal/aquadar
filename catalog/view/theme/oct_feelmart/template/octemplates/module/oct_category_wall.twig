@@ -1,0 +1,37 @@
+{% if categories is not empty %}
+<div class="fm-category-wall-box">
+	<div class="row row-padding-top">
+		<div class="col-12 fm-main-title">{{ heading_title }}</div>
+	</div>
+	<div class="row no-gutters">
+		{% for category in categories %}
+	  	<div class="col-12 col-sm-6 col-lg-3">
+	  		<div class="fm-category-wall-item h-100">
+	            <div class="fm-category-wall-item-info">
+	            	<a href="{{ category.href }}" class="fm-category-wall-item-title">
+	            		{% if (category.thumb) %}
+	                		<img src="{{ category.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ category.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="oct-lazy"{% endif %} alt="{{ category.name }}" title="{{ category.name }}" />
+	                	{% endif %}
+						<span>{{ category.name }}</span>
+					</a>
+					{% if category.children %}
+					<ul class="list-unstyled">
+						{% set countstop = 1 %}
+						{% for child in category.children %}
+							{% set countstop = countstop + 1 %}
+					        <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+						{% endfor %}
+				    </ul>
+		            {% endif %}
+	            </div>
+	            <div class="fm-module-overlay">
+		            <div class="fm-module-overlay-btn-box">
+		                <a href="{{ category.href }}" class="fm-module-overlay-btn fm-btn">{{ text_see_more }}</a>
+		            </div>
+	            </div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}

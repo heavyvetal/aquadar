@@ -1,0 +1,70 @@
+{% if products is defined and products is not empty %}
+<div class="sidebar-viewed">
+	<div class="row no-gutters">
+		{% for product in products %}
+		<div class="col-6 sidebar-viewed-item">
+			<div class="fm-module-item d-flex flex-column h-100{% if not product.can_buy %} fm-no-stock{% endif %}">
+				<ul class="fm-module-buttons-list list-unstyled d-flex">
+					<li class="fm-module-buttons-item fm-module-buttons-compare">
+						<button type="button" class="fm-module-buttons-link" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fas fa-sliders-h"></i></button>
+					</li>
+					<li class="fm-module-buttons-item fm-module-buttons-wishlist">
+						<button type="button" class="fm-module-buttons-link" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="far fa-heart"></i></button>
+					</li>
+				</ul>
+				<div class="fm-module-img">
+					<a href="{{ product.href }}">
+						<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-fluid" />
+					</a>
+				</div>
+				{% if product.rating is not same as(false) %}
+				<div class="fm-module-rating d-flex align-items-center justify-content-center">
+					<div class="fm-module-rating-stars d-flex align-items-center">
+						{% for i in 1..5 %}
+						{% if product.rating < i %}
+						<span class="fm-module-rating-star"></span>
+						{% else %}
+						<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+						{% endif %}
+						{% endfor %}
+					</div>
+					<div class="fm-module-reviews">
+						<i class="fas fa-comment"></i>
+						<span>{{ product.reviews }}</span>
+					</div>
+				</div>
+				{% endif %}
+				<div class="fm-module-title">
+					<a href="{{ product.href }}">{{ product.name }}</a>
+				</div>
+				{% if product.price %}
+				<div class="fm-module-price mt-auto">
+					{% if not product.special %}
+					<div class="fm-module-price-bottom">
+						<span class="fm-module-price-new">{{ product.price }}</span>
+					</div>
+					{% else %}
+					<div class="fm-module-price-top d-flex align-items-center justify-content-center">
+						<span class="fm-module-price-old">{{ product.price }}</span>
+					</div>
+					<div class="fm-module-price-bottom">
+						<span class="fm-module-price-new">{{ product.special }}</span>
+					</div>
+					{% endif %}
+					{% if product.tax %}
+					<div class="price-tax">{{ text_tax }} {{ product.tax }}</div>
+					{% endif %}
+				</div>
+				{% endif %}
+				{% if product.can_buy is not empty and product.can_buy %}
+			  	<button type="button" onclick="cart.add('{{ product.product_id }}');" class="fm-btn fm-btn-blue">
+			  		<img class="d-none d-lg-inline-block" src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="{{ button_cart }}">
+			  		<span>{{ button_cart }}</span>
+			  	</button>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}

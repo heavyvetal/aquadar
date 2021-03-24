@@ -1,0 +1,26 @@
+{% if categories %}
+<div class="fm-module-column-box">
+	<div class="fm-column-title">{{ text_module_category }}</div>
+	<ul class="fm-categories-box list-unstyled">
+		{% for category in categories %}
+			 <li class="fm-categories-item{% if category.category_id == category_id %} active{% endif %}"><span class="d-flex justify-content-between"><a href="{{ category.href }}">{{ category.name }}</a>{% if category.children %}<a href="javascript:void(0);" class="fm-categories-toggle"><i class="fas fa-chevron-down"></i></a>{% endif %}</span>
+			{% if category.children %}
+			<ul class="fm-categories-children fm-categories-2 list-unstyled">
+			{% for child in category.children %}
+				<li class="fm-categories-item{% if child.category_id == child_id %} active{% endif %}"><span class="d-flex justify-content-between"><a href="{{ child.href }}">{{ child.name }}</a>{% if child.children %}<a href="javascript:void(0);" class="fm-categories-toggle"><i class="fas fa-chevron-down"></i></a>{% endif %}</span>
+				{% if child.children %}
+				<ul class="fm-categories-children fm-categories-3 list-unstyled">
+		        	{% for ch in child.children %}
+		            	<li class="fm-categories-item{% if ch.category_id == ch_id %} active{% endif %}"><a href="{{ ch.href }}">{{ ch.name }}</a></li>
+					{% endfor %}
+				</ul>
+		        {% endif %}
+		        </li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}

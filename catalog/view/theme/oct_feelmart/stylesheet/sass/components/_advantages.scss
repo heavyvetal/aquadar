@@ -1,0 +1,62 @@
+.fm-shop-advantages-row {
+  margin-bottom: -30px;
+
+  > div {
+    margin-bottom: 30px;
+  }
+}
+
+.fm-advantages-block {
+  background-color: #FFF;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border-radius: 3px;
+  padding: $paddingBlock;
+  cursor: pointer;
+  transition: box-shadow $mainTransition, top $mainTransition;
+  position: relative;
+  top: 0;
+
+  .fm-advantages-img {
+    font-size: 40px;
+    color: #CBCFD4;
+    margin-bottom: 40px;
+    transition: color $mainTransition, transform $mainTransition;
+  }
+
+  .fm-advantages-title {
+    color: $darkTextColor;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    transition: color $mainTransition;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    background-color: #FDFDFD;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+    top: -4px;
+
+    .fm-advantages-img {
+      color: $primaryColor;
+      transform: scale(1.1);
+    }
+
+    .fm-advantages-title {
+      color: $primaryColor;
+    }
+  }
+
+  i {
+    font-size: 34px;
+
+    .fa-truck {
+      transform: scale(-1, 1);
+    }
+  }
+}

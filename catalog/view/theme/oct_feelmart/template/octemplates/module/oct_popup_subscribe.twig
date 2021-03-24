@@ -1,0 +1,70 @@
+<div class="modal show" id="fm-subscribe-modal" tabindex="-1" role="dialog" aria-labelledby="fm-subscribe">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-540" role="document">
+	    <div class="modal-content">
+	        <div class="modal-header">
+	            <h5 class="modal-title" id="fm-compare">{{ heading_title }}</h5>
+	            <button type="button" class="fm-close" data-dismiss="modal" aria-label="Close">
+	            	<span aria-hidden="true" class="fm-modal-close-icon fm-modal-close-left"></span>
+	                <span aria-hidden="true" class="fm-modal-close-icon fm-modal-close-right"></span>
+	            </button>
+	        </div>
+	        <div class="modal-body">
+	            <div class="fm-modal-body-text text-center">
+	            	{{ promo_text }}
+	            </div>
+				{% if thumb %}
+	            <img src="image/{{ thumb }}" alt="subscribe-img">
+				{% endif %}
+	            <div class="form-group">
+					<input type="email" name="email" value="{{ email }}" class="form-control" id="InputEmail" placeholder="{{ enter_email }}">
+				</div>
+				{% if text_terms %}
+				<div class="form-checkbox-group">
+					<div class="checkbox">
+						<label>
+							<input id="scales-1" type="checkbox" class="fm-form-checkbox-input" name="agree">
+							<span class="check-box"></span>
+							{{ text_terms }}
+						</label>
+					</div>
+				</div>
+				{% endif %}
+				<div class="text-center" role="group" aria-label="fm-cont-btn">
+					<button type="submit" id="make_subscribe" class="fm-btn fm-btn-blue">{{ button_subscribe }}</button>
+				</div>
+	        </div>
+	    </div>
+	</div>
+<script>
+$("#InputEmail, #scales-1").on("change paste keyup", function() {
+	$(this).removeClass('error_style');
+});
+$('#make_subscribe').on('click', function() {
+	$.ajax({
+		type: 'post',
+		url:  'index.php?route=octemplates/module/oct_subscribe/makeSubscribe',
+		dataType: 'json',
+		cache: false,
+		data: $('#fm-subscribe-modal input[type=\'email\'], #fm-subscribe-modal input[type=\'checkbox\']').serialize(),
+		success: function(json) {
+			if (json['error']) {
+				$('#fm-subscribe-modal .text-danger').remove();
+				let errorOption = '';
+				
+				$.each(json['error'], function(i, val) {
+					$('#fm-subscribe-modal [name="' + i + '"]').addClass('error_style');
+					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+				});
+				
+				fmNotify('danger', errorOption);
+			} else {
+				if (json['output']) {
+					$('.fm-module-btn').attr( "disabled", "disabled" );
+					$('#fm-subscribe-modal .modal-body').html(json['output']);
+				}
+			}
+		}
+	});
+});
+</script>
+</div>

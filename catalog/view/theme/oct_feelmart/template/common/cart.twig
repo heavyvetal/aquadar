@@ -1,0 +1,9 @@
+{% if oct_popup_cart_status is defined and oct_popup_cart_status %}
+<button title="{{ oct_cart }}" id="cart" class="fm-menu-cart-box d-flex align-items-center" type="button" onclick="fmSidebar('{{ oct_cart }}', 'cart');">
+{% else %}
+<button title="{{ oct_cart }}" id="cart" type="button" class="fm-menu-cart-box d-flex align-items-center" onclick="location = '{{ cart }}';">
+{% endif %}
+    <img src="catalog/view/theme/oct_feelmart/img/cart-icon.svg" alt="cart-icon">
+    <span class="fm-menu-buttons-index fm-menu-cart-index">{{ total_products }}</span>
+    <span class="fm-menu-cart-text">{{ total_amount }}</span>
+</button>

@@ -1,0 +1,23 @@
+.fm-inform-content-text,
+.fm-inform-content-text-title {
+  font-size: 14px;
+  line-height: 22px;
+
+  >:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  
+  a {
+	text-decoration: underline;
+	color: $primaryColor;
+	
+	&:hover {
+		text-decoration: none;
+	}
+  }
+}
+
+.fm-inform-content-text-title {
+  font-weight: 600;
+  margin: 20px 0;
+}

@@ -1,0 +1,352 @@
+// ---Top Header
+
+nav.top {
+  background: #FFF;
+  box-shadow: 0 0 15px rgba(#000, 0.06);
+  color: $darkTextColor;
+  position: relative;
+  z-index: 1026;
+
+  .info-list {
+    li {
+      margin: 10px 0;
+      padding: 14px 10px;
+      border-right: 1px solid #F7F7F7;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+        border-right: 0;
+      }
+    }
+
+    a {
+      transition: color $mainTransition;
+    }
+
+    a:hover {
+      color: $primaryColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn-link {
+  margin: 10px 0;
+  color: $darkTextColor;
+  font-size: 13px;
+  border-radius: 0;
+
+  &:focus,
+  &:hover {
+    color: $darkTextColor;
+    text-decoration: none;
+  }
+
+  &::after {
+    display: none;
+  }
+
+  .fa-chevron-down {
+    margin-left: 5px;
+    font-size: 8px;
+    font-weight: 600;
+    transition: transform $mainTransition;
+  }
+
+  i,
+  img {
+    margin-right: 8px;
+  }
+}
+
+.top .btn-link {
+  border-right: 1px solid #F7F7F7;
+
+  &:focus,
+  &:hover {
+    border-right: 1px solid #F7F7F7;
+  }
+}
+
+.btn-lang {
+  padding-left: 0;
+}
+
+.top .btn-user {
+  margin: 0;
+  padding-right: 0;
+  border-right-color: transparent;
+
+  &:focus,
+  &:hover {
+    border-right-color: transparent;
+  }
+}
+
+.btn-link[aria-expanded="true"] .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.btn-link:hover i.fa-chevron-up {
+  display: block;
+}
+
+div.dropdown-menu.nav-dropdown-menu.show {
+  top: 10px !important;
+}
+
+.nav-dropdown-menu {
+  border: none;
+  border-radius: 0;
+  background-color: #FFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 0;
+  padding: 0;
+  min-width: 121px;
+  font-size: 13px;
+  text-align: left;
+  top: 10px;
+
+  button {
+    font-size: 13px;
+    background-color: transparent;
+    text-align: left;
+    transition: color $mainTransition;
+    white-space: nowrap;
+
+    &:hover {
+      color: $primaryColor;
+      text-decoration: underline;
+    }
+
+    img {
+      margin-right: 5px;
+    }
+  }
+
+  li:hover {
+    background-color: transparent;
+  }
+
+  .my-dropdown-item {
+    padding: 6px 12px;
+
+    a:hover {
+      color: $primaryColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn-group .btn-block+.btn-block {
+  margin-top: 0;
+  margin-left: 0;
+}
+// ---/Top Header
+// ---Header
+
+header {
+  position: relative;
+  background: #FFF;
+  padding: 20px 0;
+}
+
+.fm-logo {
+	
+	a {
+		display: block;
+		min-height: 50px;
+	}
+
+  img {
+    max-width: 90px;
+
+    @media (min-width: $break-lg) {
+      max-width: 117px;
+    }
+  }
+}
+
+.btn-header {
+  padding: 0;
+  margin: 0;
+  border-right: 0;
+
+  i {
+    display: block;
+  }
+
+  i:first-child {
+    color: $primaryColor;
+    font-size: 15px;
+  }
+
+  span {
+    text-decoration: underline;
+    white-space: pre-wrap;
+    line-height: 1;
+  }
+
+  &:hover span {
+    text-decoration: none;
+  }
+}
+
+.header-dropdown-box {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+
+  &.active {
+	z-index: 9999;
+	  
+	.header-dropdown {
+	    opacity: 1;
+	    margin-top: 0;
+	    z-index: 10000;
+	    visibility: visible;
+	}
+	
+	.fa-chevron-down {
+	    transform: rotate(180deg);
+	} 
+  }
+}
+
+.header-dropdown {
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  z-index: -1;
+  margin-top: 20px;
+  padding-top: 20px;
+  transition: opacity $mainTransition, margin-top $mainTransition;
+  visibility: hidden;
+  cursor: default;
+
+  &.header-dropdown-shedule {
+    min-width: 192px;
+  }
+
+  .header-dropdown-inner {
+    background: #FFFFFF;
+    padding: 20px;
+    color: $darkTextColor;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 2px 2px;
+    
+    &.fm-header-address-dropdown-inner {
+	    @media (min-width: $break-lg) {
+		    min-width: 450px;
+	    }
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    border: 10px solid transparent;
+    border-top: 10px solid #FFFFFF;
+    transform: rotate(180deg);
+  }
+
+  li {
+    font-size: 14px;
+    line-height: 21px;
+    color: $lightTextColor;
+
+    a:hover {
+      color: $primaryColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.fm-header-address {
+  justify-content: center;
+
+  @media (min-width: $break-xl) {
+    justify-content: flex-start;
+  }
+}
+
+.header-dropdown-address {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 20px;
+}
+
+.header-dropdown-title-bold {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.fm-header-phones {
+  justify-content: flex-end;
+}
+
+.fm-phone-img {
+  margin-right: 10px;
+
+  i {
+    color: $primaryColor;
+    font-size: 22px;
+  }
+}
+
+.fm-phone-content {
+  .btn-link {
+    padding: 0;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .fm-phone-link {
+    color: $primaryColor;
+    line-height: 16px;
+    text-decoration: underline;
+    margin-right: 22px;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.fm-phone-box {
+
+  .header-dropdown {
+    right: 0;
+    left: auto;
+
+    &:after {
+      left: auto;
+      right: 20px;
+    }
+  }
+  
+  .phoneclick {
+	font-weight: 400;
+	  
+	&:hover {
+	  color: $primaryColor;
+	  text-decoration: underline;
+	}
+  }
+}
+
+.dropdown-menu a {
+  transition: color $mainTransition;
+}
+// ---/Header

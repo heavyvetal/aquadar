@@ -1,0 +1,39 @@
+{% if reviews %}
+{% for review in reviews %}
+<div class="fm-review">
+	<div class="row align-items-stretch">
+		<div class="col-md-4 col-lg-3 fm-review-info-left text-center">
+			<div class="fm-review-icon">
+				<img src="catalog/view/theme/oct_feelmart/img/user-icon.svg" alt="{{ review.author }}">
+			</div>
+			<div class="fm-review-name">{{ review.author }}</div>
+			<div class="fm-review-date">{{ review.date_added }}</div>
+			<div class="fm-review-rating-text">{{ text_oct_review }}</div>
+			<div class="fm-rating-center d-flex justify-content-center">
+				<div class="fm-rating-center d-flex justify-content-center">
+				{% for i in 1..5 %}
+			      {% if review.rating < i %}
+			      <span class="fm-module-rating-star"></span>
+			      {% else %}
+			      <span class="fm-module-rating-star fm-module-rating-star-is"></span>
+			      {% endif %}
+			    {% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 col-lg-9 fm-review-info-right">
+			<div class="fm-review-text">{{ review.text }}</div>
+			{% if review.reply %}
+			<div class="fm-review-admin">
+				<div class="fm-review-admin-title">{{ oct_product_answer_admin }}</div>
+				<div class="fm-review-admin-text">{{ review.reply }}</div>
+			</div>
+			{% endif %}	
+		</div>
+	</div>
+</div>
+{% endfor %}
+{{ pagination }}
+{% else %}
+<div class="p-4">{{ text_no_reviews }}</div>
+{% endif %} 

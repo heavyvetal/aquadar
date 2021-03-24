@@ -1,0 +1,59 @@
+<div class="fm-footer-subscribe">
+	<div class="container">
+	    <div class="row align-items-center">
+		    <div class="col-lg-7">
+		        <div class="fm-footer-subscribe-info">
+		          <div class="fm-footer-subscribe-title">{{ oct_footer_subscribe_promo }}</div>
+		          <div class="fm-footer-subscribe-text">{{ oct_footer_subscribe }}</div>
+		        </div>
+		    </div>
+		    <div class="col-lg-5">
+		        <form action="javascript:;" id="footer-subscribe" class="fm-footer-subscribe-subscribe">
+			        <input type="email" id="InputSubscribeEmail" class="fm-footer-subscribe-subscribe-input" name="email" placeholder="{{ enter_email_static_subscribe }}">
+			        {% if text_terms %}
+			        <div class="form-checkbox-group">
+			            <label>
+			              <input type="checkbox" class="fm-form-checkbox-input" name="agree">
+			              <span class="check-box"></span>
+			              {{ text_terms }}
+			            </label>
+			        </div>
+			        {% endif %}
+			        <button type="submit" id="footer-make-subscribe"></button>
+		        </form>
+		    </div>
+	    </div>
+	</div>
+</div>
+<script>
+$("#InputSubscribeEmail").on("change paste keyup", function() {
+	$(this).removeClass('error_style');
+});
+$('#footer-make-subscribe').on('click', function() {
+	$.ajax({
+		type: 'post',
+		url:  'index.php?route=octemplates/module/oct_subscribe/makeSubscribe',
+		dataType: 'json',
+		cache: false,
+		data: $('#footer-subscribe').serialize(),
+		success: function(json) {
+			if (json['error']) {
+				$('#us-subscribe-modal .text-danger').remove();
+				let errorOption = '';
+				
+				$.each(json['error'], function(i, val) {
+					$('#footer-subscribe [name="' + i + '"]').addClass('error_style');
+					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+				});
+				
+				fmNotify('danger', errorOption);
+			} else {
+				if (json['output']) {
+					$('#footer-subscribe [name="email"]').val('');
+					fmNotify('success', '<div class="alert-text-item">' + json['output'] + '</div>');
+				}
+			}
+		}
+	});
+});
+</script>

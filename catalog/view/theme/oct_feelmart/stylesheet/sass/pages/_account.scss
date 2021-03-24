@@ -1,0 +1,456 @@
+// Login Page
+
+.fm-acc-login-content {
+  flex-direction: column;
+
+  @media (min-width: $break-md) {
+    flex-direction: row;
+  }
+}
+
+.fm-acc-info-left {
+  @media (max-width: $break-md-max) {
+    margin-top: 30px;
+  }
+}
+
+.fm-acc-info-left,
+.fm-acc-info-right {
+  @media (min-width: $break-md) {
+    width: calc(50% - 31px);
+  }
+
+  .fm-control-label {
+    color: $darkTextColor;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 10px;
+  }
+
+  .fm-acc-info-link {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.fm-acc-login-form {
+  height: calc(100% - 45px);
+
+  .btn-group {
+    margin-top: auto;
+    @media (max-width: $break-sm-max) {
+      flex-direction: column;
+      align-items: start !important;
+
+      .fm-btn {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.fm-content-acc-title {
+  font-size: 18px;
+  line-height: 25px;
+
+  a {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    margin-left: 10px;
+  }
+}
+
+.fm-acc-info-text:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.fm-acc-info-text {
+  font-size: 14px;
+  line-height: 21px;
+
+  p:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  a {
+  	color: $primaryColor;
+  	font-size: 14px;
+  	line-height: 19px;
+  	text-decoration: underline;
+
+  	&:hover {
+    	color: $primaryColor;
+		text-decoration: none;
+  	}
+  }
+}
+
+.fm-acc-info-left {
+  .fm-acc-info-text {
+
+    p:last-child {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.fm-content-border {
+  margin: 0 30px;
+  width: 1px;
+  background: #F7F7F7;
+  display: none;
+
+  @media (min-width: $break-md) {
+    display: block;
+  }
+}
+// ---/Login Page
+// Account Page
+
+.fm-acc-info-desc {
+  margin-bottom: 30px;
+}
+
+.fm-account-list {
+  background-color: #FFF;
+  height: 100%;
+
+  .fm-account-item {
+    transition: border-bottom $mainTransition;
+    cursor: pointer;
+    
+    &:not(:last-child) {
+	    border-bottom: $cardBorder;
+    }
+
+    &.active,
+    &:hover {
+      border-color: $primaryColor;
+
+      a {
+        color: #FFF;
+        background-color: $primaryColor;
+      }
+    }
+  }
+
+  .fm-account-link {
+    font-size: 14px;
+    line-height: 19px;
+    padding: 15px 30px;
+    color: $lightTextColor;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: color $mainTransition, background-color $mainTransition;
+
+    i {
+      font-size: 20px;
+      margin-right: 15px;
+    }
+  }
+}
+// ---/Account Page
+// Order Info
+
+.fm-acc-info-block {
+  border-bottom: $cardBorder;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  .fm-acc-info-text {
+    font-size: 16px;
+    line-height: 22px;
+
+    span {
+      font-weight: 600;
+      @media (min-width: $break-md) {
+      	margin-left: 5px;
+      }
+    }
+  }
+
+  .fm-acc-info-text:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &.fm-acc-info-block-last {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 30px;
+  }
+}
+
+.table td a.fm-acc-btn {
+  color: #FFF;
+  font-size: 13px;
+  padding: 4px;
+  border: 0;
+  border-radius: 1px;
+
+  &-blue {
+    background-color: $primaryColor;
+    transition: background-color $mainTransition;
+
+    &:hover {
+      color: #FFF;
+      background-color: rgba($primaryColor, 0.7);
+    }
+  }
+
+  &-red {
+    background-color: $redColor;
+    transition: background-color $mainTransition;
+
+    &:hover {
+      color: #FFF;
+      background-color: rgba($redColor, 0.7);
+    }
+  }
+}
+
+.fm-content-acc-comment {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.fm-btn-acc-blue {
+  padding: 14px 22px;
+}
+// ---/Order Info
+// Main Info
+
+fieldset {
+  margin-bottom: 20px;
+}
+
+.fm-account-content {
+  .fm-control-label {
+    font-size: 16px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    background-position-x: 97%;
+    @media (min-width: $break-xl) {
+      max-width: 489px;
+    }
+  }
+
+  .input-group.date input[type="text"] {
+    max-width: 435px;
+  }
+
+  input[type="submit"],
+  input[type="radio"] {
+    width: auto;
+  }
+}
+// ---/Main Info
+// Address
+
+.fm-acc-info-list {
+  margin-top: 20px;
+}
+
+.fm-acc-del-btn {
+  color: $redColor;
+  font-size: 12px;
+  line-height: 16px;
+
+  i {
+    font-size: 12px;
+    margin-right: 6px;
+    position: relative;
+    top: 1px;
+  }
+
+  &:hover {
+    color: $redColor;
+  }
+
+  &:hover span {
+    text-decoration: underline;
+  }
+}
+
+.fm-acc-address-list-item {
+  @media (max-width: $break-xs) {
+    .fm-content-acc-title {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .fm-acc-info-text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    + .fm-btn {
+      padding: 15px 26px;
+    }
+  }
+}
+// ---/Address
+// Wishlist
+
+.fm-acc-wishlist {
+  @media (max-width: $break-lg-max) {
+    flex-direction: column;
+    position: relative;
+
+    .fm-btn {
+      margin-top: 20px;
+    }
+  }
+  @media (max-width: $break-xs-max) {
+    justify-content: center !important;
+
+    .fm-btn {
+      margin: 20px auto 0;
+    }
+  }
+}
+
+.fm-acc-wishlist-left {
+  @media (max-width: $break-xs-max) {
+    flex-direction: column;
+    width: 100%;
+
+    .fm-acc-info-block-desc {
+      width: 100%;
+    }
+  }
+}
+
+.fm-acc-wishlist-img {
+  @media (max-width: $break-xs-max) {
+    flex-direction: column;
+
+    a {
+      margin: 0;
+    }
+
+    .fm-acc-info-link-del {
+      position: absolute;
+      top: 36px;
+      left: 0;
+    }
+  }
+}
+
+.fm-wishlist-price {
+	flex-direction: column;
+	align-items: flex-start;
+	@media (min-width: $break-md) {
+		flex-direction: row;
+		align-items: center;
+	}
+}
+
+.fm-acc-info-link-del {
+  color: $redColor;
+  font-size: 16px;
+  transition: $mainTransition;
+  margin-right: 30px;
+  padding: 0;
+  background: transparent;
+
+  &:hover {
+    opacity: 0.8;
+    color: $redColor;
+  }
+}
+
+.fm-acc-info-block-img {
+  border: 1px solid #F9F9F9;
+  margin-right: 30px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    transition: opacity $mainTransition;
+  }
+
+  &:hover img {
+    opacity: 0.8;
+  }
+}
+
+.fm-acc-info-block-title {
+  display: block;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.3px;
+  transition: $mainTransition;
+  margin-bottom: 5px;
+  @media (max-width: $break-xs-max) {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  &:hover {
+    color: $primaryColor;
+    text-decoration: underline;
+  }
+}
+
+.fm-acc-info-block-desc {
+  .fm-acc-info-text-small {
+    color: $darkTextColor;
+    font-size: 13px;
+    line-height: 18px;
+
+    span {
+      color: $lightTextColor;
+      font-weight: 400;
+    }
+  }
+
+  .fm-module-price {
+    margin: 0;
+  }
+
+  span.fm-module-price-new {
+    font-size: 22px;
+    font-weight: 800;
+    @media (max-width: $break-sm-max) {
+	    margin-top: 5px;
+	    display: block;
+    }
+  }
+
+  span.fm-module-price-old {
+    font-size: 13px;
+  }
+}
+
+.fm-acc-info-block-desc {
+  .fm-acc-info-text:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.fm-btn-back-wishlist {
+  @media (max-width: $break-xs-max) {
+    margin: 30px auto 0;
+    width: 120px;
+    display: block;
+  }
+}
+// ---/Wishlist
+.fm-acc-info-block-top > a {
+	text-transform: lowercase;
+}
+
+.fm-acc-info-link {
+  color: $primaryColor;
+  font-size: 14px;
+  line-height: 19px;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primaryColor;
+    text-decoration: none;
+  }
+}

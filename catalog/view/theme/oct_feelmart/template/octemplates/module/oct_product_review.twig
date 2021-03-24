@@ -1,0 +1,90 @@
+{% if position == 'column_left' or position == 'column_right' %}
+<div  class="fm-module-column-box">
+	<div class="fm-column-title">{{ heading_title }}</div>
+	<div id="fm-column-reviews-{{ module }}" class="fm-module-column-box-content">
+		{% for review in reviews %}
+		<div class="fm-item h-100">
+			<div class="fm-reviews-item d-flex flex-column h-100">
+				<div class="fm-reviews-item-top text-center">
+					<a href="{{ review.href }}" class="fm-reviews-item-photo">
+						<img src="{{ review.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ review.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="oct-lazy"{% endif %} alt="{{ review.name }}" />
+						<span class="fm-reviews-item-title">{{ review.name }}</span>
+					</a>
+					<div class="fm-module-rating d-flex align-items-center justify-content-center">
+						<div class="fm-module-rating-stars d-flex align-items-center">
+							{% if review.rating %}
+							{% for i in 1..5 %}
+							{% if review.rating < i %}
+							<span class="fm-module-rating-star"></span>
+							{% else %}
+							<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+							{% endif %}
+							{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+					<div class="fm-reviews-item-author">
+						{{ review.author }}
+					</div>
+					<div class="fm-reviews-item-text">
+						{{ review.text }}
+					</div>
+				</div>
+				<div class="fm-reviews-item-date fm-item-date">
+					<span><i class="fas fa-calendar-alt"></i></span>{{ review.date }}
+				</div>
+				<div class="fm-module-overlay"></div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<button type="button" id="fm-reviews-{{ module }}-button-prev" class="fm-column-module-btn fm-column-module-btn-prev"><span>‹</span></button>
+	<button type="button" id="fm-reviews-{{ module }}-button-next" class="fm-column-module-btn fm-column-module-btn-next"><span>›</span></button>
+	<script>
+		octShowColumnProducts("fm-reviews-{{ module }}-button-prev", "fm-reviews-{{ module }}-button-next", "fm-column-reviews-{{ module }}");
+	</script>
+</div>
+{% else %}
+<div class="fm-reviews-box">
+	<div class="row row-padding-top">
+		<div class="col-12 fm-main-title">{{ heading_title }}</div>
+	</div>
+	<div id="fm-product-reviews_{{ module }}" class="row no-gutters">
+		{% for review in reviews %}
+		<div class="col-12 col-sm-6 col-lg-3 fm-item">
+			<div class="fm-reviews-item d-flex flex-column h-100">
+				<div class="fm-reviews-item-top text-center">
+					<a href="{{ review.href }}" class="fm-reviews-item-photo">
+						<img src="{{ review.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ review.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="oct-lazy"{% endif %} alt="{{ review.name }}" />
+						<span class="fm-reviews-item-title">{{ review.name }}</span>
+					</a>
+					<div class="fm-module-rating d-flex align-items-center justify-content-center">
+						<div class="fm-module-rating-stars d-flex align-items-center">
+							{% if review.rating %}
+							{% for i in 1..5 %}
+							{% if review.rating < i %}
+							<span class="fm-module-rating-star"></span>
+							{% else %}
+							<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+							{% endif %}
+							{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+					<div class="fm-reviews-item-author">
+						{{ review.author }}
+					</div>
+					<div class="fm-reviews-item-text">
+						{{ review.text }}
+					</div>
+				</div>
+				<div class="fm-reviews-item-date fm-item-date">
+					<span><i class="fas fa-calendar-alt"></i></span>{{ review.date }}
+				</div>
+				<div class="fm-module-overlay"></div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}

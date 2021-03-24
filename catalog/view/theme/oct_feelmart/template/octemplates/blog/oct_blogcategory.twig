@@ -1,0 +1,51 @@
+{{ header }}
+<div class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+		<div class="col-12">
+			<h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+		</div>
+	</div>
+	<div class="content-top-box">{{ content_top }}</div>
+	<div id="content" class="row no-gutters">
+		{{ column_left }}
+		{% if column_left and column_right %}
+		{% set class = 'col-lg-6' %}
+		{% elseif column_left or column_right %}
+		{% set class = 'col-lg-9' %}
+		{% else %}
+		{% set class = 'col-lg-12' %}
+		{% endif %}
+		<div class="{{ class }}">
+			<div class="fm-content fm-blog-categories-content h-100">
+				{% if articles %}
+				{% for article in articles %}
+				<div class="fm-news-item d-flex justify-content-between">
+					<div class="fm-news-item-info d-flex flex-column justify-content-between">
+						<a href="{{ article.href }}" class="fm-news-item-title">{{ article.name }}</a>
+						<div class="fm-news-item-text">{{ article.description }}</div>
+						<div class="fm-news-item-date fm-item-date"><span><i class="fas fa-calendar-alt"></i></span>{{ article.date_added }}</div>
+					</div>
+					<a href="{{ article.href }}" title="{{ article.name }}" class="fm-news-item-photo">
+						<img src="{{ article.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ article.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="oct-lazy"{% endif %} alt="{{ article.name }}" />
+					</a>
+				</div>
+				{% endfor %}
+				{% if pagination|striptags %}
+				<div class="fm-pagination-cont">
+					{{ pagination }}
+				</div>
+				{% endif %}
+				{% else %}
+				<div class="p-4">
+					<p class="mb-4">{{ text_empty }}</p>
+					<a href="{{ continue }}" class="fm-btn fm-btn-blue">{{ button_continue }}</a>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

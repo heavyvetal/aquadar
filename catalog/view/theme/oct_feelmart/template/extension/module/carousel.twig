@@ -1,0 +1,69 @@
+{% if banners %}
+<div class="row-padding-top">
+	{% if heading_title is not empty %}
+	<div class="row">
+        <div class="col-12 fm-main-title">{{ heading_title }}</div>
+    </div>
+	{% endif %}
+	<div class="row">
+		<div class="col-lg-12">
+		  <div id="fm-carousel-{{ module }}" class="fm-carousel-box">
+		    {% for banner in banners %}
+		      	<div class="fm-carousel-item">
+			      	{% if banner.link %}
+			      	<a href="{{ banner.link }}" class="fm-carousel-item-link">
+					{% endif %}
+						<img src="{{ banner.image }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ banner.image }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="img-fluid oct-lazy"{% else %} class="img-fluid"{% endif %} alt="{{ banner.title }}" />
+					{% if banner.link %}
+					</a>
+			    	{% endif %}
+			      </div>
+			{% endfor %}
+		  </div>
+		</div>
+	</div>
+</div>
+<script>
+$( document ).ready(function() {
+	$('#fm-carousel-{{ module }}').slick({
+		infinite: false,
+		slidesToShow: 6,
+		slidesToScroll: 1,
+	    autoplay: true,
+		dots: false,
+		arrows: false,
+		prevArrow:"<button type='button' class='slick-prev pull-left'>‹</button>",
+		nextArrow:"<button type='button' class='slick-next pull-right'>›</button>",
+		responsive: [
+	    {
+	      breakpoint: 1600,
+	      settings: {
+	        slidesToShow: 6,
+			slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 1200,
+	      settings: {
+	        slidesToShow: 4,
+			slidesToScroll: 4
+	      }
+	    },
+	    {
+	      breakpoint: 992,
+	      settings: {
+	        slidesToShow: 2,
+			slidesToScroll: 2
+	      }
+	    },
+	    {
+	      breakpoint: 320,
+	      settings: {
+	        slidesToShow: 2
+	      }
+	    }
+	  ]
+	});
+});
+</script>
+{% endif %}

@@ -1,0 +1,69 @@
+{{ header }}
+<div id="account-wishlist" class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+		</div>
+	</div>
+	<div class="content-top-box">{{ content_top }}</div>
+	{% if success %}
+	<script>
+	fmNotify('success', '{{ success }}');
+	</script>
+	{% endif %}
+	<div id="content" class="row no-gutters">
+		{{ column_left }}
+	    {% if column_left and column_right %}
+	    {% set class = 'col-lg-6' %}
+	    {% elseif column_left or column_right %}
+	    {% set class = 'col-lg-9' %}
+	    {% else %}
+	    {% set class = 'col-lg-12' %}
+	    {% endif %}
+	    <div class="{{ class }}">
+		    <div class="fm-content fm-account-content h-100">
+		      {% if products %}
+		      {% for product in products %}
+				<div class="fm-acc-info-block fm-acc-wishlist d-flex justify-content-between align-items-start">
+					<div class="fm-acc-wishlist-left d-flex align-items-center">
+						{% if product.thumb %}
+						<div class="fm-acc-wishlist-img d-flex align-items-center">
+							<a href="{{ product.remove }}" class="fm-acc-info-link-del" title="{{ button_remove }}"><i class="fas fa-trash-alt"></i></a>
+							<a class="fm-acc-info-block-img" href="{{ product.href }}"><img src="{{ product.thumb }}"  alt="{{ product.name }}" title="{{ product.name }}" /></a>
+						</div>
+						{% endif %}
+						<div class="fm-acc-info-block-desc">
+							<a href="{{ product.href }}" class="fm-content-title fm-acc-info-block-title">{{ product.name }}</a>
+							<div class="fm-acc-info-text fm-acc-info-text-small">{{ column_model }}: <span>{{ product.model }}</span></div>
+							<div class="fm-acc-info-text fm-acc-info-text-small">{{ column_stock }}: <span>{{ product.stock }}</span></div>
+							{% if product.price %}
+							<div class="fm-acc-info-text fm-wishlist-price d-flex">
+								<div>{{ column_price }}:</div>
+								<div class="fm-module-price">
+									{% if not product.special %}
+									<span class="fm-module-price-new">{{ product.price }}</span>
+									{% else %}
+									<span class="fm-module-price-new">{{ product.special }}</span><span class="fm-module-price-old">{{ product.price }}</span>
+									{% endif %}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+					<button type="button" onclick="cart.add('{{ product.product_id }}');" class="fm-btn-blue fm-btn" title="{{ button_cart }}"><img src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="shop-cart-icon">{{ button_cart }}</button>
+				</div>
+		      {% endfor %}
+		      {% else %}
+		      <p>{{ text_empty }}</p>
+		      {% endif %}
+		      <div class="buttons mt-4">
+		      	<a href="{{ continue }}" class="fm-btn-blue fm-btn">{{ button_continue }}</a>
+		      </div>
+		    </div>
+	    </div>
+	    {{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

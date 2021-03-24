@@ -1,0 +1,113 @@
+.fm-content-compare {
+  background-color: #FFF;
+  padding: 30px;
+
+  .fm-content-title {
+    margin-bottom: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.fm-table-compare {
+  margin-bottom: 0;
+
+  tbody {
+    font-size: 16px;
+    line-height: 21px;
+    border: $cardBorder;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  td {
+    padding: 20px 0;
+  }
+
+  td:first-child {
+    font-size: 14px;
+  }
+
+  td.fm-table-compare-title {
+    color: $darkTextColor;
+    font-size: 20px;
+  }
+
+  .fm-table-product-name {
+    padding: 20px;
+  }
+
+  .fm-table-product-name a {
+    color: $darkTextColor;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    text-decoration: underline;
+    transition: color $mainTransition;
+
+    &:hover {
+      color: $primaryColor;
+      text-decoration: none;
+    }
+  }
+
+  .fm-module-price {
+    color: $darkTextColor;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    
+    .fm-module-price-old::before {
+	    top: 12px;
+    }
+  }
+
+  .fm-table-compare-have {
+    font-size: 14px;
+    font-weight: 600;
+
+    &-is {
+      color: $primaryColor;
+    }
+
+    &-no {
+      color: $redColor;
+    }
+  }
+
+  .fm-table-compare-review {
+    color: #545556;
+    font-size: 11px;
+    line-height: 15px;
+    margin-top: 4px;
+  }
+
+  .fm-btn {
+    margin-bottom: 20px;
+    color: #fff;
+    text-decoration: none;
+
+    &.fm-btn-del {
+      margin-bottom: 0;
+    }
+  }
+
+  .fm-table-compare-btn {
+	  
+	td {
+	  padding-bottom: 0;
+	}
+	
+	@media (max-width: $break-md-max) {
+	  .fm-btn-blue {
+	    padding: 12px 15px;
+	    
+	    img {
+		  display: none;
+	    }
+	  }
+	}
+	
+  }
+}

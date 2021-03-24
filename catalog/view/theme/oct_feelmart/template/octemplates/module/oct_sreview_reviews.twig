@@ -1,0 +1,228 @@
+{{ header }}
+<div id="sreview-reviews" class="container">
+	<nav aria-label="breadcrumb">
+		<ul class="breadcrumb fm-breadcrumb">
+			{% for breadcrumb in breadcrumbs %}
+				{% if loop.last %}
+				<li class="breadcrumb-item fm-breadcrumb-item">{{ breadcrumb.text }}</li>
+				{% else %}
+				<li class="breadcrumb-item fm-breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</nav>
+	<script type="application/ld+json">
+	{
+	     "@context": "http://schema.org",
+	     "@type": "BreadcrumbList",
+	     "itemListElement":
+	     [
+	      {% for breadcrumb in breadcrumbs %}
+	      {% if loop.first %}
+	      {% else  %}{
+		       "@type": "ListItem",
+		       "position": {{ loop.index -1 }},
+		       "item":
+		       {
+		        "@id": "{{ breadcrumb.href }}",
+		        "name": "{{ breadcrumb.text }}"
+		        }
+		      }{% if not loop.last %},{% endif %}
+			{% endif %}
+	     {% endfor %}
+	     ]
+	}
+	</script>
+	<div class="row">
+		<div class="col-12">
+			<h1 class="fm-main-title fm-page-title">
+				{{ heading_title }}
+			</h1>
+		</div>
+	</div>
+	{{ content_top }}
+	<div class="fm-content fm-content-reviews">
+		<div class="row no-gutters">
+			{{ column_left }}
+			{% if column_left and column_right %}
+			{% set class = 'col-6' %}
+			{% elseif column_left or column_right %}
+			{% set class = 'col-9' %}
+			{% else %}
+			{% set class = 'col-12' %}
+			{% endif %}
+			<div id="content" class="{{ class }}">
+				<div class="fm-content-reviews-top d-flex justify-content-between">
+					<div class="fm-content-reviews-top-left d-flex flex-column align-items-start">
+						<div class="fm-page-main-title">{{ text_review_total }}<span class="fm-content-reviews-qauntity">{{ review_total }}</span></div>
+						<div class="fm-content-reviews-value">{{ store_rating }}<span>/ 5<span></span></span></div>
+						<div class="fm-content-reviews-text">{{ text_store_rating }}</div>
+						<div class="btn-group">
+							<button type="button" class="fm-btn-blue fm-btn" data-toggle="modal" data-target="#fm-add-review-modal">{{ button_write_review }}</button>
+							<div class="modal show" id="fm-add-review-modal" tabindex="-1" role="dialog" aria-labelledby="fm-add-review-modal">
+								<div class="modal-dialog modal-dialog-centered modal-dialog-540" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="fm-add-review">{{ heading_title }}</h5>
+											<button type="button" class="fm-close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true" class="fm-modal-close-icon fm-modal-close-left"></span>
+											<span aria-hidden="true" class="fm-modal-close-icon fm-modal-close-right"></span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form method="post" enctype="multipart/form-data" id="add-review-form">
+												<div class="form-group-20">
+													<input type="text" name="author" value="{{ author }}" class="form-control" id="InputAuthor" placeholder="{{ entry_name }}">
+												</div>
+												<div class="form-group-10">
+													<textarea name="text" class="form-control" id="InputReview" placeholder="{{ entry_review }}"></textarea>
+												</div>
+												<div class="fm-modal-comment">{{ text_note }}</div>
+												{% if subjects %}
+												{% for subject in subjects %}
+												<div class="fm-review-block d-flex align-items-center justify-content-between mb-2">
+													<label class="control-label mr-2">{{ subject.name }}</label>
+													<div class="fm-module-rating-stars d-flex align-items-center" id="block-rev-{{ subject.oct_sreview_subject_id }}">
+														<label class="fm-module-rating-star"><input class="d-none" type="radio" name="rating[{{ subject.oct_sreview_subject_id }}]" value="1" /></label>
+														<label class="fm-module-rating-star"><input class="d-none" type="radio" name="rating[{{ subject.oct_sreview_subject_id }}]" value="2" /></label>
+														<label class="fm-module-rating-star"><input class="d-none" type="radio" name="rating[{{ subject.oct_sreview_subject_id }}]" value="3" /></label>
+														<label class="fm-module-rating-star"><input class="d-none" type="radio" name="rating[{{ subject.oct_sreview_subject_id }}]" value="4" /></label>
+														<label class="fm-module-rating-star"><input class="d-none" type="radio" name="rating[{{ subject.oct_sreview_subject_id }}]" value="5" /></label>
+													</div>
+												</div>
+												{% endfor %}
+												<div class="form-group-20">
+													{{ captcha }}
+												</div>
+												<script>
+													$( document ).ready(function() {
+														$('#add-review-form .fm-module-rating-star').on('click', function () {
+															if ($(this).hasClass('fm-module-rating-star-is')){
+																$(this).nextAll().removeClass('fm-module-rating-star-is');
+															} else {
+																$(this).addClass('fm-module-rating-star-is');
+																$(this).prevAll().addClass('fm-module-rating-star-is');
+															}
+														});
+													});
+												</script>
+												{% endif %}
+												<div class="text-center" role="group" aria-label="fm-cont-btn">
+													<button type="submit" class="fm-btn fm-btn-blue">{{ button_send_review }}</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ul class="fm-content-reviews-list">
+						{% for store_rating_with_subject in store_rating_with_subjects %}
+						<li class="fm-content-reviews-item d-flex align-items-center justify-content-end">
+							<span class="fm-content-reviews-item-name">{{ store_rating_with_subject.name }}</span>
+							<div class="fm-module-rating-stars d-flex align-items-center justify-content-end">
+								{% for i in 1..5 %}
+								{% if store_rating_with_subject.value < i %}
+								<span class="fm-module-rating-star"></span>
+								{% else %}
+								<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+								{% endif %}
+								{% endfor %}
+								<span class="fm-content-reviews-quantity">({{ store_rating_with_subject.value }})</span>
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% for review in reviews %}
+				<div class="fm-review">
+					<div class="row align-items-center fm-review-item">
+						<div class="col-md-3 fm-review-info-left text-center">
+							<div class="fm-review-icon">
+								<img src="catalog/view/theme/oct_feelmart/img/user-icon.svg" alt="user-icon">
+							</div>
+							<div class="fm-review-name">
+								{{ review.author }}
+							</div>
+							<div class="fm-review-date">
+								{{ review.date_added }}
+							</div>
+							<div class="fm-review-rating-shop header-dropdown-box">
+								<span>{{ review.avg_rating }}</span>
+								<div class="header-dropdown fm-rating-shop-details">
+									<div class="header-dropdown-inner">
+										{% for rev in review.review_subject_array %}
+										<div class="fm-rating-shop-details-item"><b>{{ rev.name }}</b> - {{ rev.rating }}</div>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-9 fm-review-info-right">
+							<div class="fm-review-text">
+								{{ review.text }}
+							</div>
+							{% if review.admin_text is defined and review.admin_text is not empty %}
+							<div class="fm-review-admin">
+								<div class="fm-review-admin-title">{{ admin_text }}</div>
+								<div class="fm-review-admin-text">
+									{{ review.admin_text }}
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				{{ pagination }}
+				{% if description %}
+				<div class="review_description p-4">
+					{{ description }}
+				</div>
+				{% endif %}
+			</div>
+			{{ column_right }}
+		</div>
+	</div>
+	{{ content_bottom }}
+</div>
+<script>
+	$("#InputAuthor, #InputReview").on("change paste keyup", function() {
+		$(this).removeClass('error_style');
+	});
+
+	$('#add-review-form').on('submit', function( event ) {
+		event.preventDefault();
+		$.ajax({
+			type: 'post',
+			url:  'index.php?route=octemplates/module/oct_sreview_reviews/write',
+			dataType: 'json',
+			data: $('#add-review-form').serialize(),
+			cache: false,
+			success: function(json) {
+				if (json['error']) {
+					$('#fm-add-review-modal .text-danger').remove();
+					let errorOption = '';
+
+					$.each(json['error'], function(i, val) {
+						$('#fm-add-review-modal [name="' + i + '"]').addClass('error_style');
+						errorOption += '<div class="alert-text-item">' + val + '</div>';
+					});
+
+					fmNotify('danger', errorOption);
+				} else {
+					if (json['success']) {
+						fmNotify('success', json['success']);
+						$('#fm-add-review-modal').modal('hide');
+						$('input[name=\'author\']').val('');
+						$('textarea[name=\'text\']').val('');
+						$('input[name=\'rating\']:checked').prop('checked', false);
+						$('#add-review-form .fm-module-rating-star-is').removeClass('fm-module-rating-star-is');
+					}
+				}
+			}
+		});
+	});
+</script>
+{{ footer }}
