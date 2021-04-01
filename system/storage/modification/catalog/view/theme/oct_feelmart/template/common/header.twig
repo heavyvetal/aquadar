@@ -6,7 +6,7 @@
 <html dir="{{ direction }}" lang="{{ lang }}">
 <!--<![endif]-->
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -28,12 +28,12 @@
 {% endfor %}
 {% endif %}
 			
-<base href="{{ base }}" />
+<base href="{{ base }}">
 {% if description %}
-<meta name="description" content="{{ description }}" />
+<meta name="description" content="{{ description }}">
 {% endif %}
 {% if keywords %}
-<meta name="keywords" content="{{ keywords }}" />
+<meta name="keywords" content="{{ keywords }}">
 {% endif %}
 {% if oct_feelmart_data.preload is defined and oct_feelmart_data.preload %}
 <link rel="preload" href="catalog/view/theme/oct_feelmart/stylesheet/fonts/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" as="font" type="font/woff2" crossorigin>
@@ -47,14 +47,14 @@
 <link rel="preload" href="catalog/view/theme/oct_feelmart/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
 {% endif %}
 {% for style in styles %}
-<link href="{{ style.href }}" rel="stylesheet" media="{{ style.media }}" />
+<link href="{{ style.href }}" rel="stylesheet" media="{{ style.media }}">
 {% endfor %}
-	<link rel="stylesheet" href="/catalog/view/theme/oct_feelmart/stylesheet/new-style.css">
+<link rel="stylesheet" href="/catalog/view/theme/oct_feelmart/stylesheet/new-style.css">
 {% for script in scripts %}
 <script src="{{ script }}"></script>
 {% endfor %}
 {% for link in links %}
-<link href="{{ link.href }}" rel="{{ link.rel }}" />
+<link href="{{ link.href }}" rel="{{ link.rel }}">
 {% endfor %}
 {% for analytic in analytics %}
 {{ analytic }}
@@ -213,12 +213,6 @@
 			            </span>
 		            </button>
 		            {% endif %}
-		            <button title="{{ fixed_bar_compare }}" onclick="location.href='{{ compare_link }}';" type="button" class="fm-menu-buttons-item fm-menu-buttons-compare">
-			            <span class="fm-menu-buttons-icon">
-			                <img src="catalog/view/theme/oct_feelmart/img/compare-icon.svg" alt="compare-icon">
-			                <span class="fm-menu-buttons-index fm-menu-compare-index">{{ compare_total }}</span>
-			            </span>
-		            </button>
 		            <button title="{{ fixed_bar_wishlist }}" onclick="location.href='{{ wishlist_link }}';" type="button" class="fm-menu-buttons-item fm-menu-buttons-wishlist">
 			            <span class="fm-menu-buttons-icon">
 			                <img src="catalog/view/theme/oct_feelmart/img/heart-icon.svg" alt="heart-icon">
