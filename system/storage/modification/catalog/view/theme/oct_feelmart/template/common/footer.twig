@@ -1,0 +1,324 @@
+
+			<div id="fm_overlay"></div>
+			
+<footer class="row-padding-top">
+
+			{% if oct_subscribe is defined %}
+			{{ oct_subscribe }}
+			{% endif %}
+			
+	<div class="fm-main-footer">
+		<div class="container">
+	        <div class="row">
+	        	<div class="col-sm-6 col-md-6 col-lg-3 text-center fm-main-footer-first order-0">
+		            <div class="fm-main-footer-contact">
+		            	{% if oct_contact_telephones is defined and oct_contact_telephones is not empty %}
+			            <div class="header-dropdown-box">
+			            	{% if oct_contact_telephones|length > 1 %}
+			                <a class="btn btn-link dropdown-toggle d-flex justify-content-center align-items-center" href="javascript:;" role="button">{{ oct_contact_telephones[0] }} <i class="fas fa-chevron-down"></i></a>
+			                <div class="header-dropdown text-center">
+				                <div class="header-dropdown-inner">
+				                    <div class="header-dropdown-title header-dropdown-title-bold">{{ oct_our_telephones }}</div>
+				                    <ul class="list-unstyled">
+					                    {% for oct_contact_telephone in oct_contact_telephones %}
+					                    <li><a href="tel:{{ oct_contact_telephone|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}">{{ oct_contact_telephone }}</a></li>
+					                    {% endfor %}
+				                    </ul>
+				                </div>
+			                </div>
+			                {% else %}
+			                <a class="btn btn-link dropdown-toggle d-flex justify-content-center align-items-center" href="tel:{{ oct_contact_telephones[0]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" role="button">{{ oct_contact_telephones[0] }}</a>
+			                {% endif %}
+			            </div>
+	                    {% endif %}
+			            {% if oct_popup_call_phone_status is defined and oct_popup_call_phone_status %}
+			            <button type="button" onclick="octPopupCallPhone()" class="fm-main-footer-contact-btn fm-btn">{{ oct_to_contact_us }}</button>
+						{% endif %}
+			            {% if oct_feelmart_data.contact_address[oct_lang_id] is defined and oct_feelmart_data.contact_address[oct_lang_id] %}
+	                    <div class="fm-main-footer-contact-address">{{ oct_feelmart_data.contact_address[oct_lang_id] }}</div>
+	                    {% endif %}
+	                    {% if oct_feelmart_data.contact_email is defined and oct_feelmart_data.contact_email %}
+	                    <a href="mailto:{{ oct_feelmart_data.contact_email }}" class="fm-main-footer-contact-link">{{ oct_feelmart_data.contact_email }}</a>
+	                    {% endif %}
+			            <ul class="fm-main-footer-payments-list list-unstyled d-flex justify-content-center">
+				            {% if oct_feelmart_data.payments.sber is defined and oct_feelmart_data.payments.sber %}
+							<li class="fm-main-footer-payments-item sberbank"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.privat24 is defined and oct_feelmart_data.payments.privat24 %}
+							<li class="fm-main-footer-payments-item privat24"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.ym is defined and oct_feelmart_data.payments.ym %}
+							<li class="fm-main-footer-payments-item yandex-money"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.wm is defined and oct_feelmart_data.payments.wm %}
+							<li class="fm-main-footer-payments-item webmoney"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.visa is defined and oct_feelmart_data.payments.visa %}
+							<li class="fm-main-footer-payments-item visa"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.qw is defined and oct_feelmart_data.payments.qw %}
+							<li class="fm-main-footer-payments-item qiwi"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.skrill is defined and oct_feelmart_data.payments.skrill %}
+							<li class="fm-main-footer-payments-item skrill"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.interkassa is defined and oct_feelmart_data.payments.interkassa %}
+							<li class="fm-main-footer-payments-item interkassa"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.lp is defined and oct_feelmart_data.payments.lp %}
+							<li class="fm-main-footer-payments-item liqpay"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.pp is defined and oct_feelmart_data.payments.pp %}
+							<li class="fm-main-footer-payments-item paypal"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.robo is defined and oct_feelmart_data.payments.robo %}
+							<li class="fm-main-footer-payments-item robokassa"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.mc is defined and oct_feelmart_data.payments.mc %}
+							<li class="fm-main-footer-payments-item mastercard"></li>
+							{% endif %}
+		                    {% if oct_feelmart_data.payments.maestro is defined and oct_feelmart_data.payments.maestro %}
+							<li class="fm-main-footer-payments-item maestro"></li>
+							{% endif %}
+							{% for payment_customer in oct_customer_paymets %}
+							<li class="fm-main-footer-payments-item custom-payment"><img src="{{ payment_customer }}" alt=""></li>
+							{% endfor %}
+			            </ul>
+		            </div>
+		        </div>
+	            {% if categories is defined and categories %}
+	            <div class="col-sm-6 col-md-6 col-lg-3 fm-main-footer-second fm-main-footer-list order-2 order-lg-1">
+	            	<div class="fm-main-footer-title fm-main-footer-title-toggle">
+		            	<span>{{ oct_footer_category }}</span>
+		            </div>
+	                <ul class="fm-main-footer-links-list list-unstyled">
+	                	{% for category in categories %}
+	                    <li><a href="{{ category.href }}" title="{{ category.name }}">{{ category.name }}</a></li>
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	            {% endif %}
+	            {% if informations %}
+	            <div class="col-sm-6 col-md-6 col-lg-3 fm-main-footer-third fm-main-footer-list order-3 order-lg-2">
+	                <div class="fm-main-footer-title fm-main-footer-title-toggle">
+	                	<span>{{ text_information }}</span>
+	                </div>
+	                <ul class="fm-main-footer-links-list list-unstyled">
+	                    {% for information in informations %}
+	                    <li><a href="{{ information.href }}" {% if information.rel is defined and information.rel %}rel="nofollow"{% endif %} title="{{ information.title }}">{{ information.title }}</a></li>
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	            {% endif %}
+
+	            <div class="col-sm-6 col-md-6 col-lg-3 fm-main-footer-fourth fm-main-footer-list order-1 order-lg-3">
+	                {% if oct_contact_opens is defined and oct_contact_opens is not empty %}
+	            	<div class="fm-main-footer-shedule">
+	                	<div class="fm-main-footer-title">{{ oct_working_hours }}</div>
+                        <ul class="fm-main-footer-shedule-list list-unstyled">
+                        	{% for oct_contact_open in oct_contact_opens %}
+                            <li class="fm-main-footer-shedule-item">{{ oct_contact_open }}</li>
+                            {% endfor %}
+                        </ul>
+	            	</div>
+	                {% endif %}
+
+                    {% if oct_feelmart_data.socials is defined and oct_feelmart_data.socials is not empty %}
+                    <div class="fm-main-footer-socials">
+                        <div class="fm-main-footer-title">{{ oct_footer_social_tex }}</div>
+                        <ul class="fm-main-footer-social-list list-unstyled d-flex flex-wrap justify-content-center justify-content-lg-start">
+                        	{% for social in oct_feelmart_data.socials %}
+                            <li class="fm-main-footer-social-item"><a rel="nofollow" href="{{ (social.link == "#" or social.link is empty) ? 'javascript:;' : social.link }}" class="fm-main-footer-social-link fm-main-footer-social-link-{{ social.icone|replace({'fa ': "", "fab " : "", "far " : "", "fas " : ""}) }}" target="_blank"><i class="{{ social.icone }}"></i></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+	            </div>
+	        </div>
+	        <div class="fm-main-footer-credits">
+		        <div class="container">
+			        <div class="row">
+			            <div class="col-lg-12 text-center">
+			                {{ powered }}
+			            </div>
+			        </div>
+		        </div>
+	        </div>
+	    </div>
+	</div>
+
+			{% if oct_feedback_data is defined and oct_feedback_data %}
+	        <div id="fm_fixed_contact_substrate"></div>
+	        <div id="fm_fixed_contact_button" class="d-flex align-items-center justify-content-center">
+		        <div class="fm-fixed-contact-pulsation"></div>
+		        <div class="fm-fixed-contact-icon d-flex align-items-center justify-content-center"><i class="far fa-comment-dots"></i><i class="fas fa-times d-none"></i></div>
+		        <div class="fm-fixed-contact-dropdown d-flex flex-column align-items-start">
+		        	{% if (oct_feedback_data.feedback_messenger is defined and oct_feedback_data.feedback_messenger) and (oct_feelmart_data.contact_messenger is defined and oct_feelmart_data.contact_messenger) %}
+		            <a rel="nofollow" href="https://m.me/{{ oct_feelmart_data.contact_messenger }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-messenger d-flex align-items-center justify-content-center"><i class="fab fa-facebook-messenger"></i></span><span>Messenger</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_viber is defined and oct_feedback_data.feedback_viber) and (oct_feelmart_data.contact_viber is defined and oct_feelmart_data.contact_viber) %}
+		            <a rel="nofollow" href="viber://chat?number=+{{ oct_feelmart_data.contact_viber }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center fm-fixed-contact-viber-desktop"><span class="fm-fixed-contact-item-icon fm-fixed-contact-viber d-flex align-items-center justify-content-center"><i class="fab fa-viber"></i></span><span>Viber</span></a>
+		            <a rel="nofollow" href="viber://add?number={{ oct_feelmart_data.contact_viber }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center fm-fixed-contact-viber-mobile"><span class="fm-fixed-contact-item-icon fm-fixed-contact-viber d-flex align-items-center justify-content-center"><i class="fab fa-viber"></i></span><span>Viber</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_telegram is defined and oct_feedback_data.feedback_telegram) and (oct_feelmart_data.contact_telegram is defined and oct_feelmart_data.contact_telegram) %}
+		            <a rel="nofollow" href="https://t.me/{{ oct_feelmart_data.contact_telegram }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-telegram d-flex align-items-center justify-content-center"><i class="fab fa-telegram"></i></span><span>Telegram</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_skype is defined and oct_feedback_data.feedback_skype) and (oct_feelmart_data.contact_skype is defined and oct_feelmart_data.contact_skype) %}
+		            <a rel="nofollow" href="skype:{{ oct_feelmart_data.contact_skype }}?chat" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-skype d-flex align-items-center justify-content-center"><i class="fab fa-skype"></i></span><span>Skype</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_whatsapp is defined and oct_feedback_data.feedback_whatsapp) and (oct_feelmart_data.contact_whatsapp is defined and oct_feelmart_data.contact_whatsapp) %}
+		            <a rel="nofollow" href="https://api.whatsapp.com/send?phone={{ oct_feelmart_data.contact_whatsapp }}" target="_blank" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-whatsapp d-flex align-items-center justify-content-center"><i class="fab fa-whatsapp"></i></span><span>WhatsApp</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_email is defined and oct_feedback_data.feedback_email) and (oct_feelmart_data.contact_email is defined and oct_feelmart_data.contact_email) %}
+		            <a rel="nofollow" href="mailto:{{ oct_feelmart_data.contact_email }}" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-email d-flex align-items-center justify-content-center"><i class="far fa-envelope"></i></span><span>{{ oct_feelmart_data.contact_email }}</span></a>
+		            {% endif %}
+		            
+		            {% if (oct_feedback_data.feedback_callback is defined and oct_feedback_data.feedback_callback) and (oct_popup_call_phone_status is defined and oct_popup_call_phone_status) %}
+		            <a rel="nofollow" id="uptocall-mini" href="javascript:;" onclick="octPopupCallPhone()" class="fm-fixed-contact-item d-flex align-items-center"><span class="fm-fixed-contact-item-icon fm-fixed-contact-call d-flex align-items-center justify-content-center"><i class="fas fa-phone"></i></span><span>{{ oct_call_phone }}</span></a>
+		            {% endif %}
+		        </div>
+		    </div>
+		    {% endif %}
+			
+</footer>
+
+			{% if oct_feelmart_data.footer_totop is defined and oct_feelmart_data.footer_totop %}
+				<div id="back-top">
+			        <a href="#top"><i class="fas fa-chevron-up"></i></a>
+			    </div>
+			{% endif %}
+			
+
+			{% if oct_subscribe_status is defined and oct_subscribe_status %}
+			<script>
+			$(function() {
+				if (getOCTCookie('oct_subscribe') == 'undefined') {
+					setTimeout(function(){
+						octPopupSubscribe();
+					}, {{ oct_subscribe_form_data.seconds ? oct_subscribe_form_data.seconds : '10000' }});
+
+					const date = new Date('{{ oct_subscribe_day_now }}'.replace(/-/g, "/"));
+					date.setTime(date.getTime() + ({{ oct_subscribe_form_data.expire ? oct_subscribe_form_data.expire : '1' }} * 24 * 60 * 60 * 1000));
+					document.cookie = 'oct_subscribe=1; path=/; expires=' + date.toUTCString();
+				}
+			});
+			</script>
+			{% endif %}
+			
+{% for script in scripts %}
+<script src="{{ script }}"></script>
+{% endfor %}
+<div class="modal-holder"></div>
+{% if oct_isiOS is defined and oct_isiOS %}
+<script>
+var elementsA = document.getElementsByTagName('a');
+for(var i = 0; i < elementsA.length; i++){
+    elementsA[i].addEventListener('touchend',function(){});
+}
+
+var elementsB = document.getElementsByTagName('button');
+for(var i = 0; i < elementsB.length; i++){
+    elementsB[i].addEventListener('touchend',function(){});
+}
+</script>
+{% endif %}
+
+            {% if analytics is defined and analytics is not empty %}
+			{{ analytics }}
+			{% endif %}
+			
+
+			{% if oct_jscode is defined and oct_jscode %}
+				<script>
+				{{ oct_jscode }}
+				</script>
+			{% endif %}
+			
+
+			{% if (oct_information_bar_value is defined and oct_information_bar_value is not empty and oct_information_bar_value) %}
+			<script>
+			function getOctInformationBar() {
+				$.ajax({
+					url: "index.php?route=common/footer/getOctInfoBar",
+					type: "post",
+					dataType: "json",
+					cache: false,
+					success: function(t) {
+						if (t['text_oct_information_bar']) {
+							var html = '<div id="oct-infobar"><div class="container"><div class="row"><div class="col-lg-12 d-flex align-items-center justify-content-between flex-column flex-md-row"><div class="oct-infobar-text">'+ t['text_oct_information_bar'] +'</div><button type="button" id="oct-infobar-btn" class="mt-3 mt-md-0">'+ t['oct_info_bar_close'] +'</button></div></div></div></div>';
+
+							$("#top").before(html);
+
+							$('#oct-infobar-btn').on('click', function () {
+								$('#oct-infobar').addClass('hidden');
+								const date = new Date(t['oct_information_bar_day_now'].replace(/-/g, "/"));
+								date.setTime(date.getTime() + (t['oct_info_max_day'] * 24 * 60 * 60 * 1000));
+								document.cookie = t['oct_information_bar_value']+'=1; path=/; expires=' + date.toUTCString();
+							});
+						}
+					},
+					error: function(e, t, i) {
+						alert(i + "\r\n" + e.statusText + "\r\n" + e.responseText)
+					}
+				});
+			}
+
+			$(function() {
+				if (getOCTCookie('{{ oct_information_bar_value }}') == 'undefined') {
+					getOctInformationBar();
+				}
+			});
+			</script>
+			<style>
+			#oct-infobar {background:{{ oct_information_bar_background }};}
+			.oct-infobar-text {color:{{ oct_information_bar_color_text }};}
+			.oct-infobar-text a {color:{{ oct_information_bar_color_url }};}
+			#oct-infobar-btn {background:{{ oct_information_bar_background_button }};color:{{ oct_information_bar_color_text_button }};}
+			#oct-infobar-btn:hover {background:{{ oct_information_bar_background_button_hover }};color:{{ oct_information_bar_color_text_button_hover }};}
+			</style>
+			{% endif %}
+			
+
+			{% if (oct_policy_value is defined and oct_policy_value is not empty and oct_policy_value) %}
+			<script>
+			function get_oct_policy() {
+				$.ajax({
+					url: "index.php?route=common/footer/getOctPolicy",
+					type: "post",
+					dataType: "json",
+					cache: false,
+					success: function(t) {
+						if (t['text_oct_policy']) {
+							var html = '<div id="oct-policy" class="fixed-bottom"><div class="container"><div class="row"><div class="col-lg-12 d-flex align-items-center justify-content-between flex-column flex-md-row"><div class="oct-policy-text">'+ t['text_oct_policy'] +'</div><button type="button" id="oct-policy-btn">'+ t['oct_policy_accept'] +'</button></div></div></div></div>';
+
+							$('body').append(html);
+
+							$('#oct-policy-btn').on('click', function () {
+								$('#oct-policy').addClass('hidden');
+								const date = new Date(t['oct_policy_day_now'].replace(/-/g, "/"));
+								date.setTime(date.getTime() + (t['oct_max_day'] * 24 * 60 * 60 * 1000));
+								document.cookie = t['oct_policy_value']+'=1; path=/; expires=' + date.toUTCString();
+							});
+						}
+					},
+					error: function(e, t, i) {
+						alert(i + "\r\n" + e.statusText + "\r\n" + e.responseText)
+					}
+				});
+			}
+
+			$(function() {
+				if (getOCTCookie('{{ oct_policy_value }}') == 'undefined') {
+					get_oct_policy();
+				}
+			});
+			</script>
+			{% endif %}
+			
+</body>
+</html>

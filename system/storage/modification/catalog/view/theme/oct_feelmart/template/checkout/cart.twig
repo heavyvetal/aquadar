@@ -1,0 +1,131 @@
+{{ header }}
+<div id="checkout-cart" class="container flex-container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+		</div>
+	</div>
+	<div class="content-top-box">{{ content_top }}</div>
+	{% if attention %}
+	<script>
+	fmNotify('warning', '{{ attention }}');
+	</script>
+	{% endif %}
+	{% if success %}
+	<script>
+	fmNotify('success', '{{ success }}');
+	</script>
+	{% endif %}
+	<div id="content" class="row no-gutters">
+		{{ column_left }}
+	    {% if column_left and column_right %}
+	    {% set class = 'col-lg-6' %}
+	    {% elseif column_left or column_right %}
+	    {% set class = 'col-lg-9' %}
+	    {% else %}
+	    {% set class = 'col-lg-12' %}
+	    {% endif %}
+	    <div class="{{ class }}">
+		    <div class="fm-content fm-content-cart">
+		    	<div class="fm-content-title fm-cart-title">{{ heading_title }}{% if weight %} &nbsp;({{ weight }}) {% endif %}</div>
+				<form action="{{ action }}" method="post" enctype="multipart/form-data">
+					<div class="fm-acc-info-block-top">
+						{% for product in products %}
+					    <div class="fm-acc-info-block d-flex justify-content-between align-items-center">
+							<div class="fm-acc-info-block-left d-flex align-items-center">
+								<button type="button" class="fm-acc-info-link-del" onclick="cart.remove('{{ product.cart_id }}');"><i class="fas fa-trash-alt"></i></button>
+								{% if product.thumb %}
+								<a href="{{ product.href }}" class="fm-acc-info-block-img"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" /></a>
+								{% endif %}
+								<div class="fm-acc-info-block-desc">
+									<div class="fm-content-title fm-acc-info-block-title"><a href="{{ product.href }}">{{ product.name }}</a>{% if not product.stock %}<span class="required"> ***</span>{% endif %}</div>
+									{% if product.option %}
+									{% for option in product.option %}
+									<div class="fm-acc-info-text fm-acc-info-text-small">{{ option.name }}: <span>{{ option.value }}</span></div>
+									{% endfor %}
+									{% endif %}
+									<div class="fm-acc-info-text fm-acc-info-text-small">{{ column_model }}: <span>{{ product.model }}</span></div>
+									{% if product.reward %}
+									<div class="fm-acc-info-text fm-acc-info-text-small">{{ product.reward }}</div>
+									{% endif %}
+									{% if product.recurring %}
+									<div class="fm-acc-info-text fm-acc-info-text-small">{{ text_recurring_item }} <span class="fm-product-info-code">{{ product.recurring }}</span></div>
+									{% endif %}
+								</div>
+							</div>
+							<div class="fm-acc-info-block-right d-flex align-items-center">
+								<div class="fm-product-quantity">
+									<div class="btn-group fm-product-quantity" role="group">
+										<button type="button" class="fm-product-quantity-btn fm-product-quantity-btn-left" onclick="$('#input-quantity-{{ product.cart_id }}').val(~~$('#input-quantity-{{ product.cart_id }}').val()-1);">-</button>
+										<input type="text" id="input-quantity-{{ product.cart_id }}" class="form-control"  name="quantity[{{ product.cart_id }}]" value="{{ product.quantity }}">
+										<button type="button" class="fm-product-quantity-btn" onclick="$('#input-quantity-{{ product.cart_id }}').val(~~$('#input-quantity-{{ product.cart_id }}').val()+1);">+</button>
+										<button type="submit" class="fm-product-quantity-btn fm-product-quantity-btn-right" title="{{ button_update }}"><i class="fas fa-sync-alt"></i></button>
+									</div>
+								</div>
+								<div class="fm-acc-info-block-right-desc">
+									<div class="fm-cart-price-all">{{ column_total }}: {{ product.total }}</div>
+									<div class="fm-cart-price-one">{{ column_price }}: {{ product.price }}</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						{% for voucher in vouchers %}
+						<div class="fm-cart-block">
+							<div class="fm-cart-text">{{ voucher.description }}</div>
+							<div class="input-group my-3">
+								<input type="text" name="" value="1" size="1" disabled="disabled" class="form-control" />
+								<span class="input-group-btn">
+									<button type="button" title="{{ button_remove }}" class="fm-btn fm-input-with-btn btn-danger" onclick="voucher.remove('{{ voucher.key }}');"><i class="fas fa-times"></i></button>
+								</span>
+							</div>
+							<div class="fm-content-title fm-cart-block-title">{{ column_total }}: {{ voucher.amount }}</div>
+						</div>
+						{% endfor %}
+					</div>
+					{% if error_warning %}
+					<div class="required">{{ error_warning }}</div>
+					{% endif %}
+					{% if modules %}
+					<div class="fm-cart-block">
+						<div class="fm-content-title fm-cart-block-title-bold">{{ text_next }}</div>
+						<div class="fm-cart-text">{{ text_next_choice }}</div>
+					</div>
+					{% for module in modules %}
+					{{ module }}
+					{% endfor %}
+					<script>
+						$( document ).ready(function() {
+							$('.fm-cart-block-title').on('click', function() {
+								$(this).toggleClass('clicked');
+								$(this).next().toggleClass('opened');
+							});
+						});
+					</script>
+					{% endif %}
+				</form>
+				<div class="row align-items-center">
+					<div class="col-md-6 buy-one-click-box">
+
+			{{ oct_byoneclick }}
+			
+					
+					</div>
+					<div class="col-md-6 text-md-right my-4 my-md-0">
+						{% for total in totals %}
+						<div class="fm-cart-block-total-price">
+							{{ total.title }}: <span>{{ total.text }}</span>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			    <div class="text-md-right row-padding-top w-100">
+			        <a href="{{ checkout }}" class="fm-btn fm-btn-blue">{{ button_checkout }}</a>
+			    </div>
+		    </div>
+	    </div>
+	    {{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}

@@ -1,0 +1,199 @@
+{{ header }}
+<div id="product-manufacturer" class="container">
+	{{ oct_breadcrumbs }}
+	<div class="row">
+	    <div class="col-12">
+	        <h1 class="fm-main-title fm-page-title">{{ heading_title }}</h1>
+	    </div>
+    </div>
+	<div class="content-top-box">{{ content_top }}</div>
+	<div class="row no-gutters">
+		{{ column_left }}
+		{% if column_left and column_right %}
+		{% set class = 'col-lg-6 is-cols' %}
+		{% elseif column_left or column_right %}
+		{% set class = 'col-lg-9' %}
+		{% else %}
+		{% set class = 'col-lg-12 no-col' %}
+		{% endif %}
+		<div id="content" class="{{ class }} fm-content fm-category-content">
+			{% if products %}
+			{% if oct_feelmart_data.category_view_sort_oder is defined and (oct_feelmart_data.category_view_sort_oder or oct_feelmart_data.category_view_sort_oder == 'on') %}
+			<div class="fm-category-sort-block d-flex justify-content-between">
+				<div class="sort-limit">
+					<select id="input-sort" class="sort-select" onchange="location = this.value;">
+						{% for sorts in sorts %}
+							{% if sorts.value == '%s-%s'|format(sort, order) %}
+								<option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+							{% else %}
+								<option value="{{ sorts.href }}">{{ sorts.text }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<select id="input-limit" class="limit-select" onchange="location = this.value;">
+						{% for limits in limits %}
+							{% if limits.value == limit %}
+								<option value="{{ limits.href }}" selected="selected">{{ limits.text }}</option>
+							{% else %}
+								<option value="{{ limits.href }}">{{ limits.text }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+				<div class="fm-category-appearance btn-group">
+					<button type="button" id="list-view" class="fm-category-appearance-btn" data-toggle="tooltip" data-placement="top" title="{{ button_list }}"><i class="fa fa-th-list"></i></button>
+					<button type="button" id="grid-view" class="fm-category-appearance-btn" data-toggle="tooltip" data-placement="top" title="{{ button_grid }}"><i class="fa fa-th"></i></button>
+				</div>
+			</div>
+			{% endif %}
+			<div class="row no-gutters fm-category-products">
+
+			{% if sticker_colors is not empty %}
+				<style>
+					{% for key, sticker_color in sticker_colors %}
+					.fm-module-stickers-sticker-{{ key }} {
+						color:{{ sticker_color.text_color }};
+						background:{{ sticker_color.fon_color }};
+					}
+					{% endfor %}
+				</style>
+			{% endif %}
+			
+				{% for product in products %}
+				<div class="product-layout product-grid col-6 col-md-4 col-lg-4">
+					<div class="fm-module-item d-flex flex-column h-100{% if not product.can_buy %} fm-no-stock{% endif %}">
+						<div class="fm-module-img">
+
+			{% if product.oct_stickers is not empty%}
+			<div class="fm-module-stickers">
+				{% for key, oct_sticker in product.oct_stickers %}
+					{% if oct_sticker is not empty %}
+					<div class="fm-module-stickers-sticker fm-module-stickers-sticker-{{ key }}">
+						{{ oct_sticker }}
+					</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+			{% endif %}
+			
+							<ul class="fm-module-buttons-list list-unstyled d-flex">
+
+			{% if oct_popup_view_status %}
+			<li class="fm-module-buttons-item">
+				<button type="button" class="fm-module-buttons-link fm-module-buttons-quickview" title="{{ oct_popup_view }}" onclick="octPopUpView('{{ product.product_id }}')"><i class="far fa-eye"></i></button>
+			</li>
+			{% endif %}
+			
+								<li class="fm-module-buttons-item fm-module-buttons-compare">
+									<button type="button" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');" class="fm-module-buttons-link"><i class="fas fa-sliders-h"></i></button>
+								</li>
+								<li class="fm-module-buttons-item fm-module-buttons-wishlist">
+									<button type="button" onclick="wishlist.add('{{ product.product_id }}');" title="{{ button_wishlist }}" class="fm-module-buttons-link"><i class="far fa-heart"></i></button>
+								</li>
+							</ul>
+							<a href="{{ product.href }}">
+								<img src="{{ product.thumb }}"{% if oct_lazyload is defined and oct_lazyload %} data-srcset="{{ product.thumb }} 100w" srcset="{{ oct_lazy_image }} 100w" sizes="100vw" class="img-fluid oct-lazy"{% else %} class="img-fluid"{% endif %} alt="{{ product.name }}" title="{{ product.name }}" />
+							</a>
+							{% if product.rating is not same as (false) %}
+							<div class="fm-module-rating d-flex align-items-center justify-content-center">
+								<div class="fm-module-rating-stars d-flex align-items-center">
+									{% for i in 1..5 %}
+									{% if product.rating < i %}
+									<span class="fm-module-rating-star"></span>
+									{% else %}
+									<span class="fm-module-rating-star fm-module-rating-star-is"></span>
+									{% endif %}
+									{% endfor %}
+								</div>
+								<div class="fm-module-reviews"><i class="fas fa-comment"></i><span>{{ product.reviews }}</span></div>
+							</div>
+							{% endif %}
+						</div>
+						<div class="fm-category-product-caption">
+							{% if product.oct_model is not empty %}
+							<div class="fm-category-product-model">{{ oct_view_model_cat }}{{ product.oct_model }}</div>
+							{% endif %}
+							<div class="fm-module-title">
+								<a href="{{ product.href }}">{{ product.name }}</a>
+							</div>
+							{% if product.price %}
+							<div class="fm-module-price mt-auto">
+								{% if not product.special %}
+								<div class="fm-module-price-bottom">
+									<span class="fm-module-price-new">{{ product.price }}</span>
+								</div>
+								{% else %}
+								<div class="fm-module-price-top d-flex align-items-center justify-content-center">
+									<span class="fm-module-price-old">{{ product.price }}</span>
+
+			{% if product.oct_stickers is not empty%}
+				{% if oct_sticker_you_save and product.you_save %}
+					<div class="fm-module-sticker-discount">{{ product.you_save }}</div>
+				{% endif %}
+			{% endif %}
+			
+								</div>
+								<div class="fm-module-price-bottom">
+									<span class="fm-module-price-new">{{ product.special }}</span>
+								</div>
+								{% endif %}
+								{% if product.tax %}
+								<div class="price-tax">{{ text_tax }} {{ product.tax }}</div>
+								{% endif %}
+							</div>
+							{% endif %}
+							{% if (product.description and product.description|length > 3) %}
+								<div class="fm-category-product-description">{{ product.description }}</div>
+							{% endif %}
+
+			{% if product.oct_atributes %}
+	        <div class="fm-category-attr-cont">
+			{% for attribute in product.oct_atributes %}
+				<span class="fm-category-attr-item">
+					<span>{{ attribute.name }}:</span> <span>{{ attribute.text }}</span>
+				</span>
+			{% endfor %}
+			</div>
+			{% endif %}
+			
+							<div class="fm-category-btn-box">
+				                
+			{% if oct_feelmart_data.category_view_quantity is defined and oct_feelmart_data.category_view_quantity and product.can_buy is not empty %}
+			<div class="fm-product-quantity d-flex flex-column align-items-center">
+				<div class="btn-group" role="group">
+					<button type="button" class="fm-product-quantity-btn fm-product-quantity-btn-left fm-minus">-</button>
+					<input type="text" class="form-control" name="quantity" value="{{ product.minimum }}" />
+					<button type="button" class="fm-product-quantity-btn fm-product-quantity-btn-right fm-plus">+</button>
+					<input type="hidden" name="product_id" value="{{ product.product_id }}" />
+					<input class="min-qty" type="hidden" value="{{ product.minimum }}" name="min_quantity">
+				</div>
+			</div>
+			<button type="button" class="fm-product-btn fm-cat-button-cart"><img src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="{{ button_cart }}" /><span>{{ button_cart }}</span></button>
+			{% else %}
+			
+			{% if product.can_buy is not empty and product.can_buy %}
+			<button type="button" onclick="cart.add('{{ product.product_id }}');" class="fm-product-btn"><img src="catalog/view/theme/oct_feelmart/img/shop-cart-icon.svg" alt="{{ (product.stock and not product.can_buy) ? product.stock : button_cart }}" /><span>{{ (product.stock and not product.can_buy) ? product.stock : button_cart }}</span></button>
+			{% endif %}
+			
+			{% endif %}
+			
+			                </div>
+						</div>
+						<div class="fm-module-overlay"></div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="fm-pagination-cont">{{ pagination }}</div>
+			{% else %}
+			<div class="p-4">
+				<p>{{ text_empty }}</p>
+				<a href="{{ continue }}" class="fm-btn fm-btn-blue mt-3 d-inline-block">{{ button_continue }}</a>
+			</div>
+			{% endif %}
+		</div>
+		{{ column_right }}
+	</div>
+	{{ content_bottom }}
+</div>
+{{ footer }}
