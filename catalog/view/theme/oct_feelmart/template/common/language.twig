@@ -6,7 +6,6 @@
 			<button class="btn btn-lang btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				{% for language in languages %}
 			    {% if language.code == code %}
-			    <img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" class="lang">
 			    <span>{{ text_language }}</span>
 			    <i class="fas fa-chevron-down"></i>
 			    {% endif %}
