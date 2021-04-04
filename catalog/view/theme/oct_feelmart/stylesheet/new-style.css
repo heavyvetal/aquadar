@@ -54,6 +54,18 @@ header {
     font: normal normal normal 20px/25px Cera Pro Medium;
 }
 
+header .fm-logo a {
+    min-height: auto;
+}
+
+header .fm-logo img {
+    box-sizing: content-box;
+    padding-left: 35px;
+    padding-top: 15px;
+    width: 197px !important;
+    height: 41px !important;
+}
+
 .fm-phone-content .btn-link  {
     font: normal normal normal 18px/23px Cera Pro;
 }
