@@ -97,7 +97,7 @@
   <div class="container">
     <div class="row align-items-center">
 		{% if logo %}
-    	<div id="logo" class="col-6 col-md-2 col-lg-3 col-xl-3">
+    	<div id="logo" class="col-6 col-md-2 col-lg-3 col-xl-2">
 			{% if oct_home is defined and oct_home %}
 				<div class="fm-logo"><a href="/"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" /></a></div>
 			{% else %}
@@ -112,9 +112,13 @@
 		<h1><a href="{{ home }}">{{ name }}</a></h1>
 		{% endif %}
 		{% if oct_feelmart_data.contact_address[oct_lang_id] is defined and oct_feelmart_data.contact_address[oct_lang_id] %}
-		<div class="d-none d-md-flex col-md-7 col-lg-6 col-xl-5 fm-header-address">
+		<div class="d-none d-md-flex col-md-7 col-lg-6 col-xl-6 fm-header-address">
 	        <div class="header-dropdown-box">
-				<a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button"><i class="fas fa-map-marker-alt"></i> <span>{{ oct_feelmart_data.contact_address[oct_lang_id] }}</span> <i class="fas fa-chevron-down"></i></a>
+				<a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button">
+					<span>{{ address_title }}</span>
+					<i class="fas fa-map-marker-alt"></i>
+					<span>{{ oct_feelmart_data.contact_address[oct_lang_id] }}</span>
+				</a>
 				<div class="header-dropdown text-center">
 					<div class="header-dropdown-inner fm-header-address-dropdown-inner">
 						<div class="header-dropdown-title">{{ oct_our_address }}:</div>
@@ -138,7 +142,8 @@
 		<div class="fm-header-shedule d-none col-xl-2 d-xl-flex justify-content-center">
           <div class="header-dropdown-box">
             <a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button">
-              <i class="far fa-clock"></i>
+{#              <i class="fas fa-clock"></i>#}
+				<img src="/catalog/view/theme/oct_feelmart/img/icon_clock.svg" alt="">
               <span>{{ oct_working_hours }}</span>
               <i class="fas fa-chevron-down"></i>
             </a>
@@ -159,23 +164,14 @@
 		<div class="col-6 col-md-3 col-xl-2 d-flex fm-header-phones">
           <div class="fm-phone-box d-flex align-items-center">
             <div class="fm-phone-img">
-              <i class="fas fa-mobile-alt"></i>
+{#              <i class="fas fa-mobile-alt"></i>#}
+				<img src="/catalog/view/theme/oct_feelmart/img/icon_phone.svg" alt="">
             </div>
             <div class="fm-phone-content text-right">
             {% if oct_contact_telephones|length > 1 %}
-              <div class="header-dropdown-box btn-link dropdown-toggle d-flex align-items-center">
-                {{ oct_contact_telephones[0] }}
-                <i class="fas fa-chevron-down"></i>
-	            <div class="header-dropdown text-center">
-	                <div class="header-dropdown-inner">
-	                  <div class="header-dropdown-title header-dropdown-title-bold">{{ oct_our_telephones }}</div>
-	                  <ul class="list-unstyled">
-	                    {% for oct_contact_telephone in oct_contact_telephones %}
-						<li><a href="tel:{{ oct_contact_telephone|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" class="phoneclick">{{ oct_contact_telephone }}</a></li>
-						{% endfor %}
-	                  </ul>
-	                </div>
-	            </div>
+              <div class="header-dropdown-box btn-link dropdown-toggle align-items-center">
+				  <div class="phone-number-row">{{ oct_contact_telephones[0] }}</div>
+				  <div class="phone-number-row">{{ oct_contact_telephones[1] }}</div>
               </div>
               {% else %}
 				<a class="btn btn-link dropdown-toggle d-flex align-items-center" href="tel:{{ oct_contact_telephones[0]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" role="button" id="us-phones-dropdown"><span>{{ oct_contact_telephones[0] }}</span></a>

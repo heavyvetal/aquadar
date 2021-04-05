@@ -14,3 +14,4 @@ $_['text_logout'] = 'Вихід';
 $_['text_checkout'] = 'Оформлення замовлення';
 $_['text_search'] = 'Пошук';
 $_['text_all'] = 'Дивитися всі';
+$_['text_address_title'] = 'Центр чистої води';

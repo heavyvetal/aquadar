@@ -3,7 +3,7 @@
 $_['text_logout']      		= 'Вийти';
 $_['text_register']    		= 'Реєстрація';
 $_['text_forgotten']   		= 'Забули пароль?';
-$_['text_category']    		= 'Список категорій';
+$_['text_category']    		= 'КАТАЛОГ ТОВАРІВ';
 $_['text_all_category']    	= 'Дивитись всі';
 $_['text_menu']    			= 'Меню';
 $_['text_back']   			= 'Назад';

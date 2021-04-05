@@ -77,6 +77,9 @@ class ControllerCommonHeader extends Controller {
 		$data['cart'] = $this->load->controller('common/cart');
 		$data['menu'] = $this->load->controller('common/menu');
 
+		// New data for the header
+        $data['address_title'] = $this->language->get('text_address_title');
+
 		return $this->load->view('common/header', $data);
 	}
 }

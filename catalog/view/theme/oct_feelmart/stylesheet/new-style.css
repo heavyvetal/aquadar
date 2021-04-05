@@ -54,16 +54,48 @@ header {
     font: normal normal normal 20px/25px Cera Pro Medium;
 }
 
+header .container .row {
+    justify-content: space-between;
+}
+
+header #logo {
+    padding-left: 35px;
+    padding-top: 15px;
+}
+
 header .fm-logo a {
     min-height: auto;
 }
 
 header .fm-logo img {
     box-sizing: content-box;
-    padding-left: 35px;
-    padding-top: 15px;
-    width: 197px !important;
-    height: 41px !important;
+    max-width: 197px;
+}
+
+header .btn-link {
+    font-size: 20px;
+}
+
+header .fm-header-address {
+    padding-left: 20px;
+}
+
+header .fm-header-address .btn-link i {
+    margin-right: 8px;
+    margin-left: 8px;
+    color: #2e85b4;
+}
+
+.btn-header span {
+    text-decoration: none;
+}
+
+header .fm-header-phones {
+    padding-right: 40px;
+}
+
+header .phone-number-row {
+    text-align: left;
 }
 
 .fm-phone-content .btn-link  {
@@ -80,6 +112,22 @@ header .fm-logo img {
 
 .fm-menu, .fm-search input {
     background-color: #4477A6;
+}
+
+.menu-row .fm-menu-burg-top,
+.menu-row .fm-menu-burg-middle {
+    width: 16px;
+}
+.menu-row .fm-menu-burg-bottom{
+    width: 10px;
+}
+
+.menu-row .fm-menu-buttons-index {
+    background-color: #4f92c0;
+}
+
+.menu-row .fm-menu-buttons-list {
+    padding-right: 35px;
 }
 
 .fm-main-footer,
