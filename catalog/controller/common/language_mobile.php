@@ -1,5 +1,5 @@
 <?php
-class ControllerCommonLanguage extends Controller {
+class ControllerCommonLanguageMobile extends Controller {
 	public function index() {
 		$this->load->language('common/language');
 
@@ -42,17 +42,7 @@ class ControllerCommonLanguage extends Controller {
 			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
 		}
 
-        if ($this->registry->has('oct_mobiledetect')) {
-            if ($this->oct_mobiledetect->isMobile() || $this->oct_mobiledetect->isTablet()) {
-                return $this->load->view('common/language_mobile', $data);
-            } else {
-                return $this->load->view('common/language', $data);
-            }
-        } else {
-            return $this->load->view('common/language', $data);
-        }
-        //return $this->load->view('common/language', $data);
-
+		return $this->load->view('common/language_mobile', $data);
 	}
 
 	public function language() {

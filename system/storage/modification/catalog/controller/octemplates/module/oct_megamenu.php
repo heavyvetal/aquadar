@@ -210,6 +210,10 @@ class ControllerOCTemplatesModuleOctMegamenu extends Controller {
 
     public function mobileSideBar($status = 0) {
 	    if ($status) {
+
+            //$data['language'] = $this->load->controller('common/language_mobile');
+            $data['language'] = $this->load->controller('common/language');
+
 		    $data['oct_popup_cart_status'] = $this->config->get('theme_oct_feelmart_popup_cart_status');
 
 			$oct_feelmart_data = $this->config->get('theme_oct_feelmart_data');

@@ -72,12 +72,31 @@ header .fm-logo img {
     max-width: 197px;
 }
 
+@media (max-width: 992px) {
+    header .fm-logo img {
+        box-sizing: content-box;
+        max-width: 117px;
+    }
+}
+
 header .btn-link {
     font-size: 20px;
 }
 
 header .fm-header-address {
     padding-left: 20px;
+}
+
+header #logo .address_title {
+    display: none;
+}
+@media (max-width: 1600px) {
+    header #logo .address_title {
+        display: block;
+    }
+    .fm-header-address .address_title {
+        display: none;
+    }
 }
 
 header .fm-header-address .btn-link i {
@@ -90,7 +109,7 @@ header .fm-header-address .btn-link i {
     text-decoration: none;
 }
 
-header .fm-header-phones {
+.fm-header-phones {
     padding-right: 40px;
 }
 
@@ -100,6 +119,15 @@ header .phone-number-row {
 
 .fm-phone-content .btn-link  {
     font: normal normal normal 18px/23px Cera Pro;
+}
+
+@media (max-width: 350px) {
+    .fm-phone-content .btn-link {
+        font-size: 14px;
+    }
+    .fm-header-phones {
+        padding-right: 15px;
+    }
 }
 
 .btn-link, .info-link {
@@ -130,6 +158,8 @@ header .phone-number-row {
     padding-right: 35px;
 }
 
+
+/*--------- Footer -----------*/
 .fm-main-footer,
 .fm-footer-subscribe {
     background-color: #1C1C1C;
@@ -142,4 +172,78 @@ header .phone-number-row {
 
 .fm-footer-subscribe::before {
     color: rgba(255, 170, 165, .3);
+}
+
+/*----- Mobile devices ------*/
+#language.is-mobile {
+    margin-right: 0px;
+    padding: 0 20px;
+    #min-width: auto;
+    min-width: 150px;
+    background-color: initial;
+    box-shadow: initial;
+}
+
+#language.is-mobile .btn-link img {
+    margin-right: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 760px) {
+    #language.is-mobile {
+        padding: 0 20px;
+        min-width: auto;
+        background-color: initial;
+        box-shadow: initial;
+    }
+}
+
+
+#fm_mobile_menu_button {
+    background-color: #005D8F !important;
+}
+
+#fm_mobile_nav #fm_mobile_menu_button {
+    background: #005D8F url(../img/icon_menu.svg) no-repeat center center;
+}
+
+
+@media (max-width: 1600px) {
+    #logo {
+        max-width: 25%;
+    }
+    .fm-header-address {
+        max-width: 27.7%;
+    }
+}
+@media (max-width: 1200px) {
+    .fm-header-address {
+        max-width: 31.7%;
+    }
+}
+@media (max-width: 992px) {
+    #logo {
+        max-width: 100%;
+        font-size: 15px;
+    }
+    .fm-header-address {
+        max-width: 41.7%;
+    }
+}
+@media (max-width: 400px) {
+    .fm-header-phones
+    {
+        padding-right: 25px;
+    }
+    .fm-header-phones .fm-phone-content .btn-link
+    {
+        font-size: 15px;
+    }
+}
+@media (max-width: 400px) {
+    .fm-header-phones
+    {
+        max-width: 40%;
+    }
 }

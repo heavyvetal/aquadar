@@ -99,7 +99,12 @@
 		{% if logo %}
     	<div id="logo" class="col-6 col-md-2 col-lg-3 col-xl-2">
 			{% if oct_home is defined and oct_home %}
-				<div class="fm-logo"><a href="/"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" /></a></div>
+				<div class="fm-logo">
+					<a href="/">
+						<img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" />
+					</a>
+				</div>
+				<div class="address_title">{{ address_title }}</div>
 			{% else %}
 			<div class="fm-logo">
 			<a href="{{ home }}">
@@ -115,7 +120,9 @@
 		<div class="d-none d-md-flex col-md-7 col-lg-6 col-xl-6 fm-header-address">
 	        <div class="header-dropdown-box">
 				<a class="header-dropdown-toggle btn btn-header btn-link d-flex align-items-center h-100" href="javascript:;" role="button">
-					<span>{{ address_title }}</span>
+
+					<span class="address_title">{{ address_title }}</span>
+
 					<i class="fas fa-map-marker-alt"></i>
 					<span>{{ oct_feelmart_data.contact_address[oct_lang_id] }}</span>
 				</a>
