@@ -15,3 +15,6 @@ $_['text_checkout']      = 'Оформление заказа';
 $_['text_search']        = 'Поиск';
 $_['text_all']           = 'Смотреть Все';
 $_['text_address_title'] = 'Центр чистой воды';
+$_['text_top_row1'] = 'В КВАРТИРЕ';
+$_['text_top_row2'] = 'В КОТЕДЖЕ';
+$_['text_top_row3'] = 'В ОФИСЕ';

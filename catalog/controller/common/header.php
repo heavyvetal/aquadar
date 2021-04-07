@@ -79,6 +79,9 @@ class ControllerCommonHeader extends Controller {
 
 		// New data for the header
         $data['address_title'] = $this->language->get('text_address_title');
+        $data['text_top_row1'] = $this->language->get('text_top_row1');
+        $data['text_top_row2'] = $this->language->get('text_top_row2');
+        $data['text_top_row3'] = $this->language->get('text_top_row3');
 
 		return $this->load->view('common/header', $data);
 	}
