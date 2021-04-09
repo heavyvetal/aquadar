@@ -21,6 +21,7 @@ header {
     background-color: #dbe4eb;
 }
 
+/*--------- Header -----------*/
 #top .container {
     padding-top: 8px;
 }
@@ -121,11 +122,12 @@ header .fm-header-address .btn-link i {
     padding-right: 40px;
 }
 
-header .phone-number-row {
+.fm-header-phones .phone-number-row {
     text-align: left;
 }
 
 .fm-phone-content .btn-link  {
+    cursor: initial;
     font: normal normal normal 18px/23px Cera Pro;
 }
 
@@ -197,12 +199,65 @@ header .phone-number-row {
     font: italic normal bold 14px/17px Nexa Slab Bold Italic;
 }
 
+.fm-footer-subscribe-subscribe .fm-footer-subscribe-subscribe-input {
+    border: 1px solid #6286a4;
+}
+
+.fm-footer-subscribe-subscribe .fm-footer-subscribe-subscribe-input::placeholder {
+    color: #ffffff;
+}
+
+.fm-footer-subscribe-subscribe .form-checkbox-group label .check-box {
+    border-color: #005D8F;
+}
+
+.fm-footer-subscribe-subscribe .form-checkbox-group label {
+    color: #676B6E;
+}
+
+.fm-footer-subscribe-subscribe .form-checkbox-group label a {
+    color: #676B6E;
+    text-decoration: none;
+}
+
+/* Phones */
 footer .fm-phone-box .btn-link {
     color: #FFFFFF;
+    font-family: Cera Pro;
 }
 
 footer .phone-number-row {
     text-align: left;
+}
+
+/* Mail */
+.fm-main-footer-contact-address,
+.footer-mail,
+.fm-main-footer-title {
+    font-family: Cera Pro Medium;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-address,
+.fm-main-footer-contact .fm-main-footer-contact-link {
+    font-size: 16px;
+}
+
+.fm-main-footer-contact .btn-link {
+    font-weight: 400;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-btn {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-link {
+    color: #6286A4;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-link {
+    text-decoration: none;
+    border-bottom: 1px solid #6286A4;
 }
 
 .fm-main-footer-contact .fm-main-footer-contact-btn {
@@ -213,8 +268,27 @@ footer .phone-number-row {
     border-color: #6286a4;
 }
 
-.fm-main-footer {
-    padding-bottom: 195px;
+
+/* Shedule */
+.fm-main-footer-title .shedule-title-text {
+    text-transform: uppercase;
+}
+
+.fm-main-footer-shedule .fm-main-footer-title.row {
+    margin-left: 0;
+}
+
+.fm-main-footer-shedule .shedule-img {
+    padding-right: 7px;
+}
+
+.fm-main-footer-shedule .shedule-title-text {
+    line-height: 2;
+}
+
+.fm-main-footer-shedule-list li{
+    color: #ffffff;
+    font-size: 18px;
 }
 
 .fm-main-footer-social-list .fm-main-footer-social-link {
@@ -225,10 +299,12 @@ footer .phone-number-row {
     border-radius: initial;
 }
 
+.fm-main-footer {
+    padding-bottom: 195px;
+}
 
 
-
-    /*----- Mobile devices ------*/
+/*------ Mobile devices ------*/
 #language.is-mobile {
     margin-right: 0px;
     padding: 0 20px;
@@ -283,6 +359,10 @@ footer .phone-number-row {
     }
     .fm-header-address {
         max-width: 41.7%;
+    }
+    .fm-main-footer-shedule .fm-main-footer-title.row {
+        display: flex;
+        justify-content: center;
     }
 }
 @media (max-width: 400px) {

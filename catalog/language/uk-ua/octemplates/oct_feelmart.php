@@ -75,7 +75,7 @@ $_['oct_cat_quantity']						= 'Кількість:';
 
 // Footer text
 $_['oct_footer_category']					= 'Категорії';
-$_['oct_footer_social_tex']					= 'Ми в соціальних мережах:';
+$_['oct_footer_social_tex']					= '';
 $_['oct_footer_contacts']					= 'Наші контакти';
 
 // Account text

@@ -46,10 +46,18 @@
 			            <button type="button" onclick="octPopupCallPhone()" class="fm-main-footer-contact-btn fm-btn">{{ oct_to_contact_us }}</button>
 						{% endif %}
 			            {% if oct_feelmart_data.contact_address[oct_lang_id] is defined and oct_feelmart_data.contact_address[oct_lang_id] %}
-	                    <div class="fm-main-footer-contact-address">{{ oct_feelmart_data.contact_address[oct_lang_id] }}</div>
+	                    <div class="fm-main-footer-contact-address">
+							<img src="/catalog/view/theme/oct_feelmart/img/icon_place_foot.svg" alt="icon_place">
+							{{ oct_feelmart_data.contact_address[oct_lang_id] }}
+						</div>
 	                    {% endif %}
 	                    {% if oct_feelmart_data.contact_email is defined and oct_feelmart_data.contact_email %}
-	                    <a href="mailto:{{ oct_feelmart_data.contact_email }}" class="fm-main-footer-contact-link">{{ oct_feelmart_data.contact_email }}</a>
+						<div class="footer-mail">
+							<img src="/catalog/view/theme/oct_feelmart/img/icon_mail_foot.svg" alt="icon_mail">
+							<a href="mailto:{{ oct_feelmart_data.contact_email }}" class="fm-main-footer-contact-link">
+								{{ oct_feelmart_data.contact_email }}
+							</a>
+						</div>
 	                    {% endif %}
 			            <!--ul class="fm-main-footer-payments-list list-unstyled d-flex justify-content-center">
 				            {% if oct_feelmart_data.payments.sber is defined and oct_feelmart_data.payments.sber %}
@@ -124,8 +132,18 @@
 
 	            <div class="col-sm-6 col-md-6 col-lg-3 fm-main-footer-fourth fm-main-footer-list order-1 order-lg-3">
 	                {% if oct_contact_opens is defined and oct_contact_opens is not empty %}
+
 	            	<div class="fm-main-footer-shedule">
-	                	<div class="fm-main-footer-title">{{ oct_working_hours }}</div>
+
+	                	<div class="fm-main-footer-title row">
+							<div class="shedule-img">
+								<img src="/catalog/view/theme/oct_feelmart/img/icon_clock_foot.svg" alt="icon_facebook">
+							</div>
+							<div class="shedule-title-text">
+								{{ oct_working_hours }}
+							</div>
+						</div>
+
                         <ul class="fm-main-footer-shedule-list list-unstyled">
                         	{% for oct_contact_open in oct_contact_opens %}
                             <li class="fm-main-footer-shedule-item">{{ oct_contact_open }}</li>
@@ -141,7 +159,7 @@
                         	{% for social in oct_feelmart_data.socials %}
                             <li class="fm-main-footer-social-item">
 								<a rel="nofollow" href="{{ (social.link == "#" or social.link is empty) ? 'javascript:;' : social.link }}" class="fm-main-footer-social-link fm-main-footer-social-link-{{ social.icone|replace({'fa ': "", "fab " : "", "far " : "", "fas " : ""}) }}" target="_blank">
-									<img src="/catalog/view/theme/oct_feelmart/img/icon_facebook.svg" alt="">
+									<img src="/catalog/view/theme/oct_feelmart/img/icon_facebook.svg" alt="icon_facebook">
 									<!--i class="{{ social.icone }}"></i-->
 								</a>
 							</li>
