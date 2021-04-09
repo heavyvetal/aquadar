@@ -6,6 +6,14 @@
     font-family: "Cera Pro Medium";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-Medium.woff");
 }
+@font-face {
+    font-family: "Nexa Slab";
+    src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/NexaSlab-Regular.woff2");
+}
+@font-face {
+    font-family: "Nexa Slab Bold Italic";
+    src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/NexaSlabBoldItalic.woff2");
+}
 
 
 body,
@@ -174,7 +182,53 @@ header .phone-number-row {
     color: rgba(255, 170, 165, .3);
 }
 
-/*----- Mobile devices ------*/
+.fm-footer-subscribe {
+    color: #6286A4;
+}
+
+.fm-footer-subscribe .fm-footer-subscribe-info .fm-footer-subscribe-title {
+    color: #6286A4;
+    font: normal normal bold 18px/23px Cera Pro;
+    font-weight: bold;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+}
+.fm-footer-subscribe-text {
+    font: italic normal bold 14px/17px Nexa Slab Bold Italic;
+}
+
+footer .fm-phone-box .btn-link {
+    color: #FFFFFF;
+}
+
+footer .phone-number-row {
+    text-align: left;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-btn {
+    background-color: #005d8f;
+}
+
+.fm-main-footer-contact .fm-main-footer-contact-btn, .fm-main-footer-contact .fm-main-footer-contact-btn:hover, li.fm-product-description-nav-item-active a::after, li.fm-product-description-nav-item:hover a::after, .fm-page-main-title::after, .fm-account-list .fm-account-item:hover {
+    border-color: #6286a4;
+}
+
+.fm-main-footer {
+    padding-bottom: 195px;
+}
+
+.fm-main-footer-social-list .fm-main-footer-social-link {
+    width: initial;
+    height: initial;
+    line-height: initial;
+    border: none;
+    border-radius: initial;
+}
+
+
+
+
+    /*----- Mobile devices ------*/
 #language.is-mobile {
     margin-right: 0px;
     padding: 0 20px;
