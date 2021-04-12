@@ -6,7 +6,8 @@
 		<div class="col-md-{% if oct_main_class %}{% if loop.last and (oct_class == 4 or oct_class == 12) %}12{% else %}6{% endif %}{% else %}6{% endif %} col-lg-{{ oct_class }}">
 			<div class="fm-advantages-block text-center h-100" id="block{{ module }}-{{ key }}">
 				<div class="fm-advantages-img">
-					<i class="{{ oct_benefit.icon }}"></i>
+					<img src="/catalog/view/theme/oct_feelmart/img/icon_poslugy{{ key }}.svg" alt="icon_poslugy{{ key }}">
+					<!--i class="{{ oct_benefit.icon }}"></i-->
 				</div>
 				<div class="fm-advantages-title">
 					{% if oct_benefit.link[language_id] is defined and oct_benefit.link[language_id] %}

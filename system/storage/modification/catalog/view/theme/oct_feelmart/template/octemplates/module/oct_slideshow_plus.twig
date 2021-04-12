@@ -4,7 +4,8 @@
 			{% set key = 0 %}
 			{% for item_slide in oct_slideshows_plus %}
 			{% set key = key + 1 %}
-			<div class="fm-slideshow-plus-item fm-slideshow-plus-item_{{ key }}">
+			<div class="fm-slideshow-plus-item fm-slideshow-plus-item_{{ key }}"
+				 style="background: url('/image/catalog/top_slider/Slider_1_background.png'); background-size: cover;">
 				<div class="fm-slideshow-plus-item-title">{{ item_slide.title }}</div>
 				<div class="fm-slideshow-plus-item-info d-flex justify-content-between">
 					<div class="fm-slideshow-plus-item-text">
