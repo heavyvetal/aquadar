@@ -124,7 +124,8 @@ class ControllerExtensionModuleFeatured extends Controller {
 					}
 
 					if ($this->config->get('config_tax')) {
-						$tax = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
+//						$tax = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
+                        $tax = false;
 					} else {
 						$tax = false;
 					}
@@ -199,6 +200,9 @@ class ControllerExtensionModuleFeatured extends Controller {
 
             $data['module_name'] = mb_strtolower(str_replace('ControllerExtensionModule', '', get_class($this)));
 			$data['module'] = $module++;
+
+			if ($data['module'] == 1) $data['heading_title']=$this->language->get('heading_title_module1');
+			if ($data['module'] == 3) $data['heading_title']=$this->language->get('heading_title_module3');
 
 			return $this->load->view('octemplates/module/oct_products_modules', $data);
 			
