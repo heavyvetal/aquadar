@@ -197,6 +197,7 @@ class ControllerExtensionModuleLatest extends Controller {
             $data['module_name'] = mb_strtolower(str_replace('ControllerExtensionModule', '', get_class($this)));
 			$data['module'] = $module++;
 
+			/* Костыль на смену текстовки модуля рекомендованные */
 			if ($data['module'] == 1) $data['heading_title']=$this->language->get('heading_title_module1');
 			if ($data['module'] == 3) $data['heading_title']=$this->language->get('heading_title_module3');
 
