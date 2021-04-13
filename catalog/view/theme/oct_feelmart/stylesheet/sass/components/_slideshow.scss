@@ -16,9 +16,9 @@
   transition: box-shadow $mainTransition;
   height: 100%;
   width: 100%;
-  min-height: 686px !importan;
+  min-height: 686px !important;
   @media (min-width: $break-md) {
-  	min-height: 460px !importan;
+  	min-height: 460px !important;
   }
 
   img {
