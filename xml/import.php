@@ -1,5 +1,5 @@
 <?php
-$xmlString = file_get_contents(__DIR__. "\products.xml");
+$xmlString = file_get_contents(__DIR__. "\aquadar.xml");
 
 $xml = new SimpleXMLElement($xmlString);
 

@@ -159,7 +159,7 @@ class ControllerExtensionModuleOCTBenefits extends Controller {
 				}
 
 		    	foreach ($oct_benegit_data['text'] as $language_id => $oct_benegit_data_description) {
-					if ((utf8_strlen($oct_benegit_data_description) < 2) || (utf8_strlen($oct_benegit_data_description) > 64)) {
+					if ((utf8_strlen($oct_benegit_data_description) < 2) || (utf8_strlen($oct_benegit_data_description) > 128)) {
 						$this->error['oct_benegits_data'][$benegit_data_id]['text'][$language_id] = $this->language->get('error_text');
 					}
 				}
