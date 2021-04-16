@@ -10,12 +10,15 @@
 					<div class="fm-slideshow-plus-item-info d-flex justify-content-between">
 						<div class="fm-slideshow-plus-item-text">
 							<p>{{ item_slide.description }}</p>
+							<div class="fm-slideshow-plus-item-img-outer">
+								<div class="fm-slideshow-plus-item-img">
+									<img src="{{ item_slide.image }}" alt="{{ item_slide.title }}">
+								</div>
+							</div>
 							<a href="{{ item_slide.link }}" class="fm-slideshow-plus-item-btn fm-btn">{{ item_slide.button }}</a>
 						</div>
-						<div class="fm-slideshow-plus-item-img h-100">
-							<img src="{{ item_slide.image }}" alt="{{ item_slide.title }}">
-						</div>
 					</div>
+					
 					<style>
 						{% if item_slide.background_color %}
 						#fm-slideshow-plus-{{ module }} .fm-slideshow-plus-item_{{ key }} {background-color: {{ item_slide.background_color }};}
@@ -40,7 +43,7 @@
 			$( document ).ready(function() {
 
 				$('#fm-slideshow-plus-{{ module }}').slick({
-					autoplay: true,
+					autoplay: true, 
 					dots: true,
 					arrows: false,
 					infinite: true,
