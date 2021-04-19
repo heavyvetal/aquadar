@@ -1,6 +1,6 @@
 <?php
 // Text
-$_['text_information'] = 'Інформація';
+$_['text_information'] = 'Послуги';
 $_['text_service'] = 'Служба підтримки';
 $_['text_extra'] = 'Додатково';
 $_['text_contact'] = 'Контакти';
