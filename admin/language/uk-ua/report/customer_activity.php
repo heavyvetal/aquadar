@@ -4,7 +4,7 @@ $_['heading_title'] = 'Звіт діяльності клієнтів';
 
 // Text
 $_['text_list'] = 'Список активності клієнтів';
-$_['text_address_add'] = '<a href="customer_id=%d>%s</a> - доданий новий адресу.';
+$_['text_address_add'] = '<a href="customer_id=%d>%s</a> - додана нова адреса.';
 $_['text_address_edit'] = '<a href="customer_id=%d>%s</a> - оновлено адресу.';
 $_['text_address_delete'] = '<a href="customer_id=%d>%s</a> - вилучений один з адрес.';
 $_['text_edit'] = '<a href="customer_id=%d>%s</a> - оновлена інформація облікового запису.';

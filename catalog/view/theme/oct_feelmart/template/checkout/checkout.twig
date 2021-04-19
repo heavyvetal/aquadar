@@ -137,7 +137,7 @@ $(document).ready(function() {
             $('#collapse-payment-address .panel-body').html(html);
 
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_payment_address }} <i class="fas fa-chevron-down"></i></a>');
-			
+
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -170,7 +170,7 @@ $(document).delegate('#button-account', 'click', function() {
 			} else {
 				$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">{{ text_checkout_payment_address }} <i class="fas fa-chevron-down"></i></a>');
 			}
-			
+
 			$('a[href=\'#collapse-checkout-option\']').trigger('click');
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
         },
@@ -235,12 +235,12 @@ $(document).delegate('#button-register', 'click', function() {
                 $('#button-register').button('reset');
 
                let errorOption = '';
-				
+
 				$.each(json['error'], function(i, val) {
 					$('#fm-callback-modal [name="' + i + '"]').addClass('error_style');
-					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+					errorOption += '<div class="alert-text-item">' + val + '</div>';
 				});
-				
+
 				fmNotify('danger', errorOption);
 
 				// Highlight any found errors
@@ -370,14 +370,14 @@ $(document).delegate('#button-payment-address', 'click', function() {
             if (json['redirect']) {
                 location = json['redirect'];
             } else if (json['error']) {
-	            
+
                 let errorOption = '';
-				
+
 				$.each(json['error'], function(i, val) {
 					$('#fm-callback-modal [name="' + i + '"]').addClass('error_style');
-					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+					errorOption += '<div class="alert-text-item">' + val + '</div>';
 				});
-				
+
 				fmNotify('danger', errorOption);
 
 				// Highlight any found errors
@@ -445,7 +445,7 @@ $(document).delegate('#button-payment-address', 'click', function() {
 						error: function(xhr, ajaxOptions, thrownError) {
 							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 						}
-					});				
+					});
 				});
                 {% endif %}
             }
@@ -477,14 +477,14 @@ $(document).delegate('#button-shipping-address', 'click', function() {
                 $('#button-shipping-address').button('reset');
 
                 let errorOption = '';
-				
+
 				$.each(json['error'], function(i, val) {
 					$('#fm-callback-modal [name="' + i + '"]').addClass('error_style');
-					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+					errorOption += '<div class="alert-text-item">' + val + '</div>';
 				});
-				
+
 				fmNotify('danger', errorOption);
-				
+
 
 				// Highlight any found errors
 				$('.text-danger').parent().parent().addClass('has-error');
@@ -506,7 +506,7 @@ $(document).delegate('#button-shipping-address', 'click', function() {
 
 						$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('{{ text_checkout_payment_method }}');
 						$('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('{{ text_checkout_confirm }}');
-						
+
                         $.ajax({
                             url: 'index.php?route=checkout/shipping_address',
                             dataType: 'html',
@@ -564,12 +564,12 @@ $(document).delegate('#button-guest', 'click', function() {
                 $('#button-guest').button('reset');
 
                 let errorOption = '';
-				
+
 				$.each(json['error'], function(i, val) {
 					$('#fm-callback-modal [name="' + i + '"]').addClass('error_style');
-					errorOption += '<div class="alert-text-item">' + val + '</div>'; 
+					errorOption += '<div class="alert-text-item">' + val + '</div>';
 				});
-				
+
 				fmNotify('danger', errorOption);
 
 				// Highlight any found errors
@@ -608,7 +608,7 @@ $(document).delegate('#button-guest', 'click', function() {
 
 							$('a[href=\'#collapse-shipping-method\']').trigger('click');
 							$('a[href=\'#collapse-payment-address\']').trigger('click');
-						
+
 
 							$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('{{ text_checkout_payment_method }}');
 							$('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('{{ text_checkout_confirm }}');
@@ -632,7 +632,7 @@ $(document).delegate('#button-guest', 'click', function() {
 
 							$('a[href=\'#collapse-shipping-address\']').trigger('click');
 							$('a[href=\'#collapse-payment-address\']').trigger('click');
-							
+
 
 							$('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('{{ text_checkout_shipping_method }}');
 							$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('{{ text_checkout_payment_method }}');
@@ -808,7 +808,7 @@ $(document).delegate('#button-payment-method', 'click', function() {
                 location = json['redirect'];
             } else if (json['error']) {
                 $('#button-payment-method').button('reset');
-                
+
                 if (json['error']['warning']) {
                     fmNotify('danger', json['error']['warning']);
                 }

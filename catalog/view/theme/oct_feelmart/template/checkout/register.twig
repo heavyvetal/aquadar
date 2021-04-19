@@ -176,7 +176,9 @@
 		        <label class="fm-control-label" for="input-payment-postcode"><span class="required">*</span> {{ entry_postcode }}</label>
 		        <input type="text" name="postcode" value="{{ postcode }}" placeholder="{{ entry_postcode }}" id="input-payment-postcode" class="form-control" />
 		    </div>
-		    <div class="form-group">
+
+			{# Заблочен выбор страны #}
+		    <div class="form-group" style="display:none;>
 		        <label class="fm-control-label" for="input-payment-country"><span class="required">*</span> {{ entry_country }}</label>
 		        <select name="country_id" id="input-payment-country" class="fm-select form-control">
 			        <option value="">{{ text_select }}</option>
@@ -189,6 +191,7 @@
 			        {% endfor %}
 		        </select>
 		    </div>
+
 		    <div class="form-group">
 		        <label class="fm-control-label" for="input-payment-zone"><span class="required">*</span> {{ entry_zone }}</label>
 		        <select name="zone_id" id="input-payment-zone" class="fm-select form-control"></select>

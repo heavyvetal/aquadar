@@ -6,7 +6,7 @@ $_['heading_title'] = 'Недавня активність';
 $_['text_extension'] = 'Розширення';
 $_['text_success'] = 'Налаштування успішно змінено!';
 $_['text_edit'] = 'Налаштування';
-$_['text_customer_address_add'] = '<a href="customer_id=%d">%s</a> - доданий новий адресу.';
+$_['text_customer_address_add'] = '<a href="customer_id=%d">%s</a> - додана нова адреса.';
 $_['text_customer_address_edit'] = '<a href="customer_id=%d">%s</a> - оновлено адресу.';
 $_['text_customer_address_delete'] = '<a href="customer_id=%d">%s</a> - вилучений один з адрес.';
 $_['text_customer_edit'] = '<a href="customer_id=%d">%s</a> - оновлена інформація облікового запису.';

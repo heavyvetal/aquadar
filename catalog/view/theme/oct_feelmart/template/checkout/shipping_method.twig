@@ -19,7 +19,7 @@ fmNotify('warning', '{{ error_warning }}');
 	    <input type="radio" id="shipping_method{{ quote.code }}" name="shipping_method" value="{{ quote.code }}" class="input-radio" />
 	    {% endif %}
 	    <span class="radio-box"></span>
-	    {{ quote.title }} - {{ quote.text }}
+	    {{ quote.title }}{# - {{ quote.text }}#}
 	    </label>
 	</div>
 	{% endfor %}
