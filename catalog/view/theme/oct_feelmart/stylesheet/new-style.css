@@ -82,7 +82,7 @@ header {
 }
 
 header {
-    font: normal normal normal 20px/25px Cera Pro Medium;
+    font: normal normal normal 20px/25px Cera Pro;
 }
 
 header .container .row {
@@ -418,7 +418,7 @@ header .fm-header-address .btn-link i {
 }
 
 .fm-html-box p{
-    font-family: "Cera Pro Medium";
+    font-family: "Cera Pro";
     color: #000;
     font-size: 16px;
 }

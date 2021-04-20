@@ -195,8 +195,12 @@
             <div class="fm-phone-content text-right">
             {% if oct_contact_telephones|length > 1 %}
               <div class="header-dropdown-box btn-link dropdown-toggle align-items-center">
-				  <div class="phone-number-row">{{ oct_contact_telephones[0] }}</div>
-				  <div class="phone-number-row">{{ oct_contact_telephones[1] }}</div>
+				  <div class="phone-number-row">
+					  <a href="tel:{{ oct_contact_telephones[0]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" class="phoneclick">{{ oct_contact_telephones[0] }}</a>
+				  </div>
+				  <div class="phone-number-row">
+					  <a href="tel:{{ oct_contact_telephones[1]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" class="phoneclick">{{ oct_contact_telephones[1] }}</a>
+				  </div>
               </div>
               {% else %}
 				<a class="btn btn-link dropdown-toggle d-flex align-items-center" href="tel:{{ oct_contact_telephones[0]|replace({" " : "", "-" : "", "(" : "", ")" : ""}) }}" role="button" id="us-phones-dropdown"><span>{{ oct_contact_telephones[0] }}</span></a>
