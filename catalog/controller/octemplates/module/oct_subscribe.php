@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 /**********************************************************/
 /*	@copyright	OCTemplates 2019-2020					  */
 /*	@support	https://octemplates.net/					  */
@@ -154,7 +155,7 @@ class ControllerOCTemplatesModuleOctSubscribe extends Controller {
 	
 					$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
 	
-					$json['error']['agree'] = sprintf($this->language->get('error_oct_terms'), $information_info['title']);
+					//$json['error']['agree'] = sprintf($this->language->get('error_oct_terms'), $information_info['title']);
 				}
 	            
 	            if (!isset($json['error'])) {
