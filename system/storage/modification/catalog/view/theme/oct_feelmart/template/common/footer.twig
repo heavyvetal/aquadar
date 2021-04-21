@@ -318,41 +318,7 @@ for(var i = 0; i < elementsB.length; i++){
 			{% endif %}
 			
 
-			{% if (oct_policy_value is defined and oct_policy_value is not empty and oct_policy_value) %}
-			<script>
-			function get_oct_policy() {
-				$.ajax({
-					url: "index.php?route=common/footer/getOctPolicy",
-					type: "post",
-					dataType: "json",
-					cache: false,
-					success: function(t) {
-						if (t['text_oct_policy']) {
-							var html = '<div id="oct-policy" class="fixed-bottom"><div class="container"><div class="row"><div class="col-lg-12 d-flex align-items-center justify-content-between flex-column flex-md-row"><div class="oct-policy-text">'+ t['text_oct_policy'] +'</div><button type="button" id="oct-policy-btn">'+ t['oct_policy_accept'] +'</button></div></div></div></div>';
-
-							$('body').append(html);
-
-							$('#oct-policy-btn').on('click', function () {
-								$('#oct-policy').addClass('hidden');
-								const date = new Date(t['oct_policy_day_now'].replace(/-/g, "/"));
-								date.setTime(date.getTime() + (t['oct_max_day'] * 24 * 60 * 60 * 1000));
-								document.cookie = t['oct_policy_value']+'=1; path=/; expires=' + date.toUTCString();
-							});
-						}
-					},
-					error: function(e, t, i) {
-						alert(i + "\r\n" + e.statusText + "\r\n" + e.responseText)
-					}
-				});
-			}
-
-			$(function() {
-				if (getOCTCookie('{{ oct_policy_value }}') == 'undefined') {
-					get_oct_policy();
-				}
-			});
-			</script>
-			{% endif %}
+			
 			
 </body>
 </html>

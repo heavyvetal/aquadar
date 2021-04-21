@@ -42,45 +42,7 @@ class ControllerCommonFooter extends Controller {
 			}
 			
 
-			public function getOctPolicy() {
-				if(isset($this->request->server['HTTP_X_REQUESTED_WITH']) && !empty($this->request->server['HTTP_X_REQUESTED_WITH']) && strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $this->config->get('config_maintenance') == 0) {
-					$data = [];
 
-			        $data['oct_policy_accept'] = $this->language->get('oct_policy_accept');
-			        $data['oct_policy_more'] = $this->language->get('oct_policy_more');
-
-			        $data['text_oct_policy'] = false;
-			        $data['oct_max_day'] = 365;
-			        $data['oct_policy_value'] = 'oct_policy';
-			        $data['oct_policy_day_now'] = date("Y-m-d H:i:s");
-
-			        $oct_policy_status = $this->config->get('oct_policy_status');
-					$oct_policy_data = $this->config->get('oct_policy_data');
-
-			        if (isset($oct_policy_data['value']) && $oct_policy_data['value'] && !empty($oct_policy_data['value'])) {
-		            	$data['oct_policy_value'] = $oct_policy_value = $oct_policy_data['value'];
-		        	}
-
-			        if ($oct_policy_status && (!isset($this->request->cookie[$oct_policy_value]) || !$this->request->cookie[$oct_policy_value])) {
-			            if (isset($oct_policy_data['module_text'][(int)$this->config->get('config_language_id')]) && !empty($oct_policy_data['module_text'][(int)$this->config->get('config_language_id')])) {
-			            	$data['text_oct_policy'] = strip_tags(html_entity_decode($oct_policy_data['module_text'][(int)$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8'));
-
-			            	if (isset($oct_policy_data['indormation_id']) && $oct_policy_data['indormation_id']) {
-				            	$data['text_oct_policy'] .= ' <a target="_blank" href="'. $this->url->link('information/information', 'information_id=' . $oct_policy_data['indormation_id']) . '">' . $data['oct_policy_more'] . '</a>';
-			            	}
-
-			            	if (isset($oct_policy_data['max_day']) && $oct_policy_data['max_day'] && !empty($oct_policy_data['max_day'])) {
-				            	$data['oct_max_day'] = (int)$oct_policy_data['max_day'];
-			            	}
-						}
-			        }
-
-			        $this->response->addHeader('Content-Type: application/json');
-					$this->response->setOutput(json_encode($data));
-				} else {
-					$this->response->redirect($this->url->link('error/not_found', '', true));
-				}
-			}
 			
 	public function index() {
 
