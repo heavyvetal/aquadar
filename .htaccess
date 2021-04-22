@@ -1,3 +1,8 @@
+# Сжатие контента
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
+
 # 1.To use URL Alias you need to be running apache with mod_rewrite enabled.
 
 # 2. In your opencart directory rename htaccess.txt to .htaccess.

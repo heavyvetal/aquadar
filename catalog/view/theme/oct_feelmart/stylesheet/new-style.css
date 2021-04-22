@@ -1,30 +1,37 @@
 @font-face {
     font-family: "Cera Pro Light";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-Light.woff");
+    font-display: swap;
 }
 @font-face {
     font-family: "Cera Pro";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-Regular.woff");
+    font-display: swap;
 }
 @font-face {
     font-family: "Cera Pro Medium";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-Medium.woff");
+    font-display: swap;
 }
 @font-face {
     font-family: "Cera Pro Bold";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-Bold.woff");
+    font-display: swap;
 }
 @font-face {
     font-family: "Cera Pro Bold Italic";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/CeraPro-BoldItalic.woff");
+    font-display: swap;
 }
 @font-face {
     font-family: "Nexa Slab";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/NexaSlab-Regular.woff2");
+    font-display: swap;
 }
 @font-face {
     font-family: "Nexa Slab Bold Italic";
     src: url("/catalog/view/theme/oct_feelmart/stylesheet/fonts/NexaSlabBoldItalic.woff2");
+    font-display: swap;
 }
 
 
