@@ -1,5 +1,5 @@
 <?php
-// Heading 
+// Heading
 $_['heading_title']                  = 'Оформлення замовлення';
 
 $_['button_login']                   = 'Увійти';

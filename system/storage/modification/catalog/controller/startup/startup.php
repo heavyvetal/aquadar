@@ -38,6 +38,7 @@ class ControllerStartupStartup extends Controller {
 		
 		// Url
 		$this->registry->set('url', new Url($this->config->get('config_url'), $this->config->get('config_ssl')));
+$this->url->addRewrite(new Simple\Rewrite($this->config, $this->session));
 		
 		// Language
 		$code = '';

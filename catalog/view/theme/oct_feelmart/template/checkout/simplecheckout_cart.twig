@@ -142,7 +142,7 @@
         </span>
     </div>
 {% endfor %}
-{% if modules['coupon'] is defined %}
+{#{% if modules['coupon'] is defined %}
     <div class="simplecheckout-cart-total">
         <span class="inputs">{{ entry_coupon }}&nbsp;<input class="form-control" type="text" data-onchange="reloadAll" name="coupon" value="{{ coupon }}" /></span>
     </div>
@@ -161,7 +161,7 @@
     <div class="simplecheckout-cart-total simplecheckout-cart-buttons">
         <span class="inputs buttons"><a id="simplecheckout_button_cart" data-onclick="reloadAll" class="button btn-primary button_oc btn"><span>{{ button_update }}</span></a></span>
     </div>
-{% endif %}
+{% endif %}#}
 <input type="hidden" name="remove" value="" id="simplecheckout_remove">
 <div style="display:none;" id="simplecheckout_cart_total">{{ cart_total }}</div>
 {% if display_weight %}
