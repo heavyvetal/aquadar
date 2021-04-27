@@ -52,7 +52,7 @@
                             <div class="radio">
                                 <label for="{{ quote['code'] }}">
                                     <input type="radio" data-onchange="reloadAll" name="shipping_method" {{ quote['dummy'] is not empty ? 'disabled="disabled"' : '' }} {{ quote['dummy'] is not empty ? 'data-dummy="true"' : '' }} value="{{ quote['code'] }}" id="{{ quote['code'] }}" {% if quote['code'] == code %}checked="checked"{% endif %} />
-                                    {{ quote['title'] is not empty ? quote['title'] : '' }}{{ quote['text'] is not empty ? ' - ' ~ quote['text'] : '' }}
+                                    {{ quote['title'] is not empty ? quote['title'] : '' }}{#{{ quote['text'] is not empty ? ' - ' ~ quote['text'] : '' }}#}
                                 </label>
                             </div>
                             {% if quote['description'] is not empty and (display_for_selected is empty or (display_for_selected is not empty and quote['code'] == code)) %}
