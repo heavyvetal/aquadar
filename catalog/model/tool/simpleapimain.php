@@ -7,6 +7,63 @@
 class ModelToolSimpleApiMain extends Model {
     static $data = array();
 
+    public function getAreas($filter = '')
+    {
+        $values = array();
+        $values[] = array(
+            'id'   => 0,
+            'text' => '-- Выберите область --'
+        );
+
+        $this->load->model('delivery/npapi');
+        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+
+        $areas = $this->model_delivery_npapi->getAreas();
+
+        // Костыль перевода кодов новой почты в коды опенкарта, чтобы отображать регион в заказе
+        $area_codes = $this->getAreaCodes();
+
+        foreach ($areas['data'] as $area) {
+            if ($area['DescriptionRu'] != 'АРК') {
+                $values[] = array(
+                    'id'   => $area_codes[$area['Ref']],
+                    'text' => $area['DescriptionRu']
+                );
+            }
+        }
+
+        return $values;
+    }
+
+    public function getAreaCodes()
+    {
+        return array(
+            '7150813e-9b87-11de-822f-000c2965ae0e' => '3480', //черкасы
+            '71508140-9b87-11de-822f-000c2965ae0e' => '3481', //чернигов
+            '7150813f-9b87-11de-822f-000c2965ae0e' => '3482', //черновцы
+            '7150812b-9b87-11de-822f-000c2965ae0e' => '3484', //Днепр
+            '7150812c-9b87-11de-822f-000c2965ae0e' => '3485', //Донецк
+            '71508130-9b87-11de-822f-000c2965ae0e' => '3486', //ИФ
+            '7150813c-9b87-11de-822f-000c2965ae0e' => '3487', //Херсон
+            '7150813d-9b87-11de-822f-000c2965ae0e' => '3488', //Хмель
+            '71508132-9b87-11de-822f-000c2965ae0e' => '3489', //Киров
+            '71508131-9b87-11de-822f-000c2965ae0e' => '3491', //киев
+            '71508133-9b87-11de-822f-000c2965ae0e' => '3492', //луганск
+            '71508134-9b87-11de-822f-000c2965ae0e' => '3493', //львов
+            '71508135-9b87-11de-822f-000c2965ae0e' => '3494', //николаев
+            '71508136-9b87-11de-822f-000c2965ae0e' => '3495', //одесса
+            '71508137-9b87-11de-822f-000c2965ae0e' => '3496', //полтава
+            '71508138-9b87-11de-822f-000c2965ae0e' => '3497', //ровно
+            '71508139-9b87-11de-822f-000c2965ae0e' => '3499', //сумы
+            '7150813a-9b87-11de-822f-000c2965ae0e' => '3500', //тернополь
+            '71508129-9b87-11de-822f-000c2965ae0e' => '3501', //винница
+            '7150812a-9b87-11de-822f-000c2965ae0e' => '3502', //волынь
+            '7150812e-9b87-11de-822f-000c2965ae0e' => '3503', //закарпатье
+            '7150812f-9b87-11de-822f-000c2965ae0e' => '3504', //запорожье
+            '7150812d-9b87-11de-822f-000c2965ae0e' => '3505', //житомир
+        );
+    }
+
     public function getCustomerGroups($filter = '') {
         $values = array();
 

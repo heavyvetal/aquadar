@@ -1,3 +1,71 @@
+$(document).ready(function () {
+	let address_zone_id = '#shipping_address_zone_id';
+	let address_city = '#shipping_address_city';
+
+	getAreas();
+	selectArea();
+
+	$(address_city).attr('autocomplete', 'off');
+	$(address_city).parent().css({'position':'relative'});
+	$(address_city).after('<ul class="dropdown-address" style="position:relative; top: 34px; left: 10px; display: none;"></ul>');
+
+	$(address_city).mouseenter( function () {
+		showDropdown();
+	})
+
+	$(address_city+'+ul.dropdown-address').mouseleave( function () {
+		hideDropdown();
+	})
+	//$(address_city+'+ul.dropdown-address').live('blur', function () {hideDropdown();})
+	document.body.onclick = hideDropdown;
+
+
+	function getAreas() {
+		$.post("index.php?route=checkout/my_np_api/getAreas", "", function (data) {
+			//console.log(data);
+			$(address_zone_id).append(data);
+			$(address_zone_id).change(function () {
+				selectArea();
+			})
+		})
+	}
+
+	function selectArea() {
+		$(address_city).on('input', function () {
+			let selectedArea = $(address_zone_id+' option:selected').attr('value');
+			setTimeout(function () {
+				let city = $(address_city).val();
+				getCities(selectedArea, city);
+			}, 500)
+		})
+	}
+
+	function getCities(selectedArea, city) {
+		$.post("index.php?route=checkout/my_np_api/getCities", {'selected': selectedArea, 'city': city}, function (data) {
+			//console.log(data);
+			$(address_city+'+ul.dropdown-address').html(data);
+			showDropdown();
+			fill();
+		})
+	}
+
+	function fill() {
+		$(address_city+'+ul.dropdown-address>li').on('click', function () {
+			$(address_city).val($(this).html());
+			hideDropdown();
+		})
+	}
+
+	function showDropdown() {
+		$(address_city+'+ul.dropdown-address').css({'display':'block'});
+	}
+
+	function hideDropdown() {
+		$(address_city+'+ul.dropdown-address').css({'display':'none'});
+	}
+
+})
+
 /*********** Function viewport ***********/
 function viewport() {
 	var e = window,

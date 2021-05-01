@@ -804,6 +804,28 @@ footer .fm-phone-box .btn-link {
 }
 
 
+
+
+#simplecheckout_shipping_address ul.dropdown-address {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 10px 30px -10px #000000;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    position: absolute !important;
+    z-index: 1000;
+}
+.dropdown-address li {
+    padding: 5px 10px;
+    background-color: #f8f8f8;
+    list-style-type: none;
+}
+
+
+
 /*------ Mobile devices ------*/
 #language.is-mobile {
     margin-right: 0px;
