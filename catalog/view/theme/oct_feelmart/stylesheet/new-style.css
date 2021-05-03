@@ -803,8 +803,9 @@ footer .fm-phone-box .btn-link {
     background-color: initial;
 }
 
-
-
+.simplecheckout .form-control {
+    border-radius: 10px;
+}
 
 #simplecheckout_shipping_address ul.dropdown-address {
     background-color: white;
@@ -818,7 +819,7 @@ footer .fm-phone-box .btn-link {
     position: absolute !important;
     z-index: 1000;
 }
-.dropdown-address li {
+.simplecheckout .dropdown-address li {
     padding: 5px 10px;
     background-color: #f8f8f8;
     list-style-type: none;
