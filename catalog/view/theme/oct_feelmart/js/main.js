@@ -1,25 +1,51 @@
 $(document).ready(function () {
 	let address_zone_id = '#shipping_address_zone_id';
 	let address_city = '#shipping_address_city';
+	let warehouse = '#shipping_address_warehouse';
 
+	$(address_city + ',' + warehouse).attr('autocomplete', 'off');
+	$(address_city + ',' + warehouse).parent().css({'position':'relative'});
+	$(address_city + ',' + warehouse).after('<ul class="dropdown-address" style="position:relative; top: 34px; left: 10px; display: none;"></ul>');
+
+	/* Initial calls */
 	getAreas();
 	selectArea();
 
-	$(address_city).attr('autocomplete', 'off');
-	$(address_city).parent().css({'position':'relative'});
-	$(address_city).after('<ul class="dropdown-address" style="position:relative; top: 34px; left: 10px; display: none;"></ul>');
-
-	$(address_city).mouseenter( function () {
-		showDropdown();
+	/* Events */
+	let enabledAddressDropdown = false;
+	let enabledWarehouseDropdown = false;
+	
+	$(address_city).click(function () {
+		enabledAddressDropdown = true;
+		showAddressDropdown();
+	})
+	$(address_city).blur(function () {
+		enabledAddressDropdown = false;
+	})
+	$(address_city + '+ul.dropdown-address').mouseleave(function () {
+		hideAddressDropdown();
 	})
 
-	$(address_city+'+ul.dropdown-address').mouseleave( function () {
-		hideDropdown();
+	/*$(warehouse).mouseenter(function () {
+		showWarehouseDropdown();
+	})*/
+	$(warehouse).click(function () {
+		enabledWarehouseDropdown = true;
+		showWarehouseDropdown();
 	})
-	//$(address_city+'+ul.dropdown-address').live('blur', function () {hideDropdown();})
-	document.body.onclick = hideDropdown;
+	$(warehouse).blur(function () {
+		enabledWarehouseDropdown = false;
+		showWarehouseDropdown();
+	})
+	$(warehouse + '+ul.dropdown-address').mouseleave(function () {
+		hideWarehouseDropdown();
+	})
+	$(document).click(function () {
+		if (!enabledAddressDropdown) hideAddressDropdown();
+		if (!enabledWarehouseDropdown) hideWarehouseDropdown();
+	})
 
-
+	/* Actions */
 	function getAreas() {
 		$.post("index.php?route=checkout/my_np_api/getAreas", "", function (data) {
 			//console.log(data);
@@ -30,10 +56,12 @@ $(document).ready(function () {
 		})
 	}
 
+	let timeout_id = 0;
 	function selectArea() {
 		$(address_city).on('input', function () {
-			let selectedArea = $(address_zone_id+' option:selected').attr('value');
-			setTimeout(function () {
+			let selectedArea = $(address_zone_id + ' option:selected').attr('data-value');
+			clearTimeout(timeout_id);
+			timeout_id = setTimeout(function () {
 				let city = $(address_city).val();
 				getCities(selectedArea, city);
 			}, 500)
@@ -42,26 +70,55 @@ $(document).ready(function () {
 
 	function getCities(selectedArea, city) {
 		$.post("index.php?route=checkout/my_np_api/getCities", {'selected': selectedArea, 'city': city}, function (data) {
+			//console.log(selectedArea);
 			//console.log(data);
-			$(address_city+'+ul.dropdown-address').html(data);
-			showDropdown();
-			fill();
+			$(address_city + '+ul.dropdown-address').html(data);
+			fillCityInput();
+			showAddressDropdown();
 		})
 	}
 
-	function fill() {
-		$(address_city+'+ul.dropdown-address>li').on('click', function () {
+	function fillCityInput() {
+		$(address_city + '+ul.dropdown-address>li').on('click', function () {
+			let city_ref = $(this).attr('data-value');
 			$(address_city).val($(this).html());
-			hideDropdown();
+			hideAddressDropdown();
+			getWarehouses(city_ref);
 		})
 	}
 
-	function showDropdown() {
-		$(address_city+'+ul.dropdown-address').css({'display':'block'});
+	function getWarehouses(selectedCity) {
+		$.post("index.php?route=checkout/my_np_api/getWarehouses", {'selected': selectedCity}, function (data) {
+			//console.log(data);
+			$(warehouse + '+ul.dropdown-address').html(data);
+			fillWarehouseInput();
+			showWarehouseDropdown();
+		})
 	}
 
-	function hideDropdown() {
-		$(address_city+'+ul.dropdown-address').css({'display':'none'});
+	function fillWarehouseInput() {
+		$(warehouse + '+ul.dropdown-address>li').on('click', function () {
+			$(warehouse).val($(this).html());
+			hideWarehouseDropdown();
+		})
+	}
+
+	function showAddressDropdown() {
+		$(address_city + '+ul.dropdown-address').css({'display':'block'});
+		hideWarehouseDropdown();
+	}
+
+	function hideAddressDropdown() {
+		$(address_city + '+ul.dropdown-address').css({'display':'none'});
+	}
+
+	function showWarehouseDropdown() {
+		$(warehouse + '+ul.dropdown-address').css({'display':'block'});
+		hideAddressDropdown();
+	}
+
+	function hideWarehouseDropdown() {
+		$(warehouse + '+ul.dropdown-address').css({'display':'none'});
 	}
 
 })
