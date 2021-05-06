@@ -18,6 +18,12 @@ class ControllerCheckoutMyNPApi extends Controller {
             $this->region_default_selector = '-- Оберіть область --';
         }
     }
+
+    public function init()
+    {
+        $this->load->model('delivery/npapi');
+        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+    }
     
     public function index() {
 
@@ -26,8 +32,7 @@ class ControllerCheckoutMyNPApi extends Controller {
     public function getAreas () {
         $result = '<option value="0" selected>'.$this->region_default_selector.'</option>';
 
-        $this->load->model('delivery/npapi');
-        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+        $this->init();
 
         $areas = $this->model_delivery_npapi->getAreas();
 
@@ -48,15 +53,14 @@ class ControllerCheckoutMyNPApi extends Controller {
         $city_name = '';
         $result = '';
 
-        $this->load->model('delivery/npapi');
-        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+        $this->init();
 
         $areas = $this->model_delivery_npapi->getAreas();
 
         if(isset($this->request->post['selected']) && isset($this->request->post['city'])) {
 
             foreach ($areas['data'] as $area) {
-                if ($area['Ref'] == $_POST['selected']) {
+                if ($area[$this->description_language] == $_POST['selected']) {
                     $area_name = $area[$this->description_language];
                     break;
                 }
@@ -80,8 +84,7 @@ class ControllerCheckoutMyNPApi extends Controller {
         $city_ref = '';
         $result = '';
 
-        $this->load->model('delivery/npapi');
-        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+        $this->init();
 
         if(isset($this->request->post['selected'])) {
             $city_ref = $this->request->post['selected'];

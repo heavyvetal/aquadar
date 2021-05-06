@@ -6,17 +6,46 @@
 
 class ModelToolSimpleApiMain extends Model {
     static $data = array();
+    private $description_language = 'Description';
+    private $region_default_selector = '-- Оберіть область --';
+
+    public function __construct($registry)
+    {
+        parent::__construct($registry);
+
+        if ($this->language->get('code') == 'ru') {
+            $this->description_language = 'DescriptionRu';
+            $this->region_default_selector = '-- Выберите область --';
+        }
+
+        if ($this->language->get('code') == 'ua') {
+            $this->description_language = 'Description';
+            $this->region_default_selector = '-- Оберіть область --';
+        }
+    }
+
+    public function init()
+    {
+        $this->load->model('delivery/npapi');
+        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+    }
+
+    public function checkRegionChoice($region_value)
+    {
+        $no_choice = false;
+        if ($region_value != 0) $no_choice = true;
+        return $no_choice;
+    }
 
     public function getAreas($filter = '')
     {
         $values = array();
         $values[] = array(
             'id'   => 0,
-            'text' => '-- Выберите область --'
+            'text' => $this->region_default_selector
         );
 
-        $this->load->model('delivery/npapi');
-        $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
+        $this->init();
 
         $areas = $this->model_delivery_npapi->getAreas();
 
@@ -24,10 +53,10 @@ class ModelToolSimpleApiMain extends Model {
         $area_codes = $this->getAreaCodes();
 
         foreach ($areas['data'] as $area) {
-            if ($area['DescriptionRu'] != 'АРК') {
+            if ($area['DescriptionRu'] != 'АРК') { // В Крыму Новая Почта не работает
                 $values[] = array(
                     'id'   => $area_codes[$area['Ref']],
-                    'text' => $area['DescriptionRu']
+                    'text' => $area[$this->description_language]
                 );
             }
         }

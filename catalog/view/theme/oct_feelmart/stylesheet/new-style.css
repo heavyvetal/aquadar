@@ -809,8 +809,8 @@ footer .fm-phone-box .btn-link {
 
 #simplecheckout_shipping_address ul.dropdown-address {
     background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 10px 30px -10px #000000;
+    border-radius: 0px;
+    box-shadow: 0px 5px 10px -5px #000000;
     margin: 0;
     max-height: 200px;
     overflow-y: auto;
@@ -819,9 +819,19 @@ footer .fm-phone-box .btn-link {
     position: absolute !important;
     z-index: 1000;
 }
-.simplecheckout .dropdown-address li {
+
+.simplecheckout ul.dropdown-address {
+    display: none;
+    position:relative;
+    top: 40px;
+    left: 2%;
+    width: 96%;
+}
+
+.simplecheckout ul.dropdown-address li {
     padding: 5px 10px;
     background-color: #f8f8f8;
+    color: #005d8f;
     list-style-type: none;
 }
 
