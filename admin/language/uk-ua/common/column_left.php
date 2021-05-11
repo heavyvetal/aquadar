@@ -1,5 +1,7 @@
 <?php
 // Text
+$_['text_module_simple']        = 'Проста корзина Simple';
+$_['text_module_liqpay']        = 'LiqPay';
 $_['text_customer_approval']    = 'Затвердження клєнтів';
 $_['text_marketplace']          = 'Магазин модулів';
 $_['text_seo_url']              = 'SEO URL';

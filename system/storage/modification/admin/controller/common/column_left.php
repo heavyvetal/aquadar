@@ -916,9 +916,29 @@ class ControllerCommonColumnLeft extends Controller {
 				'name'	   => $this->language->get('text_reports'),
 				'href'     => '',
 				'children' => $report
-			);	
-			
-			// Stats
+			);
+
+			/* Дополнительные пункты левого меню */
+
+            // Simple
+            $data['menus'][] = array(
+                'id'       => 'simple',
+                'icon'	   => 'fa-dashboard',
+                'name'	   => $this->language->get('text_module_simple'),
+                'href'     => $this->url->link('extension/module/simple', 'user_token=' . $this->session->data['user_token'], true),
+                'children' => array()
+            );
+
+            // LiqPay
+            $data['menus'][] = array(
+                'id'       => 'liqpay',
+                'icon'	   => 'fa-dashboard',
+                'name'	   => $this->language->get('text_module_liqpay'),
+                'href'     => $this->url->link('extension/payment/liqpay', 'user_token=' . $this->session->data['user_token'], true),
+                'children' => array()
+            );
+
+            // Stats
 			$this->load->model('sale/order');
 	
 			$order_total = $this->model_sale_order->getTotalOrders();

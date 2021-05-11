@@ -1,5 +1,7 @@
 <?php
 // Text
+$_['text_module_simple']        = 'Простая корзина Simple';
+$_['text_module_liqpay']        = 'LiqPay';
 $_['text_api']                  = 'API';
 $_['text_attribute']            = 'Атрибуты';
 $_['text_attribute_group']      = 'Группы атрибутов';
