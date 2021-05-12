@@ -20,6 +20,13 @@
 			
 <title>{{ title }}</title>
 
+{% if noindex %}
+<!-- OCFilter Start -->
+<meta name="robots" content="noindex,nofollow" />
+<!-- OCFilter End -->
+{% endif %}
+      
+
 {% if (oct_feelmart_data.open_graph is defined and oct_feelmart_data.open_graph) and octOpenGraphs is not empty %}
 {% for octOpenGraph in octOpenGraphs %}
 {% if octOpenGraph.content is not empty %}

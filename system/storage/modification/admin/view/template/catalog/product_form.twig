@@ -1354,6 +1354,28 @@
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script> 
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> 
+
+  <!-- OCFilter start -->
+  <script>
+      ocfilter.php = {
+      	text_select: '{{ text_select }}',
+      	ocfilter_select_category: '{{ ocfilter_select_category }}',
+      	entry_values: '{{ entry_values }}',
+      	tab_ocfilter: '{{ tab_ocfilter }}'
+      };
+
+      ocfilter.php.languages = [];
+
+      {% for language in languages %}
+      ocfilter.php.languages.push({
+      	'language_id': {{ language.language_id }},
+      	'name': '{{ language.name }}',
+        'image': '{{ language.image }}'
+      });
+      {% endfor %}
+  </script>
+  <!-- OCFilter end -->
+      
   <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({

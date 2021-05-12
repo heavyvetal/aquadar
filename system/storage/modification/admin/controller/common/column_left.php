@@ -300,6 +300,39 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
+
+      // OCFilter start
+			$ocfilter = array();
+
+			if ($this->user->hasPermission('access', 'extension/module/ocfilter')) {
+				$ocfilter[] = array(
+					'name'     => $this->language->get('text_ocfilter_option'),
+					'href'     => $this->url->link('extension/module/ocfilter/filter', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+
+				$ocfilter[] = array(
+					'name'	   => $this->language->get('text_ocfilter_page'),
+					'href'     => $this->url->link('extension/module/ocfilter/page', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+
+				$ocfilter[] = array(
+					'name'	   => $this->language->get('text_ocfilter_setting'),
+					'href'     => $this->url->link('extension/module/ocfilter', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($ocfilter) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_ocfilter'),
+					'href'     => '',
+					'children' => $ocfilter
+				);
+			}
+		  // OCFilter end
+      
 			if ($this->user->hasPermission('access', 'catalog/filter')) {
 				$catalog[] = array(
 					'name'	   => $this->language->get('text_filter'),
@@ -919,6 +952,15 @@ class ControllerCommonColumnLeft extends Controller {
 			);
 
 			/* Дополнительные пункты левого меню */
+
+            // Modules
+            $data['menus'][] = array(
+                'id'       => 'quick_modules',
+                'icon'	   => 'fa-dashboard',
+                'name'	   => 'Модули',
+                'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true),
+                'children' => array()
+            );
 
             // Simple
             $data['menus'][] = array(

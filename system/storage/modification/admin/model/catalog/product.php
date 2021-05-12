@@ -157,6 +157,21 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 		
+
+    // OCFilter start
+    $this->db->query("DELETE FROM " . DB_PREFIX . "ocfilter_option_value_to_product WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['ocfilter_product_option'])) {
+			foreach ($data['ocfilter_product_option'] as $option_id => $values) {
+				foreach ($values['values'] as $value_id => $value) {
+					if (isset($value['selected'])) {
+						$this->db->query("INSERT INTO " . DB_PREFIX . "ocfilter_option_value_to_product SET product_id = '" . (int)$product_id . "', option_id = '" . (int)$option_id . "', value_id = '" . (string)$value_id . "', slide_value_min = '" . (isset($value['slide_value_min']) ? (float)$value['slide_value_min'] : 0) . "', slide_value_max = '" . (isset($value['slide_value_max']) ? (float)$value['slide_value_max'] : 0) . "'");
+					}
+				}
+			}
+		}
+		// OCFilter end
+      
 		if (isset($data['product_layout'])) {
 			foreach ($data['product_layout'] as $store_id => $layout_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_layout SET product_id = '" . (int)$product_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout_id . "'");
@@ -360,6 +375,21 @@ class ModelCatalogProduct extends Model {
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "'");
 
+
+    // OCFilter start
+    $this->db->query("DELETE FROM " . DB_PREFIX . "ocfilter_option_value_to_product WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['ocfilter_product_option'])) {
+			foreach ($data['ocfilter_product_option'] as $option_id => $values) {
+				foreach ($values['values'] as $value_id => $value) {
+					if (isset($value['selected'])) {
+						$this->db->query("INSERT INTO " . DB_PREFIX . "ocfilter_option_value_to_product SET product_id = '" . (int)$product_id . "', option_id = '" . (int)$option_id . "', value_id = '" . (string)$value_id . "', slide_value_min = '" . (isset($value['slide_value_min']) ? (float)$value['slide_value_min'] : 0) . "', slide_value_max = '" . (isset($value['slide_value_max']) ? (float)$value['slide_value_max'] : 0) . "'");
+					}
+				}
+			}
+		}
+		// OCFilter end
+      
 		if (isset($data['product_layout'])) {
 			foreach ($data['product_layout'] as $store_id => $layout_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_layout SET product_id = '" . (int)$product_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout_id . "'");
@@ -382,6 +412,13 @@ class ModelCatalogProduct extends Model {
 			$data['status'] = '0';
 
 			$data['product_attribute'] = $this->getProductAttributes($product_id);
+
+ 		// OCFilter start
+		$this->load->model('extension/ocfilter');
+
+		$data['ocfilter_product_option'] = $this->model_extension_ocfilter->getProductOCFilterValues($product_id);
+		// OCFilter end
+      
 			$data['product_description'] = $this->getProductDescriptions($product_id);
 			$data['product_discount'] = $this->getProductDiscounts($product_id);
 			$data['product_filter'] = $this->getProductFilters($product_id);
@@ -402,6 +439,11 @@ class ModelCatalogProduct extends Model {
 
 	public function deleteProduct($product_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
+
+		// OCFilter start
+		$this->db->query("DELETE FROM " . DB_PREFIX . "ocfilter_option_value_to_product WHERE product_id = '" . (int)$product_id . "'");
+		// OCFilter end
+      
 
 			$oct_product_tabs_status = $this->config->get('oct_product_tabs_status');
 

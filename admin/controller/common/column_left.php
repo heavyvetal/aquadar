@@ -663,6 +663,15 @@ class ControllerCommonColumnLeft extends Controller {
 
 			/* Дополнительные пункты левого меню */
 
+            // Modules
+            $data['menus'][] = array(
+                'id'       => 'quick_modules',
+                'icon'	   => 'fa-dashboard',
+                'name'	   => 'Модули/Расширения',
+                'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true),
+                'children' => array()
+            );
+
             // Simple
             $data['menus'][] = array(
                 'id'       => 'simple',

@@ -14,6 +14,11 @@ class Document {
 	private $title;
 	private $description;
 	private $keywords;
+
+  // OCFilter start
+  private $noindex = false;
+  // OCFilter end
+      
 	private $links = array();
 	private $styles = array();
 	private $scripts = array();
@@ -106,6 +111,17 @@ class Document {
      *
      * @param	string	$title
      */
+
+  // OCFilter start
+  public function setNoindex($state = false) {
+  	$this->noindex = $state;
+  }
+
+	public function isNoindex() {
+		return $this->noindex;
+	}
+  // OCFilter end
+      
 	public function setTitle($title) {
 		$this->title = $title;
 	}
@@ -175,6 +191,17 @@ class Document {
 	 * 
 	 * @return	array
      */
+
+  // OCFilter canonical fix start
+	public function deleteLink($rel) {
+    foreach ($this->links as $href => $link) {
+      if ($link['rel'] == $rel) {
+      	unset($this->links[$href]);
+      }
+    }
+	}
+  // OCFilter canonical fix end
+      
 	public function getLinks() {
 		return $this->links;
 	}

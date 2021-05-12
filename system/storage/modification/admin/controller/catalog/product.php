@@ -373,6 +373,13 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['user_token'] = $this->session->data['user_token'];
 
+
+    // OCFilter start
+    $data['tab_ocfilter'] = $this->language->get('tab_ocfilter');
+    $data['entry_values'] = $this->language->get('entry_values');
+    $data['ocfilter_select_category'] = $this->language->get('ocfilter_select_category');
+    // OCFilter end
+      
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -490,10 +497,23 @@ class ControllerCatalogProduct extends Controller {
 
 	protected function getForm() {
 
+    // OCFilter start
+    $this->document->addStyle('view/stylesheet/ocfilter/ocfilter.css');
+    $this->document->addScript('view/javascript/ocfilter/ocfilter.js');
+    // OCFilter end
+      
+
 			$data['oct_feelmart_seo_title_data'] = $this->config->get('theme_oct_feelmart_seo_title_data');
 			
 		$data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
+
+    // OCFilter start
+    $data['tab_ocfilter'] = $this->language->get('tab_ocfilter');
+    $data['entry_values'] = $this->language->get('entry_values');
+    $data['ocfilter_select_category'] = $this->language->get('ocfilter_select_category');
+    // OCFilter end
+      
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
