@@ -469,7 +469,7 @@ Math.easeIn = function (val, min, max, strength) {
         .find('[aria-describedby^="popover"]')
         .not('[data-toggle="popover-price"]')
         .not(target)
-        .popover('destroy');
+        .popover('dispose');
 
       if (!target.attr('aria-describedby')) {
         var options = {
