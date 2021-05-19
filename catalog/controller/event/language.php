@@ -16,7 +16,7 @@ class ControllerEventLanguage extends Controller {
 	// 2. After contoller load restore old language data
 	public function after(&$route, &$args, &$output) {
 		$data = $this->language->get('backup');
-		
+
 		if (is_array($data)) {
 			foreach ($data as $key => $value) {
 				$this->language->set($key, $value);
