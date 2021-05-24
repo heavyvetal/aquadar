@@ -1,0 +1,159 @@
+/*-------- Landings ---------*/
+#banner-top {
+    position: relative;
+    margin: 0 auto;
+    height: 907px;
+    width: 100%;
+}
+
+#banner-top.flat-bg {
+    background: transparent url('/image/catalog/landing_flat/pic_bathroom@2x.jpg') 34% 50% no-repeat;
+    background-size: cover;
+}
+
+#banner-top.cottage-bg {
+    background: transparent url('/image/catalog/landing_cottage/pic_cottage@2x.jpg') 50% 50% no-repeat;
+    background-size: cover;
+}
+
+#banner-top .opacity-bg {
+    top: 231px;
+    left: 0px;
+    min-width: 924px;
+    height: 907px;
+    background-color: #dbe4eb;
+    opacity: 0.53;
+}
+
+#banner-top .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#banner-top .wrapper {
+    max-width: 641px;
+    padding-left: 17px;
+}
+
+#banner-top .first-title {
+    margin-top: 121px;
+    font: normal normal bold 70px/88px Cera Pro Bold;
+    letter-spacing: 0px;
+    color: #005D8F;
+}
+
+#banner-top .second-title {
+    margin-top: 43px;
+    font: normal normal bold 32px/40px Cera Pro Bold;
+    letter-spacing: 0px;
+    color: #005D8F;
+}
+
+#banner-top .button a {
+    margin-top: 248px;
+    padding: 20px 100px;
+    background-color: #005D8F;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+#banner-top .button a:hover{
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    #banner-top .wrapper {
+        padding-left: 0;
+        text-align: center;
+    }
+    #banner-top .first-title {
+        margin-top: 97px;
+    }
+    #banner-top .button a {
+        margin-top: 160px;
+    }
+}
+@media (max-width: 470px) {
+    #banner-top {
+        margin-top: 30px;
+        width: calc(100% - 30px);
+        height: 613px;
+    }
+    #banner-top.cottage-bg {
+        background: transparent url('/image/catalog/landing_cottage/pic_cottage_mobile.jpg') 34% 50% no-repeat;
+        background-size: cover;
+    }
+    #banner-top .opacity-bg {
+        display: none;
+    }
+    #banner-top .wrapper {
+        padding-left: 0;
+        text-align: center;
+    }
+    #banner-top.cottage-bg .wrapper {
+        padding: 0 28px;
+    }
+    #banner-top.cottage-bg .first-title {
+        margin-top: 45px;
+    }
+    #banner-top.cottage-bg .second-title {
+        margin-bottom: 225px;
+    }
+    #banner-top.cottage-bg .button {
+        position: absolute;
+        top: 464px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    #banner-top .first-title {
+        margin-top: 67px;
+        font: normal normal bold 30px/38px Cera Pro Bold;
+        text-align: center;
+    }
+    #banner-top .second-title {
+        #margin-bottom: 200px;
+        font: normal normal bold 20px/25px Cera Pro Bold;
+        text-align: center;
+    }
+    #banner-top .button {
+        position: absolute;
+        top: 464px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    #banner-top .button a {
+        margin-top: 0;
+        padding: 13px 23px;
+        border-radius: 23px;
+    }
+}
+
+@media (min-width: 576px) {
+    .opacity-bg {
+        width: calc(688px + (100% - 540px)/2);
+    }
+}
+@media (min-width: 768px) {
+    .opacity-bg {
+        width: calc(688px + (100% - 720px)/2);
+    }
+}
+@media (min-width: 992px) {
+    .opacity-bg {
+        width: calc(688px + (100% - 960px)/2);
+    }
+}
+@media (min-width: 1200px) {
+    .opacity-bg {
+        width: calc(688px + (100% - 1140px)/2);
+    }
+}
+@media (min-width: 1600px) {
+    .opacity-bg {
+        width: calc(688px + (100% - 1440px)/2);
+    }
+}

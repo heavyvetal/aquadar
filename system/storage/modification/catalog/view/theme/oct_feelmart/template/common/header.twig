@@ -57,6 +57,9 @@
 <link href="{{ style.href }}" rel="stylesheet" media="{{ style.media }}">
 {% endfor %}
 <link rel="stylesheet" href="/catalog/view/theme/oct_feelmart/stylesheet/new-style.css">
+{% if is_landing_page %}
+<link rel="stylesheet" href="/catalog/view/theme/oct_feelmart/stylesheet/landing-style.css">
+{% endif %}
 {% for script in scripts %}
 <script src="{{ script }}"></script>
 {% endfor %}

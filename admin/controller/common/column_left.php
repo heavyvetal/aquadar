@@ -690,6 +690,15 @@ class ControllerCommonColumnLeft extends Controller {
                 'children' => array()
             );
 
+            // Cache
+            $data['menus'][] = array(
+                'id'       => 'cache_delete',
+                'icon'	   => 'fa-dashboard',
+                'name'	   => 'Сбросить кеш',
+                'href'     => $this->url->link('extension/theme/oct_feelmart/cacheDelete', 'user_token=' . $this->session->data['user_token'], true),
+                'children' => array()
+            );
+
             // Stats
 			$this->load->model('sale/order');
 	

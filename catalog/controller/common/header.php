@@ -83,6 +83,12 @@ class ControllerCommonHeader extends Controller {
         $data['text_top_row2'] = $this->language->get('text_top_row2');
         $data['text_top_row3'] = $this->language->get('text_top_row3');
 
+        // Подгружаем лендинговые стили только на конкретных страницых
+        $data['is_landing_page'] = false;
+        if ($this->request->server['REQUEST_URI'] == '/index.php?route=common/landing_flat' || $this->request->server['REQUEST_URI'] == '/index.php?route=common/landing_cottage') {
+            $data['is_landing_page'] = true;
+        }
+
 		return $this->load->view('common/header', $data);
 	}
 }
