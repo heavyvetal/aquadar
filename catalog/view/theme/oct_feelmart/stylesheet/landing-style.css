@@ -157,3 +157,105 @@
         width: calc(688px + (100% - 1440px)/2);
     }
 }
+
+
+
+
+#landing-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.8);
+}
+#landing-popup .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+#landing-popup .order {
+    position: relative;
+    width: 30%;
+    min-width: 300px;
+    padding: 15px;
+    background: #dbe4ebfe;
+    border: 2px solid #678aa7;
+    border-radius: 5px;
+    color: #6286a4;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+}
+#landing-popup .title {
+    margin-top: 15px;
+    margin-bottom: 3px;
+    color: #005d8f;
+    text-transform: uppercase;
+}
+#landing-popup .title,
+#landing-popup .order input[type="text"],
+#landing-popup .order input[type="submit"]
+{
+    font-family: "Cera Pro Medium";
+}
+#landing-popup .wrapper {
+    width: 81%;
+    margin: 0 auto;
+}
+#landing-popup .order p {
+    margin-top: 30px;
+    margin-bottom: 9px;
+    font-size: 14px;
+    text-align: left;
+}
+#landing-popup .order p.bigger-marg {
+    margin-top: 38px;
+}
+#landing-popup .order input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #85d0f4;
+    border-radius: 10px;
+    color: #005d8f;
+    font-size: 14px;
+    font-family: Arial;
+}
+#landing-popup .order textarea {
+    height: 5em;
+}
+#landing-popup .order input[type="submit"] {
+    display: inline-block;
+    margin: 38px 0;
+    padding: 6px 15px;
+    background-color: #005d8f;
+    border: 1px solid transparent;
+    border-radius: .3rem;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: 0.2s linear;
+}
+#landing-popup .order input[type="submit"]:hover {
+    background-color: #5fc3e1; /*rgb(65, 132, 213);*/
+}
+#landing-popup .close-btn{
+    #float: right;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    #landing-popup .order {
+        #width: 40%;
+    }
+}

@@ -15,12 +15,227 @@
                 </a>
             </div>
         </div>
+
+    </div>
+</div>
+<div id="why" class="landing-section">
+    <div class="container">
+        <div class="landing-title">
+            <p class="title-big">ЧОМУ</p>
+            <div class="title-inner">
+                <p class="title-normal">Чому воду потрібно очищувати?</p>
+                <p class="title-small">проблеми пов'язані з використанням неякісної води в квартирі</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="why-card">
+                <img src="..\image\catalog\landing_flat\pic_card_1.png" alt="">
+                <span>Жовтий наліт</span>
+                <span>Білі потьоки</span>
+                <span>Забиті форсунки душа</span>
+            </div>
+            <div class="why-card">
+                <img src="..\image\catalog\landing_flat\pic_card_2.png" alt="">
+
+                <span>Накип в чайнику</span>
+                <span>Брудні плювки з праски</span>
+                <span>Поломки пральної машини</span>
+            </div>
+            <div class="why-card">
+                <img src="..\image\catalog\landing_flat\pic_card_3.png" alt="">
+
+                <span>Суха шкіра</span>
+                <span>Ламке волосся</span>
+                <span>Подразнення на шкірі</span>
+            </div>
+            <p class="why-sense">
+                Ці проблеми виникають через неякісну воду:
+                жорстка, містить хлор, багато заліза і марганцю.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="decision">
+    <img src="..\image\catalog\landing_flat\decision-img.svg" alt="">
+    <div class="container">
+        <p class="decision-big">У НАС Є РІШЕННЯ</p>
+        <p class="decision-small">УЯВІТЬ СВІЙ ДІМ З ІДЕАЛЬНО ЧИСТОЮ ВОДОЮ</p>
+    </div>
+</div>
+<div id="preferences">
+    <div class="landing-title">
+        <p class="title-big">ПЕРЕВАГИ</p>
+        <div class="title-inner">
+            <p class="title-normal">переваги використання<br>чистої води ВДОМА</p>
+        </div>
+    </div>
+    <div class="preferences-item">
+        <div class="container">
+            <img src="..\image\catalog\landing_flat\preferences1.png" alt="Здоров'я">
+            <div class="peferences-item-text">
+                <span class="preferences-title">Здоров'я</span>
+                <span class="preferences-description">Безпечна вода для особистої гігієни.</span>
+                <p class="preferences-text">
+                    Особливо важливо для маленьких дітей, які часто ковтають воду під час купання. Очищена вода допомагає вирішити проблему сухості і частих подразнень на шкірі, ламкості волосся.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="preferences-item">
+        <div class="container">
+            <img src="..\image\catalog\landing_flat\preferences2.png" alt="Комфорт">
+            <div class="peferences-item-text left">
+                <span class="preferences-title">Комфорт</span>
+                <span class="preferences-description">Блакитна вода у ванній.</span>
+                <p class="preferences-text">
+                    Так, саме блакитна, як на курортах Австрії та Швейцарії. Прибирання у ванній кімнаті стане простіше. Чиста вода - сяюча сантехніка без нальоту та іржі, плитка без потьоків.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="preferences-item">
+        <div class="container">
+            <img src="..\image\catalog\landing_flat\preferences3.png" alt="Економія">
+            <div class="peferences-item-text">
+                <span class="preferences-title">Економія</span>
+                <span class="preferences-description">оберігає ваші прилади, сантехніку, труби.</span>
+                <p class="preferences-text">
+                    Так, хороший фільтр, як і інша хороша техніка в будинку, - не дешева річ. Але цінність, яку він приносить в вашу родину, значно більша. Крім того, чиста вода підвищує ефективність порошку, мила, засобів для миття посуду.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="lets-go">
+    <div class="container">
+        <img class="lets-go-img-right" src="..\image\catalog\landing_flat\bulb.png" alt="bulb">
+        <p class="decision-small">ПОЧНІТЬ Шлях до чистої води</p>
+        <div class="button">
+            <a href="" class="fm-banner-plus-btn fm-btn">ПІДІБРАТИ ОБЛАДНАННЯ</a>
+        </div>
+    </div>
+</div>
+<div id="how">
+    <div class="container">
+        <div class="landing-title">
+            <p class="title-big">ЯК</p>
+            <div class="title-inner">
+                <p class="title-normal">ОЧИЩЕННЯ ВОДИ В КВАРТИРІ</p>
+            </div>
+        </div>
+        <img src="..\image\catalog\landing_flat\shema-big-ua.png" alt="схема">
+        <script>
+            function changeImage(){
+                if(document.querySelector('#how img')){
+                    let picLang = '';
+                    let picSize = '';
+                    document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' :picLang = 'ru';
+                    document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
+                    document.querySelector('#how img').src = `../image/catalog/landing_flat/shema-${picSize}-${picLang}.png`;
+                }
+            }
+
+            changeImage();
+            window.addEventListener(`resize`, event => {
+                changeImage();
+            }, false);
+        </script>
+    </div>
+</div>
+<div id="categories">
+    <div class="container">
+        <div class="landing-title">
+            <div class="title-inner">
+                <p class="title-normal">КАТЕГОРІЇ ТОВАРІВ</p>
+            </div>
+        </div>
+        <div class="row">
+            <a class="categories-card">
+                <img src="..\image\catalog\landing_flat\pic_kategorii1.png" alt="Механічне очищення">
+                <span class="category-name" href="#">Механічне очищення</span>
+            </a>
+            <a class="categories-card">
+                <img src="..\image\catalog\landing_flat\pic_kategorii2.png" alt="Механічне очищення">
+                <span class="category-name" href="#">Пом’якшення води</span>
+            </a>
+            <a class="categories-card">
+                <img src="..\image\catalog\landing_flat\pic_kategorii3.png" alt="Механічне очищення">
+                <span class="category-name" href="#">Фільтраційні системи</span>
+            </a>
+            <a class="categories-card">
+                <img src="..\image\catalog\landing_flat\pic_kategorii4.png" alt="Механічне очищення">
+                <span class="category-name" href="#">УФ знезаражування</span>
+            </a>
+            <a class="categories-card">
+                <img src="..\image\catalog\landing_flat\pic_kategorii5.png" alt="Механічне очищення">
+                <span class="category-name" href="#">Для питної води</span>
+            </a>
+
+
+        </div>
+    </div>
+</div>
+<div id="variants">
+    <div class="container">
+        <div class="landing-title">
+            <div class="title-inner">
+                <p class="title-normal">ГОТОВІ РІШЕННЯ ДЛЯ ВАШОЇ ДОМІВКИ</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_1_background.png')">
+                <span class="variants-title">HOME BWT LITE</span>
+                <img src="../image/catalog/landing_flat/Slider_1_tovar.png" alt="HOME BWT LITE">
+                <a href="#" class="variants-btn">дивитися</a>
+            </div>
+            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_2_background.png')">
+                <span class="variants-title">HOME BWT<br>STANDARD</span>
+                <img src="../image/catalog/landing_flat/Slider_2_tovar.png" alt="HOME BWT LITE">
+                <a href="#" class="variants-btn">дивитися</a>
+            </div>
+            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_3_background.png')">
+                <span class="variants-title">HOME BWT<br>ADVANCED</span>
+                <img src="../image/catalog/landing_flat/Slider_3_tovar.png" alt="HOME BWT LITE">
+                <a href="#" class="variants-btn">дивитися</a>
+            </div>
+            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_4_background.png')">
+                <span class="variants-title">HOME BWT DESIGN</span>
+                <img src="../image/catalog/landing_flat/Slider_4_tovar.png" alt="HOME BWT LITE">
+                <a href="#" class="variants-btn">дивитися</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="select">
+    <div class="container">
+        <p class="decision-small">ПРОФЕСІЙНИЙ ПІДБІР ОБЛАДНАННЯ</p>
+        <div class="button">
+            <a href="" class="fm-banner-plus-btn fm-btn">ЗАМОВИТИ ОБЛАДНАННЯ</a>
+        </div>
     </div>
 </div>
 
-<div class="container">
-
+<div id="landing-popup">
+    <div class="container">
+        <div class="order">
+            <img class="close-btn" src="/image/catalog/landing_flat/icon_close.svg" alt="icon_close">
+            <div class="title">Заявка на підбір обладнання</div>
+            <form action="">
+                <div class="wrapper">
+                    <p>Ваше Ім'я</p>
+                    <input class="required" name="username" type="text">
+                    <p>Телефон:</p>
+                    <input class="required" name="phone" type="text">
+                    <p class="bigger-marg">E-mail:</p>
+                    <input class="required" name="phone" type="text">
+                    <input id="send" type="submit" value="ВІДПРАВИТИ">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 {#<script>
     $.post('/index.php?route=common/landing_mail_sender/send', 'landing=%22%D0%92%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B5%22&name=asd&phone=123&mail=email.com', function (data) {
         console.log(data);
