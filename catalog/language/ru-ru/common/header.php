@@ -18,3 +18,6 @@ $_['text_address_title'] = 'Центр чистой воды';
 $_['text_top_row1'] = 'В КВАРТИРЕ';
 $_['text_top_row2'] = 'В КОТЕДЖЕ';
 $_['text_top_row3'] = 'В ОФИСЕ';
+$_['text_top_link1'] = '/in_flat_ru';
+$_['text_top_link2'] = '/in_cottage_ru';
+$_['text_top_link3'] = '/';
