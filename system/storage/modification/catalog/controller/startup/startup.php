@@ -100,7 +100,26 @@ $this->url->addRewrite(new Simple\Rewrite($this->config, $this->session));
 		if (!isset($this->request->cookie['language']) || $this->request->cookie['language'] != $code) {
 			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
 		}
-				
+
+        // Меняем язык в зависимости от концовки урла
+        //print_r($this->request);
+        //echo $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$this->request->get['_route_'];
+        //echo $this->session->data['from_language_switcher'];
+        //
+        if (isset($this->request->get['_route_']) && $this->session->data['from_language_switcher'] != 'yes') {
+            $route = $this->request->get['_route_'];
+            $route_ending = substr($route, -3);
+            /*if ($route_ending == '_en' || $route_ending == '-en') $code = 'en-gb';
+            if ($route_ending == '_ua' || $route_ending == '-ua') $code = 'uk-ua';
+            if ($route_ending == '_ru' || $route_ending == '-ru') $code = 'ru-ru';*/
+            if ($route_ending == '_en') $code = 'en-gb';
+            if ($route_ending == '_ua') $code = 'uk-ua';
+            if ($route_ending == '_ru') $code = 'ru-ru';
+            $this->session->data['language'] = $code;
+        }
+        // Удаляем инфу о нажатии языкового переключателя
+        $this->session->data['from_language_switcher'] = '';
+
 		// Overwrite the default language object
 		$language = new Language($code);
 		$language->load($code);

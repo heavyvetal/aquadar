@@ -238,8 +238,20 @@ class ControllerCommonHeader extends Controller {
 
         // Подгружаем лендинговые стили только на конкретных страницых
         $data['is_landing_page'] = false;
-        if ($this->request->server['REQUEST_URI'] == '/index.php?route=common/landing_flat' || $this->request->server['REQUEST_URI'] == '/index.php?route=common/landing_cottage') {
-            $data['is_landing_page'] = true;
+        $landing_links = array(
+            '/index.php?route=common/landing_flat',
+            '/index.php?route=common/landing_cottage',
+            '/in_flat_en',
+            '/in_flat_ua',
+            '/in_flat_ru',
+            '/in_cottage_en',
+            '/in_cottage_ua',
+            '/in_cottage_ru',
+        );
+        foreach ($landing_links as $landing_link) {
+            if ($this->request->server['REQUEST_URI'] == $landing_link) {
+                $data['is_landing_page'] = true;
+            }
         }
 
 		return $this->load->view('common/header', $data);

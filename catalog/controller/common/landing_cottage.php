@@ -17,10 +17,10 @@ class ControllerCommonLandingCottage extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
         // В КОТЕДЖЕ
-        $information_id = 12;
+        /*$information_id = 12;
         $this->load->model('catalog/information');
         $information_info = $this->model_catalog_information->getInformation($information_id);
-        $data['content'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+        $data['content'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');*/
 
 		//$this->response->setOutput($this->load->view('common/landing_cottage', $data));
         if ($this->language->get('code') == 'ua') {
