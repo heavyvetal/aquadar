@@ -160,7 +160,7 @@
 
 
 
-
+/*-------- Popup ---------*/
 #landing-popup {
     display: none;
     position: fixed;
@@ -179,7 +179,8 @@
     height: 100%;
     width: 100%;
 }
-#landing-popup .order {
+#landing-popup .order,
+#popup-post .post-message {
     position: relative;
     width: 30%;
     min-width: 300px;
@@ -243,7 +244,7 @@
     transition: 0.2s linear;
 }
 #landing-popup .order input[type="submit"]:hover {
-    background-color: #5fc3e1; /*rgb(65, 132, 213);*/
+    background-color: rgb(65, 132, 213); /*#5fc3e1;*/
 }
 #landing-popup .close-btn{
     #float: right;
@@ -253,6 +254,30 @@
     width: 20px;
     cursor: pointer;
 }
+/*-------------- Popup-post ---------------*/
+#popup-post {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.8);
+}
+#popup-post .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+#popup-post .post-message {
+
+}
+
+
 
 @media (max-width: 1200px) {
     #landing-popup .order {

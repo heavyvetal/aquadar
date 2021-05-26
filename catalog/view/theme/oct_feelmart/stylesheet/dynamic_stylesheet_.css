@@ -1,0 +1,30 @@
+#back-top, #fm_fixed_contact_button, .fm-fixed-contact-pulsation, .pagination li.active span, .pagination li a:hover, .image-additional-box .owl-carousel .owl-nav button:hover, #fm_livesearch_close, .simplecheckout-cart-buttons .button, .simplecheckout-button-right .button, #simplecheckout_button_login, .ocfilter .panel-heading, .fm-module-column-box .panel-heading, #column-left .panel-heading, #column-right .panel-heading, .fm-btn, .fm-main-footer-contact .fm-main-footer-contact-btn:hover, .ocfilter .noUi-connect, .fm-column-title, .fm-product-btn:hover, .fm-product-quantity button:hover, .fm-column-module-btn:hover, .owl-carousel.image-additional-list .owl-nav button.owl-next:hover, .owl-carousel.image-additional-list .owl-nav button.owl-prev:hover, .fm-account-list .fm-account-item:hover a, .radio-box::after, .product-layout .fm-product-btn {background:rgb(24, 164, 225);}
+@media (min-width: 1200px){.product-layout:hover .fm-product-btn{background:rgb(24, 164, 225);}}
+.fm-input-with-btn:hover, .fm-product-btn-cart {background:rgb(24, 164, 225) !important;}
+.btn-header i:first-child, .fm-phone-img i, .fm-module-buttons-list button:hover, .fm-main-footer-contact .btn-link, .fm-main-footer-contact .btn-link:hover, .fm-main-footer-contact .fm-main-footer-contact-link, .fm-main-footer-shedule-list li, .fm-category-appearance-btn.active, .fm-category-appearance-btn:hover, .fm-phone-content .fm-phone-link, .fm-breadcrumb-item a, .fm-advantages-block:hover .fm-advantages-img, .fm-advantages-block:hover .fm-advantages-title, .fm-main-footer-contact .btn-link:focus {color:rgb(24, 164, 225);}
+.fm-main-footer-contact .fm-main-footer-contact-btn, .fm-main-footer-contact .fm-main-footer-contact-btn:hover, li.fm-product-description-nav-item-active a::after, li.fm-product-description-nav-item:hover a::after, .fm-page-main-title::after, .fm-account-list .fm-account-item:hover {border-color:rgb(24, 164, 225);}
+body {background-color:rgb(242, 243, 245);}
+.fm_mobile_menu_info-list-item a, .fm_mobile_menu_info .dropdown-menu button.active-item, .fm-acc-info-link, .fm_mobile_menu_cart-text a, .form-checkbox-group label a, .subcat-item:hover .subcat-item-title, .fm-table-compare .fm-table-product-name a:hover, .fm-html-box-text a, .fm-category-wall-item ul a:hover, .fm-category-wall-item-title:hover span, .promotional-product-item-title a:hover, #oct-menu-ul .group-title a, .fm-reviews-item:hover .fm-reviews-item-title, .fm-module-btn:hover, .fm-news-item:hover .fm-news-item-title, .fm-footer-subscribe-subscribe .form-checkbox-group label a, .fm-livesearch-list-item-name a, .fm-fixed-contact-item:hover, .category-landing-links-item-link span, .fm-product-left-top-info-block-brand a, .fm-product-left-top-info-block-reviews a, .fm-price-block-link, .fm-price-block-link:hover, .fm-product-buttons-list a:hover span, .fm-product-buttons-list a:hover i, .fm-inform-content-text a, .fm-inform-content-text-title a, .oct-mm-item-title:hover, .oct-mm-item-list li a:hover, .oct-mm-item-list li.oct-mm-item-see-all, .fm-content-reviews .fm-review-rating-shop, .fm-blog-categories-module-list a:hover, .fm-blog-post-content .fm-news-item-text a, .fm-blog-post-content .fm-news-item-text a:hover, .login-popup-links a, .nav-dropdown-menu button:hover, .fm-phone-box .phoneclick:hover, .fm-content-contact-offer .fm-content-contact-text a, .fm-content-manufacturer .fm-content-title a, .fm-manufacturer-item .fm-manufacturer-card:hover span, .header-dropdown li a:hover, .nav-dropdown-menu .my-dropdown-item a:hover, .fm-acc-info-text a, .fm-acc-info-text a:hover, .table td a, .fm-acc-info-link:hover, .fm-acc-info-block-title:hover, .fm-category-description p a, .fm-product-description-cont a, .fm-alert-text a, .fm-subcat-show-link, .fm-subcat-show-link:hover {color:rgb(24, 164, 225);}
+@media (min-width: 1200px){.fm-module-item:hover .fm-module-title > a, .fm-module-item:hover .fm-module-title > a:visited{color:rgb(24, 164, 225);}}
+#top {background:rgb(255, 255, 255);}
+.btn-link, .info-link {color:rgb(55, 57, 65);}
+#top .btn-link:hover, #top .btn-link:focus, nav.top .info-list a:hover {color:rgb(24, 164, 225) ;}
+.fm-search input {background:rgb(28, 100, 187);}
+.menu-row {background-color:rgb(3, 83, 180);}
+.fm-menu {background:rgb(28, 100, 187);}
+#oct-menu-box:hover .fm-menu {background-color:rgb(65, 132, 213);}
+.menu-row {color:rgb(255, 255, 255);}
+.oct-menu-li {background:rgb(255, 255, 255);}
+.oct-menu-li > a, .oct-menu-li > div > a {color:rgb(55, 57, 65);}
+.fm-main-footer, .fm-footer-subscribe {background-color:rgb(32, 35, 52);}
+.fm-footer-subscribe, footer, .fm-main-footer-contact-address, .fm-main-footer-title {color:rgb(238, 242, 245);}
+.fm-main-footer-links-list a, .fm-main-footer-credits {color:rgb(166, 166, 166);}
+.fm-main-footer-links-list a:hover {color:rgb(24, 164, 225);}
+.fm-categories-box {background:rgb(251, 251, 251);}
+.fm-categories-item {color:rgb(102, 102, 102);}
+.fm-categories-item.active > span a, .fm-categories-item a:hover {color:rgb(24, 164, 225);}
+.modal-header {background:rgb(24, 164, 225);}
+.modal-title {color:rgb(238, 242, 245);}
+.fm-modal-close-icon {border-color:rgb(238, 242, 245);}
+#fm_mobile_nav {background:rgb(238, 242, 245);}
+#fm_mobile_menu_button {background-color:rgb(3, 83, 180) !important;}

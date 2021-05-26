@@ -22,6 +22,11 @@ class ControllerCommonLandingCottage extends Controller {
         $information_info = $this->model_catalog_information->getInformation($information_id);
         $data['content'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
-		$this->response->setOutput($this->load->view('common/landing_cottage', $data));
+		//$this->response->setOutput($this->load->view('common/landing_cottage', $data));
+        if ($this->language->get('code') == 'ua') {
+            $this->response->setOutput($this->load->view('common/landing_cottage_ua', $data));
+        } else {
+            $this->response->setOutput($this->load->view('common/landing_cottage_ru', $data));
+        }
 	}
 }

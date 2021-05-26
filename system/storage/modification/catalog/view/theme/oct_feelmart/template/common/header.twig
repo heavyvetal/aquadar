@@ -63,6 +63,9 @@
 {% for script in scripts %}
 <script src="{{ script }}"></script>
 {% endfor %}
+{% if is_landing_page %}
+<script src="/catalog/view/theme/oct_feelmart/js/landing.js"></script>
+{% endif %}
 {% for link in links %}
 <link href="{{ link.href }}" rel="{{ link.rel }}">
 {% endfor %}
