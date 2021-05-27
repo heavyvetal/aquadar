@@ -7,7 +7,7 @@
                 ОЧИСТКА ВОДЫ В КВАРТИРЕ
             </div>
             <div class="second-title">
-                Безопасная и комфортная, голубая вода для Вашего здоровья, красоты и блестящей дома без налетов и ржавчины
+                Безопасная и комфортная, голубая вода для Вашего здоровья, красоты и блестящего дома без налетов и ржавчины
             </div>
             <div class="button">
                 <a href="" class="make-order fm-banner-plus-btn fm-btn">
@@ -125,6 +125,22 @@
         <img src="..\image\catalog\landing_flat\shema-big-ua.png" alt="схема">
     </div>
 </div>
+<script>
+        function changeImage(){
+            if(document.querySelector('#how img')){
+                let picLang = '';
+                let picSize = '';
+                document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' :picLang = 'ru';
+                document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
+                document.querySelector('#how img').src = `../image/catalog/landing_flat/shema-${picSize}-${picLang}.png`;
+            }
+        }
+
+        changeImage();
+        window.addEventListener(`resize`, event => {
+            changeImage();
+        }, false);
+</script>
 <div id="categories">
     <div class="container">
         <div class="landing-title">
@@ -135,23 +151,23 @@
         <div class="row">
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii1.png" alt="Механическая очистка">
-                <span class="category-name" href="#"><a>Механическая очистка</a></span>
+                <span class="category-name"><a href="/household-filter-ru/mechanical-cleaning-ru">Механическая очистка</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii2.png" alt="Смягчение воды">
-                <span class="category-name" href="#"><a>Смягчение воды</a></span>
+                <span class="category-name"><a href="/household-filter-ua/water-softening-ru">Смягчение воды</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii3.png" alt="Фильтрационные системы">
-                <span class="category-name" href="#"><a>Фильтрационные системы</a></span>
+                <span class="category-name"><a href="/household-filter-ru/filtration-systems-ru">Фильтрационные системы</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii4.png" alt="УФ обеззараживание">
-                <span class="category-name" href="#"><a>УФ обеззараживание</a></span>
+                <span class="category-name"><a href="/household-filter-ru/UV-disinfection-ru">УФ обеззараживание</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii5.png" alt="Для питьевой воды">
-                <span class="category-name" href="#"><a>Для питьевой воды</a></span>
+                <span class="category-name"><a href="/drinkable-water-ru">Для питьевой воды</a></span>
             </div>
         </div>
     </div>

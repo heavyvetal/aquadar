@@ -1,18 +1,4 @@
 $(document).ready(function() {
-    function changeImage(){
-        if(document.querySelector('#how img')){
-            let picLang = '';
-            let picSize = '';
-            document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' :picLang = 'ru';
-            document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
-            document.querySelector('#how img').src = `../image/catalog/landing_flat/shema-${picSize}-${picLang}.png`;
-        }
-    }
-
-    changeImage();
-    window.addEventListener(`resize`, event => {
-        changeImage();
-    }, false);
 
     /*---------------------- Popup -----------------------*/
     let orderClicked = false;

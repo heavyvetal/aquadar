@@ -20,4 +20,4 @@ $_['text_top_row2'] = 'В КОТЕДЖІ';
 $_['text_top_row3'] = 'В ОФІСІ';
 $_['text_top_link1'] = '/in_flat_ua';
 $_['text_top_link2'] = '/in_cottage_ua';
-$_['text_top_link3'] = '/';
+$_['text_top_link3'] = 'https://waterlogic.com.ua';

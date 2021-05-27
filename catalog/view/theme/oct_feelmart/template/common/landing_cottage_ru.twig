@@ -10,7 +10,7 @@
                 В вашем доме все должно быть идеально! Чистая и безопасная вода, как на курортах Австрии и Швейцарии.
             </div>
             <div class="button">
-                <a href="" class="fm-banner-plus-btn fm-btn">
+                <a href="" class="make-order fm-banner-plus-btn fm-btn">
                     ПОДОБРАТЬ ОБОРУДОВАНИЕ
                 </a>
             </div>
@@ -197,12 +197,28 @@
         <div class="landing-title">
             <p class="title-big">КАК</p>
             <div class="title-inner">
-                <p class="title-normal">ОЧИСТКА ВОДЫ В КВАРТИРЕ</p>
+                <p class="title-normal">ОЧИСТКА ВОДЫ В КОТЕДЖЕ</p>
             </div>
         </div>
-        <img src="..\image\catalog\landing_flat\shema-big-ua.png" alt="схема">
+        <img src="..\image\catalog\landing_cottage\shema-big-ua.png" alt="схема">
     </div>
 </div>
+<script>
+        function changeImage() {
+            if (document.querySelector('#how img')) {
+                let picLang = '';
+                let picSize = '';
+                document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' : picLang = 'ru';
+                document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
+                document.querySelector('#how img').src = `../image/catalog/landing_cottage/shema-${picSize}-${picLang}.png`;
+            }
+        }
+
+        changeImage();
+        window.addEventListener(`resize`, event => {
+            changeImage();
+        }, false);
+</script>
 <div id="categories" class="cottage">
     <div class="container">
         <div class="landing-title">
@@ -213,27 +229,27 @@
         <div class="row">
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii1.png" alt="Механическая очистка">
-                <span class="category-name" href="#"><a>Механическая очистка</a></span>
+                <span class="category-name"><a href="/household-filter-ru/mechanical-cleaning-ru">Механическая очистка</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii2.png" alt="Смягчение воды">
-                <span class="category-name" href="#"><a>Смягчение воды</a></span>
+                <span class="category-name"><a href="/household-filter-ua/water-softening-ru">Смягчение воды</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii3.png" alt="Фильтрационные системы">
-                <span class="category-name" href="#"><a>Фильтрационные системы</a></span>
+                <span class="category-name"><a href="/household-filter-ru/filtration-systems-ru">Фильтрационные системы</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii4.png" alt="Системы обратного осмоса">
-                <span class="category-name" href="#"><a>Системы обратного осмоса большой производительности</a></span>
+                <span class="category-name"><a href="/household-filter-ru/commercial-reverse-osmosis-systems-ru">Системы обратного осмоса большой производительности</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii4.png" alt="УФ обеззараживание">
-                <span class="category-name" href="#"><a>УФ обеззараживание</a></span>
+                <span class="category-name"><a href="/household-filter-ru/UV-disinfection-ru">УФ обеззараживание</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii5.png" alt="Для питьевой воды">
-                <span class="category-name" href="#"><a>Для питьевой воды</a></span>
+                <span class="category-name"><a href="/drinkable-water-ru">Для питьевой воды</a></span>
             </div>
         </div>
     </div>
@@ -242,23 +258,23 @@
     <div class="container">
         <div class="landing-title">
             <div class="title-inner">
-                <p class="title-normal">ГОТОВІ РІШЕННЯ ДЛЯ ВАШОГО БУДИНКУ</p>
+                <p class="title-normal">ГОТОВЫЕ РЕШЕНИЯ ДЛЯ ВАШЕГО ДОМА</p>
             </div>
         </div>
         <div class="row">
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_1_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_1_background.jpg')">
                 <span class="variants-title">HOME BWT LITE</span>
-                <img src="../image/catalog/landing_flat/Slider_1_tovar.png" alt="HOME BWT LITE">
+                <img src="/image/catalog/landing_cottage/Slider_1_tovar.png" alt="HOUSE ECOMIX LITE">
                 <a href="#" class="variants-btn">смотреть</a>
             </div>
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_2_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_2_background.jpg')">
                 <span class="variants-title">HOME BWT<br>STANDARD</span>
-                <img src="../image/catalog/landing_flat/Slider_2_tovar.png" alt="HOME BWT LITE">
+                <img src="/image/catalog/landing_cottage/Slider_2_tovar.png" alt="HOUSE ECOMIX STANDARD">
                 <a href="#" class="variants-btn">смотреть</a>
             </div>
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_3_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_3_background.jpg')">
                 <span class="variants-title">HOME BWT<br>ADVANCED</span>
-                <img src="../image/catalog/landing_flat/Slider_3_tovar.png" alt="HOME BWT LITE">
+                {# <img src="/image/catalog/landing_flat/Slider_3_tovar.png" alt="HOME BWT LITE"> #}
                 <a href="#" class="variants-btn">смотреть</a>
             </div>
         </div>

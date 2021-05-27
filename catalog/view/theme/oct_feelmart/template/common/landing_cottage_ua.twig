@@ -10,7 +10,7 @@
                 У вашому будинку все повинно бути ідеально! Чиста і безпечна вода, як на курортах Австрії та Швейцарії.
             </div>
             <div class="button">
-                <a href="" class="fm-banner-plus-btn fm-btn">
+                <a href="" class="make-order fm-banner-plus-btn fm-btn">
                     ПІДІБРАТИ ОБЛАДНАННЯ
                 </a>
             </div>
@@ -188,7 +188,7 @@
         <img class="lets-go-img-right" src="..\image\catalog\landing_flat\bulb.png" alt="bulb">
         <p class="decision-small">ПОЧНІТЬ Шлях до чистої води</p>
         <div class="button">
-            <a href="" class="fm-banner-plus-btn fm-btn">ПІДІБРАТИ ОБЛАДНАННЯ</a>
+            <a href="" class="make-order fm-banner-plus-btn fm-btn">ПІДІБРАТИ ОБЛАДНАННЯ</a>
         </div>
     </div>
 </div>
@@ -203,6 +203,22 @@
         <img src="..\image\catalog\landing_cottage\shema-big-ua.png" alt="схема">
     </div>
 </div>
+<script>
+        function changeImage() {
+            if (document.querySelector('#how img')) {
+                let picLang = '';
+                let picSize = '';
+                document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' : picLang = 'ru';
+                document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
+                document.querySelector('#how img').src = `../image/catalog/landing_cottage/shema-${picSize}-${picLang}.png`;
+            }
+        }
+
+        changeImage();
+        window.addEventListener(`resize`, event => {
+            changeImage();
+        }, false);
+</script>
 <div id="categories" class="cottage">
     <div class="container">
         <div class="landing-title">
@@ -213,27 +229,27 @@
         <div class="row">
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii1.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Механічне очищення</a></span>
+                <span class="category-name"><a href="/household-filter-ru/mechanical-cleaning-ua">Механічне очищення</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii2.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Пом’якшення води</a></span>
+                <span class="category-name"><a href="/household-filter-ua/water-softening-ua">Пом’якшення води</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii3.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Фільтраційні системи</a></span>
+                <span class="category-name"><a href="/household-filter-ru/filtration-systems-ua">Фільтраційні системи</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii4.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Системи зворотного осмосу великої продуктивності</a></span>
+                <span class="category-name"><a href="/drinkable-water-ua/reverse-osmosis-filters-ua">Системи зворотного осмосу великої продуктивності</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii5.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>УФ знезаражування</a></span>
+                <span class="category-name"><a href="/household-filter-ru/UV-disinfection-ua">УФ знезаражування</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_cottage\pic_kategorii6.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Для питної води</a></span>
+                <span class="category-name"><a href="/drinkable-water-ua">Для питної води</a></span>
             </div>
         </div>
     </div>
@@ -246,19 +262,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_1_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_1_background.jpg')">
                 <span class="variants-title">HOUSE ECOMIX LITE</span>
-                <img src="../image/catalog/landing_cottage/Slider_1_tovar.png" alt="HOUSE ECOMIX LITE">
+                <img src="/image/catalog/landing_cottage/Slider_1_tovar.png" alt="HOUSE ECOMIX LITE">
                 <a href="#" class="variants-btn">дивитися</a>
             </div>
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_2_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_2_background.jpg')">
                 <span class="variants-title">HOUSE ECOMIX STANDARD</span>
-                <img src="../image/catalog/landing_cottage/Slider_2_tovar.png" alt="HOME BWT LITE">
+                <img src="/image/catalog/landing_cottage/Slider_2_tovar.png" alt="HOUSE ECOMIX STANDARD">
                 <a href="#" class="variants-btn">дивитися</a>
             </div>
-            <div class="variants-card" style="background-image: url('../image/catalog/landing_flat/Slider_3_background.png')">
+            <div class="variants-card" style="background-image: url('/image/catalog/landing_cottage/Slider_3_background.jpg')">
                 <span class="variants-title">HOUSE RO ADVANCED</span>
-                <img src="../image/catalog/landing_flat/Slider_3_tovar.png" alt="HOME BWT LITE">
+                {# <img src="/image/catalog/landing_flat/Slider_3_tovar.png" alt="HOME BWT LITE"> #}
                 <a href="#" class="variants-btn">дивитися</a>
             </div>
         </div>
@@ -268,7 +284,7 @@
     <div class="container">
         <p class="decision-small">ПРОФЕСІЙНИЙ ПІДБІР ОБЛАДНАННЯ</p>
         <div class="button">
-            <a href="" class="fm-banner-plus-btn fm-btn">ЗАМОВИТИ ОБЛАДНАННЯ</a>
+            <a href="" class="make-order fm-banner-plus-btn fm-btn">ЗАМОВИТИ ОБЛАДНАННЯ</a>
         </div>
     </div>
 </div>

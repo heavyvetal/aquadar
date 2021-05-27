@@ -126,6 +126,22 @@
         <img src="..\image\catalog\landing_flat\shema-big-ua.png" alt="схема">
     </div>
 </div>
+<script>
+        function changeImage(){
+            if(document.querySelector('#how img')){
+                let picLang = '';
+                let picSize = '';
+                document.querySelector('html').getAttribute('lang') == 'ua' ? picLang = 'ua' :picLang = 'ru';
+                document.documentElement.clientWidth <= 991 ? picSize = 'small' : picSize = 'big';
+                document.querySelector('#how img').src = `../image/catalog/landing_flat/shema-${picSize}-${picLang}.png`;
+            }
+        }
+
+        changeImage();
+        window.addEventListener(`resize`, event => {
+            changeImage();
+        }, false);
+</script>
 <div id="categories">
     <div class="container">
         <div class="landing-title">
@@ -136,23 +152,23 @@
         <div class="row">
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii1.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Механічне очищення</a></span>
+                <span class="category-name"><a href="/household-filter-ru/mechanical-cleaning-ua">Механічне очищення</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii2.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Пом’якшення води</a></span>
+                <span class="category-name"><a href="/household-filter-ua/water-softening-ua">Пом’якшення води</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii3.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Фільтраційні системи</a></span>
+                <span class="category-name"><a href="/household-filter-ru/filtration-systems-ua">Фільтраційні системи</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii4.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>УФ знезаражування</a></span>
+                <span class="category-name"><a href="/household-filter-ru/UV-disinfection-ua">УФ знезаражування</a></span>
             </div>
             <div class="categories-card">
                 <img src="..\image\catalog\landing_flat\pic_kategorii5.png" alt="Механічне очищення">
-                <span class="category-name" href="#"><a>Для питної води</a></span>
+                <span class="category-name"><a href="/drinkable-water-ua">Для питної води</a></span>
             </div>
         </div>
     </div>
