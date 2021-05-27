@@ -27,19 +27,26 @@ class ControllerCommonLanguageMobile extends Controller {
 		} else {
 			$url_data = $this->request->get;
 
-			unset($url_data['_route_']);
+            // Правка роутинга языкового переключателя для лендинга
+            if (isset($this->request->get['_route_'])) {
+                $route = $url_data['_route_'];
+                $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$route;
+            } else {
 
-			$route = $url_data['route'];
+                unset($url_data['_route_']);
 
-			unset($url_data['route']);
+                $route = $url_data['route'];
 
-			$url = '';
+                unset($url_data['route']);
 
-			if ($url_data) {
-				$url = '&' . urldecode(http_build_query($url_data, '', '&'));
-			}
+                $url = '';
 
-			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
+                if ($url_data) {
+                    $url = '&' . urldecode(http_build_query($url_data, '', '&'));
+                }
+
+                $data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
+            }
 		}
 
 		return $this->load->view('common/language_mobile', $data);
@@ -48,6 +55,9 @@ class ControllerCommonLanguageMobile extends Controller {
 	public function language() {
 		if (isset($this->request->post['code'])) {
 			$this->session->data['language'] = $this->request->post['code'];
+
+            // Сообщаем, что язык изменен через языковой переключатель
+            $this->session->data['from_language_switcher'] = 'yes';
 		}
 
 		if (isset($this->request->post['redirect'])) {
