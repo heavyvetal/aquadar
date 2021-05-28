@@ -103,9 +103,6 @@ $this->url->addRewrite(new Simple\Rewrite($this->config, $this->session));
 
         // Меняем язык в зависимости от концовки урла
         //print_r($this->request);
-        //echo $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$this->request->get['_route_'];
-        //echo $this->session->data['from_language_switcher'];
-        //
         if (isset($this->request->get['_route_']) && $this->session->data['from_language_switcher'] != 'yes') {
             $route = $this->request->get['_route_'];
             $route_ending = substr($route, -3);

@@ -837,11 +837,23 @@ footer .fm-phone-box .btn-link {
     list-style-type: none;
 }
 
+/* Other corrections */
 .product-layout .fm-category-product-description {
     word-break: break-word;
 }
 .fm-category-product-description {
     word-break: break-word;
+}
+.fm-slideshow-plus {
+    max-height: 757px;
+}
+@media (min-width: 992px){
+    .fm-slideshow-plus {
+        max-height: 470px;
+    }
+}
+.fm-promotional-product {
+    max-height: 470px;
 }
 
 /*------ Mobile devices ------*/
