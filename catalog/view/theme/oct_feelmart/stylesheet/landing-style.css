@@ -331,7 +331,7 @@
 #variants .row{
     justify-content: space-between;
 }
-.variants-card{
+.variants-card {
     width: calc(25% - 9px);
     background-size: cover;
     background-position: center;
@@ -340,26 +340,39 @@
     box-shadow: 0px 3px 14px #0000001F;
     justify-content: space-between;
     align-items: center;
-    padding: 52px 10px;
+    padding: 23px 10px;
     padding-bottom: 56px;
 }
-.variants-card span{
+.variants-card span {
     text-align: center;
 }
-.variants-title{
-    margin-bottom: 22px;
+.variants-title {
+    margin-bottom: 15px;
     font: 30px/1.26 Cera Pro Bold;
     color: #005D8F;
     text-shadow: #000000 0 0px 1px;
 }
 .variants-card .description {
     margin-bottom: 40px;
-    font: 19px/1 Cera Pro Bold;
+    font: 18px/1 Cera Pro Bold;
     color: #005D8F;
 }
 #variants.cottage .description {
     color: #fff;
     text-shadow: #000000 0 0px 1px;
+}
+
+#variants.cottage .variants-card {
+    padding: 52px 10px;
+    padding-bottom: 56px;
+}
+#variants.cottage .variants-title {
+    margin-bottom: 15px;
+    text-shadow: #000000 1px 1px 2px;
+}
+#variants.cottage .variants-card .description {
+    font: 19px/1 Cera Pro Bold;
+    text-shadow: #000000 1px 1px 2px;
 }
 
 .variants-card img{
