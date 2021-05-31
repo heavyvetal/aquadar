@@ -847,6 +847,9 @@ footer .fm-phone-box .btn-link {
 .fm-slideshow-plus {
     max-height: 757px;
 }
+#fm-slideshow-plus-0 .fm-slideshow-plus-item-text p {
+    font-size: 21px;
+}
 
 @media (min-width: 992px){
     .fm-slideshow-plus {
@@ -863,13 +866,16 @@ footer .fm-phone-box .btn-link {
     .fm-slideshow-plus-item-info {
         max-width: 463px;
     }
+    .fm-slideshow-plus-item-text {
+        margin-top: 0px;
+    }
     #fm-slideshow-plus-0 .fm-slideshow-plus-item-text a {
-        margin-top: 110px;
+        margin-top: 140px;
     }
 }
 @media (min-width: 1600px) {
     .fm-slideshow-plus-item-info {
-        max-width: 700px;
+        max-width: 580px;
     }
 }
 .fm-promotional-product {
@@ -932,12 +938,12 @@ footer .fm-phone-box .btn-link {
         font-size: 40px;
         position: relative;
         z-index: 10;
-        text-shadow: 0 0 2px #000000;
+        #text-shadow: 0 0 2px #000000;
     }
     #fm-slideshow-plus-0 .fm-slideshow-plus-item-text p{
         position: relative;
         z-index: 10;
-        text-shadow: 0 0 2px #000000;
+        #text-shadow: 0 0 2px #000000;
     }
     .fm-featured_box .fm-item{
         margin-bottom: 1px;
