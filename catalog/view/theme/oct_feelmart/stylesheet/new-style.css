@@ -847,14 +847,36 @@ footer .fm-phone-box .btn-link {
 .fm-slideshow-plus {
     max-height: 757px;
 }
+
 @media (min-width: 992px){
     .fm-slideshow-plus {
         max-height: 470px;
+    }
+    .fm-slideshow-plus-item-info {
+        max-width: 361px;
+    }
+    #fm-slideshow-plus-0 .fm-slideshow-plus-item-text a {
+        margin-top: 90px;
+    }
+}
+@media (min-width: 1200px) {
+    .fm-slideshow-plus-item-info {
+        max-width: 463px;
+    }
+    #fm-slideshow-plus-0 .fm-slideshow-plus-item-text a {
+        margin-top: 110px;
+    }
+}
+@media (min-width: 1600px) {
+    .fm-slideshow-plus-item-info {
+        max-width: 700px;
     }
 }
 .fm-promotional-product {
     max-height: 470px;
 }
+
+
 
 /*------ Mobile devices ------*/
 #language.is-mobile {

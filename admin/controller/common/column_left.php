@@ -663,19 +663,19 @@ class ControllerCommonColumnLeft extends Controller {
 
 			/* Дополнительные пункты левого меню */
 
-            // Modules
-            /*$data['menus'][] = array(
-                'id'       => 'quick_modules',
-                'icon'	   => 'fa-dashboard',
-                'name'	   => 'Модули/Расширения',
-                'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true),
+            // Popular products
+            $data['menus'][] = array(
+                'id'       => 'pop_prod',
+                'icon'	   => 'fa-cog',
+                'name'	   => 'Популярные продукты',
+                'href'     => $this->url->link('extension/module/featured', 'user_token='.$this->session->data['user_token'].'&module_id=38', true),
                 'children' => array()
-            );*/
+            );
 
             // Simple
             $data['menus'][] = array(
                 'id'       => 'simple',
-                'icon'	   => 'fa-dashboard',
+                'icon'	   => 'fa-cog',
                 'name'	   => $this->language->get('text_module_simple'),
                 'href'     => $this->url->link('extension/module/simple', 'user_token=' . $this->session->data['user_token'], true),
                 'children' => array()
@@ -684,7 +684,7 @@ class ControllerCommonColumnLeft extends Controller {
             // LiqPay
             $data['menus'][] = array(
                 'id'       => 'liqpay',
-                'icon'	   => 'fa-dashboard',
+                'icon'	   => 'fa-cog',
                 'name'	   => $this->language->get('text_module_liqpay'),
                 'href'     => $this->url->link('extension/payment/liqpay', 'user_token=' . $this->session->data['user_token'], true),
                 'children' => array()
@@ -693,7 +693,7 @@ class ControllerCommonColumnLeft extends Controller {
             // Cache
             $data['menus'][] = array(
                 'id'       => 'cache_delete',
-                'icon'	   => 'fa-dashboard',
+                'icon'	   => 'fa-cog',
                 'name'	   => 'Сбросить кеш',
                 'href'     => $this->url->link('extension/theme/oct_feelmart/cacheDelete', 'user_token=' . $this->session->data['user_token'], true),
                 'children' => array()
