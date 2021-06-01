@@ -837,7 +837,7 @@ footer .fm-phone-box .btn-link {
     list-style-type: none;
 }
 
-/* Other corrections */
+/* --- Other corrections --- */
 .product-layout .fm-category-product-description {
     word-break: break-word;
 }
@@ -850,6 +850,29 @@ footer .fm-phone-box .btn-link {
 #fm-slideshow-plus-0 .fm-slideshow-plus-item-text p {
     font-size: 21px;
 }
+/* Top row changes */
+@media (min-width: 992px) {
+    #top {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+        box-shadow: rgb(0 0 0 / 20%) 0 3px 6px;
+    }
+    #top .left-side .cell, #top .right-side .cell, #language {
+        max-height: 41px;
+        font: normal normal normal 16px/4px Cera Pro;
+    }
+    .menu-row {
+        top: 49px;
+    }
+    .btn {
+        padding: 0rem .75rem;
+    }
+    #language .dropdown-menu {
+        transform: translate3d(-26px, 32px, 0px) !important;
+    }
+}
+
 
 @media (min-width: 992px){
     .fm-slideshow-plus {
