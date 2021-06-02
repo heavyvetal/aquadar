@@ -872,6 +872,22 @@ footer .fm-phone-box .btn-link {
         transform: translate3d(-26px, 32px, 0px) !important;
     }
 }
+/* Slider breaking */
+.title-info-addition {
+    color: rgb(0, 93, 143);
+    font-family: 'Cera Pro Medium';
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+.fm-slideshow-plus-item-title {
+    margin-bottom: 10px;
+}
+@media (min-width: 992px){
+    .title-info-addition {
+        text-align: left;
+    }
+}
 
 
 @media (min-width: 992px){

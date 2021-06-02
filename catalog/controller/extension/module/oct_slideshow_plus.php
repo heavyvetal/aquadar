@@ -110,7 +110,14 @@ class ControllerExtensionModuleOctSlideshowPlus extends Controller {
 		$data['module'] = $module++;
 		
 		$data['slideshow_id']                         = $setting['slideshow_id'];
-		
+
+		// Добавление описаний из яз.файла
+        $this->load->language('octemplates/module/oct_slideshow_plus');
+
+        $data['title_info_addition'] = $this->language->get('title_info_addition');
+        $data['item_text'] = $this->language->get('item_text');
+
+
 		return $this->load->view('octemplates/module/oct_slideshow_plus', $data);
 	}
 }
