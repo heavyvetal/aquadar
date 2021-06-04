@@ -326,6 +326,14 @@ class ControllerOCTemplatesModuleOctMegamenu extends Controller {
 				$data['currency'] = true;
 			}
 
+            $this->load->language('common/header');
+            $data['text_top_row1'] = $this->language->get('text_top_row1');
+            $data['text_top_row2'] = $this->language->get('text_top_row2');
+            $data['text_top_row3'] = $this->language->get('text_top_row3');
+            $data['text_top_link1'] = $this->language->get('text_top_link1');
+            $data['text_top_link2'] = $this->language->get('text_top_link2');
+            $data['text_top_link3'] = $this->language->get('text_top_link3');
+
 			$this->response->setOutput($this->load->view('octemplates/menu/oct_mobile_menu', $data));
 		} else {
 			$this->response->redirect($this->url->link('error/not_found', '', true));
