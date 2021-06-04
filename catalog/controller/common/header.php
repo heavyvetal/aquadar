@@ -82,6 +82,9 @@ class ControllerCommonHeader extends Controller {
         $data['text_top_row1'] = $this->language->get('text_top_row1');
         $data['text_top_row2'] = $this->language->get('text_top_row2');
         $data['text_top_row3'] = $this->language->get('text_top_row3');
+        $data['text_top_link1'] = $this->language->get('text_top_link1');
+        $data['text_top_link2'] = $this->language->get('text_top_link2');
+        $data['text_top_link3'] = $this->language->get('text_top_link3');
 
         // Подгружаем лендинговые стили только на конкретных страницых
         $data['is_landing_page'] = false;
