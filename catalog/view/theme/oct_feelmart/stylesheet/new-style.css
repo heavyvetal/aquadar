@@ -883,14 +883,62 @@ footer .fm-phone-box .btn-link {
 .fm-slideshow-plus-item-title {
     margin-bottom: 10px;
 }
+/* Ready-made solutions*/
+.table-1, .table-2, .table-3 {
+    border: 1px solid #bdd0dd;
+}
+.table-1 th, .table-1 td, .table-2 th, .table-2 td, .table-3 th, .table-3 td {
+    padding: 5px 10px;
+    border: 1px solid #bdd0dd;
+}
+.table-1 th, .table-1 td {
+    padding: 7px 17px;
+}
+.table-1 th {
+    background-color: #323e4f;
+    color: #fff;
+    font-weight: normal;
+}
+.table-1 td {
+    background-color: #8eaadb;
+    color: #000;
+}
+.table-2 tr:nth-child(even) td {
+    background-color: 	#ecf5fb;
+}
+.table-3 th {
+    background-color: #2f5496;
+    color: #fff;
+}
+.scroll-table {
+    overflow: auto;
+}
+.custom-title-1, .custom-title-2 {
+    text-align: center;
+}
+.custom-title-1 {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    color: rgb(0, 174, 239);
+    text-transform: uppercase;
+}
+.custom-title-2 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #005d8f;
+    text-decoration: underline;
+}
+.photo-padding-corrector img{
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+
+
 @media (min-width: 992px){
     .title-info-addition {
         text-align: left;
     }
-}
-
-
-@media (min-width: 992px){
     .fm-slideshow-plus {
         max-height: 470px;
     }
