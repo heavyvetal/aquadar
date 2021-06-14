@@ -16,32 +16,12 @@ class ControllerCommonLandingFlat extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-        // В КВАРТИРЕ
-        /*$information_id = 11;
-        $this->load->model('catalog/information');
-        $information_info = $this->model_catalog_information->getInformation($information_id);
-        $data['content'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');*/
+		$this->load->language('common/landing_flat');
 
-        /*if (isset($this->request->get['_route_'])) {
-            $route = $this->request->get['_route_'];
-            $route_ending = substr($route, -3);
-
-            if ($route_ending == '_en') {
-                $this->response->setOutput($this->load->view('common/landing_flat_ua', $data));
-            }
-            if ($route_ending == '_ua') {
-                $this->response->setOutput($this->load->view('common/landing_flat_ua', $data));
-            }
-            if ($route_ending == '_ru') {
-                $this->response->setOutput($this->load->view('common/landing_flat_ru', $data));
-            }
-        } else {
-            if ($this->language->get('code') == 'ua') {
-                $this->response->setOutput($this->load->view('common/landing_flat_ua', $data));
-            } else {
-                $this->response->setOutput($this->load->view('common/landing_flat_ru', $data));
-            }
-        }*/
+        $data['link_solution1'] = $this->language->get('link_solution1');
+        $data['link_solution2'] = $this->language->get('link_solution2');
+        $data['link_solution3'] = $this->language->get('link_solution3');
+        $data['link_solution4'] = $this->language->get('link_solution4');
 
         if ($this->language->get('code') == 'ua') {
             $this->response->setOutput($this->load->view('common/landing_flat_ua', $data));

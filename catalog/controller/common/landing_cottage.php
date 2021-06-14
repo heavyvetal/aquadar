@@ -16,11 +16,11 @@ class ControllerCommonLandingCottage extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-        // В КОТЕДЖЕ
-        /*$information_id = 12;
-        $this->load->model('catalog/information');
-        $information_info = $this->model_catalog_information->getInformation($information_id);
-        $data['content'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');*/
+        $this->load->language('common/landing_cottage');
+
+        $data['link_solution1'] = $this->language->get('link_solution1');
+        $data['link_solution2'] = $this->language->get('link_solution2');
+        $data['link_solution3'] = $this->language->get('link_solution3');
 
 		//$this->response->setOutput($this->load->view('common/landing_cottage', $data));
         if ($this->language->get('code') == 'ua') {

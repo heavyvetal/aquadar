@@ -12,7 +12,7 @@ class ControllerCommonLandingMailSender extends Controller {
         $message  .= '<br>Почта: ';
         $message  .= isset($this->request->post['mail']) ? $this->request->post['mail'] : 'не указана';
 
-        $admin_email_to = $this->config->get('config_mail_alert_email')?? $this->config->get('config_email');
+        $admin_email_to = $this->config->get('config_mail_alert_email') ?? $this->config->get('config_email');
 
         $mail = new Mail($this->config->get('config_mail_engine'));
         $mail->setTo($admin_email_to);
@@ -37,7 +37,7 @@ class ControllerCommonLandingMailSender extends Controller {
         $message  .= '<br>Почта: ';
         $message  .= isset($this->request->post['mail']) ? $this->request->post['mail'] : 'не указана';
 
-        $admin_email_to = $this->config->get('config_mail_alert_email')?? $this->config->get('config_email');
+        $admin_email_to = $this->config->get('config_mail_alert_email') ?? $this->config->get('config_email');
 
         $mail = new Mail($this->config->get('config_mail_engine'));
         $mail->setTo($admin_email_to);
