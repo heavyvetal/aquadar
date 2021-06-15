@@ -33,15 +33,14 @@ class ControllerXmlUpdater extends Controller {
 
                     // Проверка существования товара в базе
                     if ($product[0]['sku'] == $code) {
-                        //echo "UPDATE `oc_product` SET `price`=$price WHERE `sku`=$code\n";
                         $this->db->query("UPDATE `oc_product` SET `price`=$price WHERE `sku`='".$code."'");
+                        echo "Updated >>> Name: $title, new price: $price<br>\n";
                     }
                 } else {
                     foreach ($empty_code_products as $product) {
                         if ($product['name'] == $title) {
-                            //echo "Имя:$title код:$product[product_id] цена ст.:$product[price] цена н.:$price\n";
-                            //echo ">>>UPDATE `oc_product` SET `price`=$price WHERE `product_id`=$product[product_id]\n";
                             $this->db->query("UPDATE `oc_product` SET `price`=$price WHERE `product_id`=$product[product_id]");
+                            echo "Updated >>> Name: $title,  Old price: $product[price], new price: $price<br>\n";
                             break;
                         }
                     }
