@@ -126,10 +126,13 @@
 								<div class="fm-module-price-top d-flex align-items-center justify-content-center">
 									<span class="fm-module-price-old">{{ product.price }}</span>
 
-			{% if product.oct_stickers is not empty%}
-				{% if oct_sticker_you_save and product.you_save %}
-					<div class="fm-module-sticker-discount">{{ product.you_save }}</div>
-				{% endif %}
+			{#{% if product.oct_stickers is not empty%}#}
+			{#{% if oct_sticker_you_save and product.you_save %}#}
+			{#<div class="fm-module-sticker-discount">{{ product.you_save }}</div>#}
+			{#{% endif %}#}
+			{#{% endif %}#}
+			{% if product.you_save %}
+				<div class="fm-module-sticker-discount">{{ product.you_save }}</div>
 			{% endif %}
 			
 								</div>

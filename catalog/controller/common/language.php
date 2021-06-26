@@ -24,6 +24,10 @@ class ControllerCommonLanguage extends Controller {
 
 		if (!isset($this->request->get['route'])) {
 			$data['redirect'] = $this->url->link('common/home');
+
+            // Правка роутинга языков
+            //if ($this->language->get('code') == 'ua') $data['redirect'] = $this->url->link('common/home').'ru/';
+
 		} else {
 			$url_data = $this->request->get;
 
@@ -31,6 +35,9 @@ class ControllerCommonLanguage extends Controller {
             if (isset($this->request->get['_route_'])) {
                 $route = $url_data['_route_'];
                 $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$route;
+                // Правка роутинга языков
+                //if ($this->language->get('code') == 'ua') $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/ru/'.$route;
+
             } else {
                 // Это было исходное поведение
                 unset($url_data['_route_']);
