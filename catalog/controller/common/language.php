@@ -34,9 +34,37 @@ class ControllerCommonLanguage extends Controller {
 			// Правка роутинга языкового переключателя для лендинга
             if (isset($this->request->get['_route_'])) {
                 $route = $url_data['_route_'];
+
+                /**
+                 * Языковой роутинг
+                 */
+                $route_parts = explode("/", $route);
+                $last_route = end($route_parts);
+
+                if ($this->language->get('code') == 'ru') $code = 'uk-ua';
+                if ($this->language->get('code') == 'ua') $code = 'ru-ru';
+
+                // меняем фрагменты урла на переведенные
+                foreach ($route_parts as &$part) {
+                    $query = $this->db->query("
+                        SELECT
+                            su.keyword 
+                        FROM 
+                            `oc_seo_url` su 
+                        WHERE 
+                            `query`=(SELECT `query` FROM `oc_seo_url` WHERE `keyword`='".$part."') 
+                        AND 
+                            `language_id`=(SELECT `language_id` FROM `oc_language` WHERE `code`='".$code."')
+                        LIMIT 1
+                    ")->rows;
+
+                    if ($query !== []) $part = $query[0]['keyword'];
+                }
+
+                $route = implode('/', $route_parts);
+                //print_r($route);
+
                 $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$route;
-                // Правка роутинга языков
-                //if ($this->language->get('code') == 'ua') $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/ru/'.$route;
 
             } else {
                 // Это было исходное поведение

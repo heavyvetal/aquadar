@@ -57,7 +57,11 @@ $(document).ready(function() {
 
 		$('#form-language input[name=\'code\']').val($(this).attr('name'));
 
-		$('#form-language').submit();
+		if (($(this).attr('name') == 'uk-ua' && $('html').attr('lang') == 'ua') || ($(this).attr('name') == 'ru-ru' && $('html').attr('lang') == 'ru')) {
+			return;
+		} else {
+			$('#form-language').submit();
+		}
 	});
 
 	/* Search */
