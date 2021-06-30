@@ -25,7 +25,7 @@ class ControllerCommonLanguage extends Controller {
 		if (!isset($this->request->get['route'])) {
 			$data['redirect'] = $this->url->link('common/home');
 
-            // Правка роутинга языков
+            /* Языковой роутинг */
             if ($this->language->get('code') == 'ua') $data['redirect'] = $this->url->link('common/home').'ru/';
 
 		} else {

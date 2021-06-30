@@ -100,14 +100,31 @@ class ControllerStartupStartup extends Controller {
 			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
 		}
 
+        /**
+         * Языковой роутинг: начало
+         * установка языка по префиксу главной
+         */
+        $lang_prefix = substr($this->request->server['REQUEST_URI'], 1, 2);
+
+        if ($lang_prefix == 'ru') {
+            // отрезаем ru
+            $this->request->get['_route_'] = substr($this->request->get['_route_'], 3);
+
+            // устанавливаем язык по префиксу
+            $code = 'ru-ru';
+            $this->session->data['language'] = $code;
+            $_GLOBALS['lang_prefix'] = 'ru';
+        }
+        /* Языковой роутинг: конец */
+
         // Меняем язык в зависимости от концовки урла
         //print_r($this->request);
         if (isset($this->request->get['_route_']) && $this->session->data['from_language_switcher'] != 'yes') {
             $route = $this->request->get['_route_'];
             $route_ending = substr($route, -3);
-            /*if ($route_ending == '_en' || $route_ending == '-en') $code = 'en-gb';
+            if ($route_ending == '_en' || $route_ending == '-en') $code = 'en-gb';
             if ($route_ending == '_ua' || $route_ending == '-ua') $code = 'uk-ua';
-            if ($route_ending == '_ru' || $route_ending == '-ru') $code = 'ru-ru';*/
+            if ($route_ending == '_ru' || $route_ending == '-ru') $code = 'ru-ru';
             if ($route_ending == '_en') $code = 'en-gb';
             if ($route_ending == '_ua') $code = 'uk-ua';
             if ($route_ending == '_ru') $code = 'ru-ru';
