@@ -26,7 +26,7 @@ class ControllerCommonLanguage extends Controller {
 			$data['redirect'] = $this->url->link('common/home');
 
             // Правка роутинга языков
-            //if ($this->language->get('code') == 'ua') $data['redirect'] = $this->url->link('common/home').'ru/';
+            if ($this->language->get('code') == 'ua') $data['redirect'] = $this->url->link('common/home').'ru/';
 
 		} else {
 			$url_data = $this->request->get;
@@ -36,7 +36,7 @@ class ControllerCommonLanguage extends Controller {
                 $route = $url_data['_route_'];
 
                 /**
-                 * Языковой роутинг
+                 * Языковой роутинг: начало
                  */
                 $route_parts = explode("/", $route);
                 $last_route = end($route_parts);
@@ -63,6 +63,7 @@ class ControllerCommonLanguage extends Controller {
 
                 $route = implode('/', $route_parts);
                 //print_r($route);
+                /* Языковой роутинг: конец */
 
                 $data['redirect'] = $this->request->server['REQUEST_SCHEME'].'://'.$this->request->server['HTTP_HOST'].'/'.$route;
 
