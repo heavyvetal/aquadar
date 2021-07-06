@@ -59,18 +59,21 @@ class ControllerCheckoutMyNPApi extends Controller {
 
         if(isset($this->request->post['selected']) && isset($this->request->post['city'])) {
 
-            foreach ($areas['data'] as $area) {
-                if ($area[$this->description_language] == $_POST['selected']) {
-                    $area_name = $area[$this->description_language];
-                    break;
+            // Нету ли латинницы или цифр в запросе
+            if (!preg_match('/[A-z0-9]/', $this->request->post['city'])) {
+                foreach ($areas['data'] as $area) {
+                    if ($area[$this->description_language] == $_POST['selected']) {
+                        $area_name = $area[$this->description_language];
+                        break;
+                    }
                 }
-            }
 
-            $city_name = $this->request->post['city'];
-            $cities = $this->model_delivery_npapi->getCity($city_name, $area_name, '');
+                $city_name = $this->request->post['city'];
+                $cities = $this->model_delivery_npapi->getCity($city_name, $area_name, '');
 
-            foreach ($cities['data'] as $city) {
-                $result .= '<li data-value="'.$city['Ref'].'" style="cursor:pointer;">'.$city[$this->description_language].'</li>';
+                foreach ($cities['data'] as $city) {
+                    $result .= '<li data-value="' . $city['Ref'] . '" style="cursor:pointer;">' . $city[$this->description_language] . '</li>';
+                }
             }
         }
 

@@ -30,7 +30,7 @@
                 {% for payment_method in payment_methods %}
                     <div class="radio">
                         <label for="{{ payment_method['code'] }}">
-                            <input type="radio" data-onchange="reloadAll" name="payment_method" value="{{ payment_method['code'] }}" {{ payment_method['dummy'] is not empty ? 'disabled="disabled"' : '' }} {{ payment_method['dummy'] is not empty ? 'data-dummy="true"' : '' }} id="{{ payment_method['code'] }}" {% if payment_method['code'] == code %}checked="checked"{% endif %} />
+                            <input type="radio" data-onchange="" name="payment_method" value="{{ payment_method['code'] }}" {{ payment_method['dummy'] is not empty ? 'disabled="disabled"' : '' }} {{ payment_method['dummy'] is not empty ? 'data-dummy="true"' : '' }} id="{{ payment_method['code'] }}" {% if payment_method['code'] == code %}checked="checked"{% endif %} />
                             {{ payment_method['title'] }}
                             {% if payment_method['terms'] is not empty %}
                                 {{ payment_method['terms'] }}
