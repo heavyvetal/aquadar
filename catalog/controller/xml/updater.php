@@ -32,7 +32,7 @@ class ControllerXmlUpdater extends Controller {
                 ")->rows;
 
                     // Проверка существования товара в базе
-                    if ($product[0]['sku'] == $code) {
+                    if ($code == $product[0]['sku']) {
                         $this->db->query("UPDATE `oc_product` SET `price`=$price WHERE `sku`='".$code."'");
                         echo "Updated >>> Name: $title, new price: $price<br>\n";
                     }
