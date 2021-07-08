@@ -10,7 +10,7 @@ class ControllerXmlUpdaterImage extends Controller {
         // Индекс начального товара
         $counter = 0;
         // Количество картинок
-        $num = 100;
+        $num = 700;
         $end_num = $counter + $num;
 
         while ($counter < count($xml->item)) {

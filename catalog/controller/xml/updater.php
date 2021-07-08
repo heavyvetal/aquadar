@@ -47,5 +47,8 @@ class ControllerXmlUpdater extends Controller {
                 }
             }
         }
+
+        // Вместе с этим запускаем обновление картинок
+        $this->load->controller('xml/updater_image');
     }
 }
