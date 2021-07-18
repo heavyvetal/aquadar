@@ -29,10 +29,6 @@ class ControllerCheckoutMyNPApi extends Controller {
         $this->load->model('delivery/npapi');
         $this->model_delivery_npapi->setKey('15684ba5d03bbd44783afb84650f3110');
     }
-    
-    public function index() {
-
-    }
 
     public function getAreas () {
         $result = '<option value="0" selected>'.$this->region_default_selector.'</option>';
