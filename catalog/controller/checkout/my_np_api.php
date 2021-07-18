@@ -1,22 +1,27 @@
 <?php
 class ControllerCheckoutMyNPApi extends Controller {
 
-    private $description_language = 'Description';
-    private $region_default_selector = '-- Оберіть область --';
+    private $description_language;
+    private $region_default_selector;
+
+    private $descriptions = array(
+        'ru' => array(
+            'description' => 'DescriptionRu',
+            'region_default_selector' => '-- Выберите область --'
+        ),
+        'ua' => array(
+            'description' => 'Description',
+            'region_default_selector' => '-- Оберіть область --'
+        )
+    );
 
     public function __construct($registry)
     {
         parent::__construct($registry);
 
-        if ($this->language->get('code') == 'ru') {
-            $this->description_language = 'DescriptionRu';
-            $this->region_default_selector = '-- Выберите область --';
-        }
+        $this->description_language = $this->descriptions[$this->language->get('code')]['description'];
+        $this->region_default_selector = $this->descriptions[$this->language->get('code')]['region_default_selector'];
 
-        if ($this->language->get('code') == 'ua') {
-            $this->description_language = 'Description';
-            $this->region_default_selector = '-- Оберіть область --';
-        }
     }
 
     public function init()
@@ -37,7 +42,7 @@ class ControllerCheckoutMyNPApi extends Controller {
         $areas = $this->model_delivery_npapi->getAreas();
 
         $this->load->model('tool/simpleapimain');
-        // Костыль перевода кодов новой почты в коды опенкарта, чтобы отображать регион в заказе
+        // Перевод кодов новой почты в коды опенкарта, чтобы отображать регион в заказе
         $area_codes = $this->model_tool_simpleapimain->getAreaCodes();
 
         foreach ($areas['data'] as $area) {
@@ -49,7 +54,7 @@ class ControllerCheckoutMyNPApi extends Controller {
 
     public function getCities()
     {
-        $area_name = ''; //'Днепропетровская';
+        $area_name = '';
         $city_name = '';
         $result = '';
 
@@ -83,7 +88,6 @@ class ControllerCheckoutMyNPApi extends Controller {
 
     public function getWarehouses()
     {
-        //$city_ref = 'db5c88f0-391c-11dd-90d9-001a92567626';
         $city_ref = '';
         $result = '';
 
